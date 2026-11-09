@@ -101,8 +101,13 @@ module screen_frame() translate([0,scr_cy,under_top-scr_t-0.2]) difference() {
   linear_extrude(height=scr_t+0.4) rr(scr_w+3.6,scr_h+3.6,2);
   translate([0,0,-0.1]) linear_extrude(height=scr_t+0.6) rr(scr_w+0.4,scr_h+0.4,1.5);
 }
-module pad_cuts() translate([pad_cx,pad_cy,under_top-0.2]) linear_extrude(height=pad_top_z-under_top+0.2)
-  rr(pad_w+0.4,pad_h+0.4,2);    // pocket in the skin underside: leaves a 1.0 mm skin
+module pad_cuts() {
+  translate([pad_cx,pad_cy,under_top-0.2]) linear_extrude(height=pad_top_z-under_top+0.2)
+    rr(pad_w+0.4,pad_h+0.4,2);    // pocket in the skin underside: leaves a 1.0 mm skin
+  // 0.4 mm deep, 0.7 mm wide groove on the top face outlines the active area (the pad is otherwise invisible)
+  translate([pad_cx,pad_cy,top_z-0.4]) linear_extrude(height=0.5)
+    difference() { rr(pad_w+1.5,pad_h+1.5,2.8); rr(pad_w+0.1,pad_h+0.1,2.1); }
+}
 module port_cuts() {
   translate([usb_x-usb_w/2,y_rear-7,port_z-usb_h/2]) cube([usb_w,8,usb_h]);
   translate([sw_x-sw_w/2,y_rear-7,port_z-sw_h/2]) cube([sw_w,8,sw_h]);
