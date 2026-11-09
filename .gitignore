@@ -9,3 +9,4 @@ _autosave-*
 *.bak
 .DS_Store
 Thumbs.db
+cad/r3/build/*.log
