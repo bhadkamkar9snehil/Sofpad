@@ -149,13 +149,40 @@ Current CAD: `cad/r3/Sofpad_R3_Alice.scad`. Run `python cad/r3/check_design.py` 
 |---|---|
 | Keyboard firmware | ZMK (Zephyr) on the nRF52840 with a custom board `sofpad_r3`. 12 column outputs, 5 row inputs with pull-downs, `diode-direction = "col2row"`. Two EC11 encoders. |
 | Trackpad | `AYM1607/zmk-driver-azoteq-iqs5xx` on I2C 0x74. It is tested on TPS43 and TPS65. Add tap, scroll and two-finger gestures through ZMK input processors. |
-| Haptics, motion | Small ZMK module: DRV2605L effects on tap and click. Zephyr `st,lis2dh` driver, interrupt wakes from deep sleep. |
+| Haptics, motion | Small ZMK module: DRV2605L effects on tap and click. Zephyr `st,lis2dh` driver, interrupt wakes from idle (not soft-off; see the power section). |
 | Screen | Zephyr ST7789 display driver and LVGL. Screens: layer and mode, battery, USB or Bluetooth state, clock, media, PC stats. |
 | PC link (now) | USB raw HID: a custom report carries the display data from the PC. Same cable does keyboard, mouse and charging. |
 | PC app | `sofpad-host`: a small tray app. Starts as Python with `hidapi`. Sends time, CPU and GPU load, volume, now playing (Windows media session). |
 | PC link over Bluetooth | Custom GATT service for the same display data. Deferred. |
 | Build | Local `west` build, then GitLab CI on the self-hosted runners. GitHub Actions is not allowed. Firmware lives in `firmware/` when started. |
 | Updates | USB DFU first. Over-the-air later. |
+
+## Power and sleep/wake design (decided 10 Nov 2026)
+
+Goal: months of standby, and no lag on the first key, touch or encoder click after any idle time.
+
+**Decision: never use soft-off (System OFF) for idle.** System OFF resets the MCU, so wake means a reboot plus a Bluetooth reconnect (about a second of lag). The firmware stays in System ON low-power idle with RAM retained (a few µA) and wakes from GPIO events in microseconds. Soft-off is only for the master switch and low-battery cutoff. At about 10 µA the 1100 mAh cell would last years, so the few µA cost buys zero wake lag. Set `CONFIG_ZMK_SLEEP=n` and use ZMK idle plus Zephyr device power management (`CONFIG_PM_DEVICE=y`).
+
+| Source | Idle design | Wake path |
+|---|---|---|
+| Key matrix | All 12 columns driven high, 5 row inputs with internal pull-downs. No current flows until a key closes. ZMK interrupt-driven `zmk,kscan-gpio-matrix` with `wakeup-source`. No polling timer while idle. | Row edge (GPIOTE PORT) |
+| Encoders | Contacts to GND can sit closed. Use **470 kΩ external pull-ups** with the internal pulls off (7 µA worst per closed line, against 250 µA for the 13 kΩ internal pull-up). Edges stay clean at 470 kΩ. | A/B edge (PORT) |
+| Trackpad | Powered always (23 µA typical in low-power mode). Set the IQS550 low-power report periods so the first touch is reported in 50 ms or less. | RDY line (P0.06) |
+| Accelerometer | LIS3DH in low-power mode at 10 Hz with the wake-on-motion interrupt. Single-digit µA. It wakes the keyboard when it is lifted or touched, **before the hand reaches the keys**, so the Bluetooth link is already up. | INT (P0.08) |
+| Haptics | DRV2605L in standby. Power it up only on a click. | none |
+| Screen | ST7789 in Sleep-In. Backlight FET gate has a pull-down so it is off at reset. Backlight at 10 % or lower while awake, off after 10 s without input. The backlight (tens of mA) is the largest load, so it is the main budget item. | wake event turns it on |
+| Regulator | TPS62740 (0.36 µA quiescent), enabled by the master switch. Peripherals share its 3.3 V rail with no per-part load switches. | switch |
+| Bluetooth | Stay connected while idle with a long connection interval and peripheral latency. Latency adds no lag to keyboard-to-host data, because the keyboard sends at the next event whenever it has data. After 15 min idle drop to slow directed advertising. A reconnect (up to about a second) is hidden by the accelerometer pre-wake. | accelerometer, key |
+| USB | When VBUS is present, no idle timeouts and no radio sleep. Handle USB suspend so the PC can sleep and wake the keyboard. | VBUS |
+
+**Budget targets** (verify on the bench): connected idle at or below 60 µA average (about two years of standby); typing about 3 mA average; screen on adds the backlight current. The bench check uses a µA-capable current profiler and the ZMK Power Profiler as a cross-check.
+
+**Acceptance tests (gate before the full shell):**
+1. Key, encoder and trackpad each deliver the first event within 10 ms, 10 ms and 50 ms of waking from idle (measured with a logic analyser on the wake pin and the HID report).
+2. Idle current at or below 60 µA with the screen asleep and Bluetooth connected; no step above 100 µA from any single part.
+3. After 2 h idle, lifting the keyboard brings the link up before the first keypress.
+4. With the switch OFF and USB present, the cell charges and the MCU draws nothing.
+5. 100 sleep/wake cycles with no stuck key, missed key or lost Bluetooth pairing.
 
 ## Engineering gates before any PCB order
 
