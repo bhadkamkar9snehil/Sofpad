@@ -1,5 +1,5 @@
 /*
- Sofle RGB + Cirque TM040040-2024-301 single-controller couch case (revision 3).
+ Sofle RGB + Azoteq TPS43-201A-S (43 x 40 mm, I2C) single-controller couch case (revision 3).
  Source positions: Josef Adamcik's official Sofle RGB KiCad PCB, MIT.
 
  One continuous top shell, separate service bottom, and screw-in trackpad
@@ -32,19 +32,23 @@ pcb_t = 1.6;
 panel_bottom_t = 1.8;       // Removable service bottom panel
 board_clearance = 0.65;
 
-// ----- Cirque 40 mm round SPI touchpad and retention -----
+// ----- Azoteq TPS43-201A-S rectangular I2C touchpad and retention -----
 pad_cy_shift = 8;            // Move pad back; leaves battery room in front
-pad_module_d = 40;           // Manufacturer nominal PCB diameter
-pad_touch_d = 38;            // Sensor active diameter
-pad_assembly_t = 5.15;      // Worst-case assembly ~5.35; verify in hand
-pad_window_d = 40.6;        // Entire stock overlay is visible; installed from below
-pad_overlay_t = 0.99;       // Stock PCB plus adhesive overlay stack near face
+pad_module_w = 43;
+pad_module_h = 40;
+pad_overlay_w = 47.5;       // Separate 0.7 mm Mylar/glass overlay
+pad_overlay_h = 44;
+pad_overlay_t = 0.75;
+pad_recess_extra = 0.15;
+pad_window_w = 44.0;
+pad_window_h = 40.8;
+pad_corner_r = 2.0;
 pad_retainer_w = 59;
 pad_retainer_h = 54;
 pad_retainer_t = 2;
 pad_frame_screw_x = 26.5;
 pad_frame_screw_y = 24;
-pad_frame_top_z = 11.9;      // 0.45 mm relief under nominal 5.15 mm module
+pad_frame_top_z = 13.25;     // Carried over from R2 TPS43 stack; verify with sample
 
 // ----- Battery (ONE protected NOVA 603450 1100 mAh 1S cell) -----
 // Loose protective envelope includes nominal 50x34x6 mm cell, PCB/foil margin.
@@ -100,8 +104,8 @@ bottom_screw_positions = [
 
 assert(trackpad_zone>=pad_retainer_w+5,"Trackpad zone too narrow");
 assert(battery_w+2*battery_edge_gap<trackpad_zone-5,"Battery too wide");
-assert(battery_cy+battery_h/2+4 < pad_cy-pad_window_d/2,"Battery and pad overlap in plan");
-assert(pad_cy+pad_window_d/2+4 < case_h-4,"No clear rear control bay");
+assert(battery_cy+battery_h/2+4 < pad_cy-pad_overlay_h/2,"Battery and pad overlap in plan");
+assert(pad_cy+pad_overlay_h/2+4 < case_h-4,"No clear rear control bay");
 assert(pcb_top_z+3.6<shell_under_top,"Not enough switch/PCB headroom");
 
 module rr(w,h,r) {
@@ -154,12 +158,15 @@ module oled_cutouts() {
              rr(oled_window_w,oled_window_h,2);
 }
 
-// Full opening permits the stocked assembled Circle Trackpad to insert from
-// BELOW. The lower retainer holds it flush at the face with foam shims.
-// It has NO fictitious square glass overlay.
+// Overlay sits in a shallow top recess over a smaller opening; the ledge
+// prevents drop-through. Copied from the R2 TPS43 case.
 module pad_face_cutouts() {
+   translate([pad_cx,pad_cy,top_z-pad_overlay_t-pad_recess_extra])
+     linear_extrude(height=pad_overlay_t+pad_recess_extra+0.25)
+       rr(pad_overlay_w,pad_overlay_h,pad_corner_r);
    translate([pad_cx,pad_cy,shell_under_top-0.2])
-     cylinder(d=pad_window_d,h=top_skin_t+0.5);
+     linear_extrude(height=top_skin_t+0.45)
+       rr(pad_window_w,pad_window_h,pad_corner_r);
 }
 
 // Rear panel USB-C cutout plus a separate recessed slide-switch window.
@@ -245,11 +252,10 @@ module trackpad_retainer() {
   difference() {
     linear_extrude(height=pad_retainer_t)
       rr(pad_retainer_w,pad_retainer_h,4);
-    // Central relief. Support only the perimeter with selected compressible
-    // pads after checking where the sensor has underside electronics.
+    // Center relief: contact is applied only around module perimeter.
     translate([0,0,-0.1])
       linear_extrude(height=pad_retainer_t+0.2)
-        circle(d=pad_module_d-4.5);
+        rr(pad_module_w-3,pad_module_h-3,1.5);
     for(dx=[-pad_frame_screw_x,pad_frame_screw_x],dy=[-pad_frame_screw_y,pad_frame_screw_y])
       translate([dx,dy,-0.1]) cylinder(d=case_hole_d,h=pad_retainer_t+0.2);
     // FFC cable exits the retaining frame toward the rear of the case.
@@ -289,8 +295,9 @@ module assembly() {
      color([0.32,0.34,0.37]) encoder_knobs_ghost(side);
   }
   color([0.07,0.09,0.12])
-    translate([pad_cx,pad_cy,top_z-0.05])
-      cylinder(d=pad_module_d,h=0.05);
+    translate([pad_cx,pad_cy,top_z-pad_overlay_t+0.03])
+      linear_extrude(height=pad_overlay_t-0.2)
+        rr(pad_overlay_w,pad_overlay_h,pad_corner_r);
   color([0.22,0.25,0.28])
     translate([pad_cx,pad_cy,pad_frame_top_z-pad_retainer_t]) trackpad_retainer();
   color([0.24,0.46,0.65])

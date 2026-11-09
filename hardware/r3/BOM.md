@@ -16,7 +16,7 @@ Status key: **Select** = exact orderable manufacturer part; **Check** = exact pr
 | 1 | USB-C, USB 2.0, 24-pin form | GCT `USB4085-GF-A` | [DigiKey India](https://www.digikey.in/en/products/detail/gct/USB4085-GF-A/9859733) | 86.95 | Select; footprint/port position to check |
 | 1 | Right-angle slide SPDT, 5 mm actuator | E-Switch `EG1213` | [DigiKey India](https://www.digikey.in/en/products/detail/e-switch/EG1213/101735) | 72.28 | Check against case slot |
 
-**Main-component subtotal (Cirque prices, not yet recomputed):** **₹2,880.98**. This excludes connectors, flex cables, protection, passive parts, PCB fabrication, assembly, printing, shipping, and taxes. It is **not** the complete project price.
+**Priced-parts subtotal (TPS43, sum of `INR_extended` in BOM.csv, 9 Nov 2026):** **₹3,336.74**. This excludes connectors, flex cables, protection, passive parts, PCB fabrication, assembly, printing, shipping, and taxes. It is **not** the complete project price.
 
 ## Electrical connectors, cables, and safety parts
 
