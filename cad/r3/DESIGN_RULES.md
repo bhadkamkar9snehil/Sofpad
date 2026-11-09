@@ -8,8 +8,10 @@
 | Trackpad position | Centre, front, between the thumb clusters | Either thumb reaches it without lifting the hands off the home row. A right-side pad is a one-handed device and leaves the centre empty. |
 | Trackpad size | 65 × 49 mm (TPS65) | Large enough for couch use and a full thumb sweep. Landscape, aligned with the case, not tilted. |
 | Encoders | Next to the thumb clusters | The thumb reaches them. The pad is wide enough to keep a gap from them (check palm rejection in firmware). |
-| OLEDs | Inner edge, top, near the encoders | Visible with the hands on the keys, outside the palm area. |
-| Case height | 17.5 mm under the keycaps, 2 mm top-edge radius | Low edge on the lap. The rounded edge is softer on the wrists. |
+| Screen | Centre rear, 2.0 in portrait, backlit | Visible between the halves with the hands on the keys and in a dark room. The two Sofle OLEDs are not used. |
+| Gap | 143 mm between the innermost home-row keys, 115 mm between the thumb clusters | Normal for split boards (Corne and ErgoDox are 110-150 mm). The 65 mm pad leaves about 25 mm each side. |
+| Vertical angle | Flat, 0° | Lap and couch use. A hinged tenting lift per half is deferred. |
+| Case height | 17.1 mm under the keycaps, 2 mm top-edge radius | Low edge on the lap. The rounded edge is softer on the wrists. |
 | No wrist rest | — | Use on a lap or cushion. A rest can be added as a separate part later. |
 | Feet | Stick-on rubber feet | Stops sliding on a couch arm. |
 

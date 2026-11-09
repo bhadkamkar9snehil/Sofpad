@@ -11,7 +11,7 @@ This is not a fabrication-ready schematic or a tested charging circuit.
 - Use one protected 1-cell 3.7 V LiPo. Charge it through a single rear USB-C port.
 - Use the **Azoteq TPS65-201A-S** (65 × 49 mm, IQS550, I2C) trackpad. It replaces the Cirque TM040040. See `ELECTRICAL_REVIEW.md` for the reasons and open risks.
 - Use USB HID while USB is connected, and BLE HID while operating from the battery. One **ZMK** firmware image scans both halves and the trackpad. QMK does not support nRF52840 BLE.
-- Leave the existing RGB LEDs and OLEDs disconnected in the low-power first build. The LEDs remain physically in the PCB. They do not receive power.
+- Leave the existing RGB LEDs and OLEDs disconnected. One 2.0 in screen replaces them. The LEDs remain physically in the PCB. They do not receive power.
 
 ## Verified source PCB
 
@@ -129,19 +129,33 @@ Do not connect the raw 4.2 V cell to the nRF VDD or TPS65 VDDHI. Do not connect 
 
 Current CAD: `cad/r3/Sofpad_R3_Alice.scad`. Run `python cad/r3/check_design.py` after every change.
 
-- Each Sofle half is tilted 12° toward the user (Alice-style). The case is 383 × 153 × 17.5 mm.
+- Each Sofle half is tilted 12° toward the user (Alice-style), flat on the table. The case is 383 × 153 × 17.1 mm. A hinged tenting lift is deferred.
+- Switches are Cherry MX style in the PCB's hot-swap sockets, so switches change without soldering. The plate is 1.5 mm and the PCB-to-plate distance is 5.0 mm, as the MX clips need. Keycaps in the renders are DSA-like, 7.4 mm tall.
 - The TPS65 sits in the **centre, between the thumb clusters**, so either thumb reaches it. Its retainer is 73 × 57 mm.
-- Behind the pad: the battery lies across (52 × 36 × 8 mm envelope for the NOVA 603450), then the carrier PCB (46 × 22 mm envelope) against the rear wall with USB-C and the slide switch.
-- Battery and carrier mount on the removable service plate. Lifting the plate exposes both. The PCB halves stay in the shell.
-- Both OLED windows and both encoders are kept.
+- Behind the pad: the single 2.0 in screen sits in the shell skin (window 31.6 × 41.8 mm). Below it: the battery lying across (52 × 36 × 8 mm envelope for the NOVA 603450), then the carrier PCB (46 × 22 mm envelope) against the rear wall with USB-C and the slide switch.
+- Battery and carrier mount on the removable service plate. Lifting the plate exposes both. The PCB halves stay in the shell. The checks prove 1.1 mm between the screen module and the battery.
 
-## Added hardware (R3 decisions, 10 Nov 2026)
+## Screen, connectivity and added hardware (R3 decisions, 10 Nov 2026)
 
-- **OLEDs on:** both 0.91 in 128 × 32 I2C OLEDs. Both use address 0x3C, so they sit on two I2C buses. Bus A (P0.04/P0.05, TWIM0) carries TPS65 (0x74), haptic driver (0x5A), accelerometer (0x18) and the left OLED. Bus B (P0.08 SCL and P0.11 SDA, TWIM1; pads to confirm in the schematic) carries the right OLED.
-- **FFC grows to 18 ways:** the 16-way harness had no wire left for OLED SDA, SCL and 3.3 V. The 18-way adds SDA, SCL, 3.3 V and a second GND per half. Pins 1–5 rows, 6–11 columns, 12–13 encoder A/B, 14–15 GND, 16 SDA, 17 SCL, 18 3.3 V. The old 16-way table above is superseded for the OLED build.
-- **Haptic click:** DRV2605L plus a 10 mm LRA under the trackpad retainer, driven on a tap or click from the TPS65.
-- **Accelerometer:** LIS3DH wakes the keyboard when lifted and lets it sleep when left still.
-- **Power:** OLEDs sleep after a timeout. Without a measured current they cost about 5–10 mA lit, so firmware sleep is part of the design.
+- **One large screen replaces both OLEDs.** 2.0 in 240 × 320 IPS, ST7789, SPI, portrait, centre rear. Backlit, so it reads in a dark living room. The backlight dims, then the screen sleeps on a timeout. This removes the second I2C bus and the 18-way FFC idea, so the harness stays 16-way.
+- **Proposed screen pins** (confirm against the Raytac pad sheet when drawing the schematic): SCK P0.31, MOSI P0.30, CS P0.29, DC P0.28, RST P1.09, backlight PWM P1.10. Accelerometer interrupt on the spare P0.08.
+- **USB cable or Bluetooth:** both are always available. ZMK selects the output (`OUT_USB`, `OUT_BLE`, toggle) and holds 5 Bluetooth profiles. Plugging in USB-C also charges.
+- **Haptic click:** DRV2605L plus a 10 mm LRA under the trackpad retainer (I2C 0x5A, shared with the TPS65 at 0x74).
+- **Accelerometer:** LIS3DH (I2C 0x18) wakes the keyboard when lifted and lets it sleep when left still.
+
+## Firmware and software plan
+
+| Layer | Plan |
+|---|---|
+| Keyboard firmware | ZMK (Zephyr) on the nRF52840 with a custom board `sofpad_r3`. 12 column outputs, 5 row inputs with pull-downs, `diode-direction = "col2row"`. Two EC11 encoders. |
+| Trackpad | `AYM1607/zmk-driver-azoteq-iqs5xx` on I2C 0x74. It is tested on TPS43 and TPS65. Add tap, scroll and two-finger gestures through ZMK input processors. |
+| Haptics, motion | Small ZMK module: DRV2605L effects on tap and click. Zephyr `st,lis2dh` driver, interrupt wakes from deep sleep. |
+| Screen | Zephyr ST7789 display driver and LVGL. Screens: layer and mode, battery, USB or Bluetooth state, clock, media, PC stats. |
+| PC link (now) | USB raw HID: a custom report carries the display data from the PC. Same cable does keyboard, mouse and charging. |
+| PC app | `sofpad-host`: a small tray app. Starts as Python with `hidapi`. Sends time, CPU and GPU load, volume, now playing (Windows media session). |
+| PC link over Bluetooth | Custom GATT service for the same display data. Deferred. |
+| Build | Local `west` build, then GitLab CI on the self-hosted runners. GitHub Actions is not allowed. Firmware lives in `firmware/` when started. |
+| Updates | USB DFU first. Over-the-air later. |
 
 ## Engineering gates before any PCB order
 

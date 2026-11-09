@@ -15,7 +15,7 @@ They are in [docs/images](docs/images/).
 
 ![Sofpad R3 hero view](docs/images/sofpad-r3-hero.png)
 
-![Sofpad R3 top view: tilted halves, OLED windows, encoders, centre trackpad](docs/images/sofpad-r3-top.png)
+![Sofpad R3 top view: tilted halves, centre trackpad, screen, encoders](docs/images/sofpad-r3-top.png)
 
 ![Sofpad R3 internals: PCB halves, battery and carrier on the service plate](docs/images/sofpad-r3-internals.png)
 
@@ -35,7 +35,6 @@ They are in [docs/images](docs/images/).
 | **R3 engineering specification** | [Architecture and electrical design](hardware/r3/ARCHITECTURE.md) |
 | **R3 bill of materials** | [BOM.md](hardware/r3/BOM.md) · [BOM.csv](hardware/r3/BOM.csv) |
 | **R3 CAD source** | [Sofpad_R3_Alice.scad](cad/r3/Sofpad_R3_Alice.scad) · checks: [check_design.py](cad/r3/check_design.py) |
-| **R3 original notes** | [README.md](hardware/r3/README.md) |
 | **Reference PCB** | [SofleKeyboard.kicad_pcb](hardware/r3/reference/Sofle_RGB/PCB/SofleKeyboard.kicad_pcb) |
 | **Earlier R1 / R2 concepts** | [R1](cad/r1/) · [R2](cad/r2/) |
 | **Renders** | [docs/images](docs/images/) |
@@ -46,11 +45,12 @@ They are in [docs/images](docs/images/).
 - One nRF52840 microcontroller for all keyboard inputs, both encoders, and the touchpad.
 - One internal wired connection to each Sofle RGB PCB, using passive Pro Micro socket adapters.
 - Alice-style 12° tilt per half and a centre trackpad between the thumb clusters.
-- Both OLED windows and both rotary encoders stay in use.
+- One large 2.0 in screen (centre rear) and both rotary encoders. Cherry MX style hot-swap switches.
+- USB-C cable or Bluetooth, both always available.
 - One protected LiPo battery and one rear USB-C port for charging and USB HID.
 - USB keyboard and mouse HID plus BLE keyboard and mouse HID in the planned firmware.
 - A continuous upper shell, removable service cover, and trackpad retainer.
-- Existing RGB LEDs and OLED displays disconnected for the first low-power revision.
+- Existing RGB LEDs and OLED displays disconnected. A single 2.0 in screen replaces the OLEDs.
 
 ## Hardware architecture
 
@@ -114,7 +114,7 @@ The R3 concept uses a protected **NOVA 603450, 1100 mAh** LiPo. The rear master 
 
 ## Mechanical concept
 
-The one-piece upper shell is **383 × 153 × 17.5 mm**. The two Sofle halves are tilted 12° toward the user. The trackpad fills the front centre. The battery lies behind it, and the carrier PCB sits against the rear wall with USB-C and the power switch. Everything except the PCB halves rides on the removable service plate, so one set of screws opens the case.
+The one-piece upper shell is **383 × 153 × 17.1 mm**. The two Sofle halves are tilted 12° toward the user. The trackpad fills the front centre. The battery lies behind it, and the carrier PCB sits against the rear wall with USB-C and the power switch. Everything except the PCB halves rides on the removable service plate, so one set of screws opens the case.
 
 | Revision | Purpose | Important distinction |
 |---|---|---|
@@ -135,7 +135,6 @@ Sofpad/
 │   └── Sofpad_All_Source_Files.zip     Exact original complete source package
 ├── hardware/
 │   └── r3/
-│       ├── README.md                   Original R3 engineering overview
 │       ├── ARCHITECTURE.md
 │       ├── BOM.md
 │       ├── BOM.csv
@@ -174,15 +173,21 @@ The R3 BOM lists reference part prices, not a final build cost. Custom PCBs, ass
 
 ## Remaining engineering work
 
-1. Measure the physical keyboard PCBs, trackpad, cell, connectors, and switch.
-2. Finalize passive socket adapters and FFC contact orientation.
-3. Design the nRF52840 carrier, charger, regulator, USB-C and RF antenna area.
-4. Build and check a small mechanical fit sample before the full print.
-5. Implement keyboard scanning, encoders, TPS65 I2C, USB HID, BLE HID, and power management.
-6. Validate safe charging, wake/sleep operation, all inputs, wireless stability, and case fit.
+Hardware
+1. Measure the real TPS65, 2.0 in screen module, NOVA cell, connectors and switch. Update the CAD envelopes.
+2. Draw the carrier PCB and two passive adapter PCBs in KiCad. Run ERC and DRC.
+3. Confirm the TPS65 FPC pitch (both sockets are on the BOM) and the nRF pad numbers for the screen pins.
+4. Check charger behaviour with VBUS present and the switch OFF on a bench build.
+5. Order, print and fit a test piece (switch, plate, screen window, trackpad) before the full shell.
+6. Paint finish and print vendor quote (IAMRapid).
+
+Firmware and software (not started)
+7. ZMK board `sofpad_r3`: matrix, encoders, USB and Bluetooth, power.
+8. TPS65 driver and gestures, haptics, accelerometer wake.
+9. Screen UI and the USB raw HID link. Then `sofpad-host` on the PC.
+
+Deferred
+10. Hinged tenting lift for each half.
+11. Display data over Bluetooth, over-the-air updates.
 
 **R3 is a development project, not a tested finished product.**
-
-## Attribution
-
-The PCB and derived case geometry use the [SofleKeyboard](https://github.com/josefadamcik/SofleKeyboard) project by Josef Adamcik. Source PCB commit: `fb294f7c58d0f91c379a9ef339159d4d056643e9`. Preserve the included upstream license notices for Sofle, Lily58, Helix, crkbd, and Ergo42. A separate license for new Sofpad-specific work has not been selected.

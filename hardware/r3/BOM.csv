@@ -6,9 +6,9 @@ Quantity,Type,Manufacturer,MPN,INR_each,INR_extended,Status,Purchase_URL
 1,Protected LiPo 1100mAh,NOVA,603450,239.00,239.00,Check actual pack and charge rate,https://robu.in/product/nova-603450-1100mah-3-7v-micro-lipo-battery-pack/
 1,USB-C receptacle,GCT,USB4085-GF-A,86.95,86.95,Select,https://www.digikey.in/en/products/detail/gct/USB4085-GF-A/9859733
 1,Power slide switch,E-Switch,EG1213,72.28,72.28,Check housing dimensions,https://www.digikey.in/en/products/detail/e-switch/EG1213/101735
-4,18-pin 0.5mm FFC socket,Molex,5034801600,147.42,589.68,Verify the 18-way MPN on DigiKey India at order; 18 ways = 16 + 3V3 for OLED + GND,https://www.digikey.in/en/products/detail/molex/5034801600/2356627
-1,18-pin 203mm FFC,GCT,05-16-D-0203-A-4-06-4-T,127.66,127.66,Verify the 18-way MPN on DigiKey India at order,https://www.digikey.in/en/products/detail/gct/05-16-D-0203-A-4-06-4-T/21266407
-1,18-pin 50mm FFC,GCT,05-16-A-0050-A-4-06-4-T,107.47,107.47,Verify the 18-way MPN on DigiKey India at order,https://www.digikey.in/en/products/detail/gct/05-16-A-0050-A-4-06-4-T/21266921
+4,16-pin 0.5mm FFC socket,Molex,5034801600,147.42,589.68,Check cable contact direction,https://www.digikey.in/en/products/detail/molex/5034801600/2356627
+1,16-pin 203mm FFC,GCT,05-16-D-0203-A-4-06-4-T,127.66,127.66,Check route length,https://www.digikey.in/en/products/detail/gct/05-16-D-0203-A-4-06-4-T/21266407
+1,16-pin 50mm FFC,GCT,05-16-A-0050-A-4-06-4-T,107.47,107.47,Check route length,https://www.digikey.in/en/products/detail/gct/05-16-A-0050-A-4-06-4-T/21266921
 1,"6-pin FPC socket 1.0 mm pitch, TPS65 host (candidate A)",Generic (Robu or DigiKey India),"6-pin 1.0 mm ZIF, bottom contact",,,Buy both pitches; fit the one that matches the TPS43 tail; the other is returned/unused,
 1,"6-pin FPC socket 0.5 mm pitch, TPS65 host (candidate B)",Generic (Robu or DigiKey India),"6-pin 0.5 mm ZIF, bottom contact",,,Buy both pitches; fit the one that matches the TPS43 tail; the other is returned/unused,
 1,2pin JST-PH PCB header,JST,S2B-PH-K-S,11.47,11.47,Check battery connector,https://www.digikey.in/en/products/detail/jst-sales-america-inc/S2B-PH-K-S/926626
@@ -29,4 +29,6 @@ Quantity,Type,Manufacturer,MPN,INR_each,INR_extended,Status,Purchase_URL
 1,LRA haptic actuator 10 mm,Generic,LRA 10mm 3V,120.00,120.00,Robu or similar; est price,
 1,Accelerometer for wake-on-lift,STMicroelectronics,LIS3DHTR,90.00,90.00,DigiKey India; est price; I2C 0x18 on bus A,
 1,Stick-on rubber feet set,Generic,12mm x 2mm,60.00,60.00,Any Indian stationery or hardware shop; est,
+1,2.0in 240x320 IPS SPI screen (ST7789),Waveshare,2inch LCD Module,1000.00,1000.00,"Robu.in showed it in stock; electronicscomp.in lists 1060.82; est price, confirm at checkout",https://robu.in
+1,Foam tape for screen and battery,Generic,3mm,,,Hardware shop,
 1,Heat-set inserts screws battery tape and gasket,Generic,"M2 x 3 mm brass inserts x20, M2 x 6 screws x20, 3 mm foam tape, battery tape",,,Quantities from CAD boss count,

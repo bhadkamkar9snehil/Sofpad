@@ -21,13 +21,14 @@ margin = 11;           // PCB outline to outer wall
 wall = 3.2;
 
 // ----- Heights -----
-top_z = 17.5;
-skin_t = 1.8;
 pcb_bottom_z = 9.0;
 pcb_t = 1.6;
-plate_t = 1.8;
-under_top = top_z - skin_t;
 pcb_top_z = pcb_bottom_z + pcb_t;
+mx_below_plate = 5.0;  // Cherry MX: PCB top to plate underside
+skin_t = 1.5;          // MX clips need a 1.2-1.6 mm plate
+under_top = pcb_top_z + mx_below_plate;
+top_z = under_top + skin_t;   // 17.1
+plate_t = 1.8;
 edge_r = 2.0;          // top edge radius, built from 5 steps
 
 // ----- Centre trackpad: Azoteq TPS65-201A-S -----
@@ -48,7 +49,11 @@ usb_w = 11; usb_h = 5.1; sw_w = 10; sw_h = 4.2; port_z = 8.8;
 mx_hole = 14.25;
 enc_hole = 7.5;
 insert_d = 3.2; insert_depth = 3.2; screw_hole = 2.3;
-oled_win_w = 27; oled_win_h = 13;
+
+// ----- Single large screen: 2.0 in 240x320 IPS (ST7789), portrait, between the halves -----
+scr_w = 36; scr_h = 54; scr_t = 4.0;          // module envelope
+scr_win_w = 31.6; scr_win_h = 41.8;           // active area 30.6 x 40.8 plus 0.5 per side
+scr_cy = 88; scr_win_dy = 2;                   // module centre y; window offset toward top
 
 hy = board_h*cos(ang);
 hx = g/2 - board_h*sin(ang);
@@ -84,7 +89,12 @@ module key_cuts() for(s=["left","right"]) half_pose(s) {
     linear_extrude(height=skin_t+edge_r+0.5) square([mx_hole,mx_hole],center=true);
   for(e=encoder_positions) translate([e[0],e[1],under_top-0.15])
     cylinder(d=enc_hole,h=skin_t+edge_r+0.5);
-  translate([96.7-82.05,146.8-74.6,under_top-0.2]) linear_extrude(height=skin_t+edge_r+0.6) rr(oled_win_w,oled_win_h,2);
+}
+module screen_cut() translate([0,scr_cy+scr_win_dy,under_top-0.2]) linear_extrude(height=skin_t+0.5) rr(scr_win_w,scr_win_h,1.5);
+// Pocket frame under the skin holds the module in plan; foam tape holds it up.
+module screen_frame() translate([0,scr_cy,under_top-scr_t-0.2]) difference() {
+  linear_extrude(height=scr_t+0.4) rr(scr_w+3.6,scr_h+3.6,2);
+  translate([0,0,-0.1]) linear_extrude(height=scr_t+0.6) rr(scr_w+0.4,scr_h+0.4,1.5);
 }
 module pad_cuts() translate([pad_cx,pad_cy,0]) {
   translate([0,0,top_z-ov_t-0.15]) linear_extrude(height=ov_t+0.4) rr(ov_w,ov_h,2);
@@ -117,9 +127,9 @@ module shell() {
     difference() {
       outer();
       translate([0,0,-0.05]) linear_extrude(height=under_top+0.05) plan(wall);
-      key_cuts(); pad_cuts(); port_cuts();
+      key_cuts(); pad_cuts(); screen_cut(); port_cuts();
     }
-    pcb_bosses(); pad_bosses(); plate_bosses();
+    pcb_bosses(); pad_bosses(); plate_bosses(); screen_frame();
   }
 }
 module bottom() {
@@ -141,14 +151,17 @@ module retainer() {
 
 // ----- Envelopes (fit checks and renders) -----
 module pcbs() for(s=["left","right"]) half_pose(s) translate([0,0,pcb_bottom_z]) linear_extrude(height=pcb_t) polygon(board_outline);
+module switches() for(s=["left","right"]) half_pose(s) for(k=key_positions)
+  translate([k[0],k[1],top_z]) rotate([0,0,k[2]]) linear_extrude(height=3.3) square([15.6,15.6],center=true);
 module keys() for(s=["left","right"]) half_pose(s) for(k=key_positions)
-  translate([k[0],k[1],top_z+5]) rotate([0,0,k[2]]) linear_extrude(height=6.8,scale=0.91) rr(17.5,17.5,1);
+  translate([k[0],k[1],top_z+3.5]) rotate([0,0,k[2]]) linear_extrude(height=7.4,scale=0.70) rr(18.2,18.2,1.5);
 module knobs() for(s=["left","right"]) half_pose(s) for(e=encoder_positions) translate([e[0],e[1],top_z+2.8]) cylinder(d=13,h=9);
 module battery() translate([0,bat_y,plate_t+0.65+bat_t/2]) cube([bat_w,bat_l,bat_t],center=true);
 module carrier() translate([0,car_y,car_z+car_t/2]) cube([car_w,car_l,car_t],center=true);
 module padface() translate([pad_cx,pad_cy,top_z-ov_t+0.03]) linear_extrude(height=ov_t-0.2) rr(ov_w,ov_h,2);
 module padbody() translate([pad_cx,pad_cy,pad_top_z-3]) linear_extrude(height=3) rr(pad_w,pad_h,2);
 module retainer_placed() translate([pad_cx,pad_cy,pad_top_z-ret_t]) retainer();
+module screen_body() translate([0,scr_cy,under_top-scr_t/2]) cube([scr_w,scr_h,scr_t],center=true);
 module cavity() translate([0,0,plate_t]) linear_extrude(height=under_top-plate_t) plan(wall);
 module usb_env() translate([usb_x,y_rear-wall-3.6,port_z]) cube([9,6,3.3],center=true);
 
@@ -156,13 +169,15 @@ module by_name(n) {
   if(n=="battery") battery(); else if(n=="carrier") carrier(); else if(n=="pcbs") pcbs();
   else if(n=="padbody") padbody(); else if(n=="retainer") retainer_placed(); else if(n=="cavity") cavity();
   else if(n=="bosses") { pcb_bosses(); pad_bosses(); } else if(n=="platebosses") plate_bosses();
-  else if(n=="usb") usb_env();
+  else if(n=="usb") usb_env(); else if(n=="screen") screen_body();
 }
 
 if(part=="shell") shell();
 else if(part=="bottom") bottom();
 else if(part=="retainer") retainer();
 else if(part=="keys") keys();
+else if(part=="switches") switches();
+else if(part=="screen") screen_body();
 else if(part=="pcbs") pcbs();
 else if(part=="knobs") knobs();
 else if(part=="battery") battery();
@@ -170,4 +185,4 @@ else if(part=="carrier") carrier();
 else if(part=="padface") padface();
 else if(part=="overlap") intersection(){ by_name(chk_a); by_name(chk_b); }
 else if(part=="outside") difference(){ by_name(chk_a); by_name(chk_b); }
-else { shell(); translate([0,0,-0.1]) bottom(); pcbs(); keys(); knobs(); battery(); carrier(); padface(); translate([pad_cx,pad_cy,pad_top_z-ret_t]) retainer(); }
+else { shell(); translate([0,0,-0.1]) bottom(); pcbs(); switches(); keys(); knobs(); battery(); carrier(); padface(); translate([pad_cx,pad_cy,pad_top_z-ret_t]) retainer(); }

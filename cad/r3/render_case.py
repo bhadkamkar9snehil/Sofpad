@@ -34,6 +34,8 @@ M = {
     "battery": mat("battery", (.19, .39, .54), .7),
     "carrier": mat("carrier", (.04, .28, .2), .5),
     "padface": mat("padface", (.01, .015, .02), .12, .1),
+    "switches": mat("switches", (.03, .03, .035), .5),
+    "screen": mat("screen", (.02, .08, .14), .1, .2),
 }
 
 
@@ -89,11 +91,11 @@ def shot(cam, name, loc, target, scale, w=1800, h=1000):
     print("RENDERED", name, flush=True)
 
 
-cam = setup(["shell", "bottom", "keys", "knobs", "padface"])
+cam = setup(["shell", "bottom", "switches", "keys", "knobs", "padface", "screen"])
 shot(cam, "sofpad-r3-hero.png", (-300, -420, 420), (0, 60, 0), 520)
 shot(cam, "sofpad-r3-top.png", (0, 60, 700), (0, 60, 0), 470)
 # internals: remove shell and keys to show PCBs, battery, carrier on the plate
-cam = setup(["bottom", "pcbs", "battery", "carrier", "retainer"])
+cam = setup(["bottom", "pcbs", "battery", "carrier", "retainer", "screen"])
 shot(cam, "sofpad-r3-internals.png", (0, 60, 700), (0, 60, 0), 470)
 cam = setup(["shell", "bottom"])
 shot(cam, "sofpad-r3-rear.png", (30, 520, 120), (30, 100, 8), 300)
