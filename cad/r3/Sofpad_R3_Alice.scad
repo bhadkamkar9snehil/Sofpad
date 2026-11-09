@@ -144,8 +144,18 @@ module bottom() {
   difference() {
     linear_extrude(height=plate_t) plan(wall+0.55);
     for(p=screws) translate([p[0],p[1],-0.1]) cylinder(d=screw_hole,h=plate_t+0.2);
+    // service labels engraved 0.5 mm into the plate top (visible when it is lifted): what sits where
+    translate([0,30,plate_t-0.5]) linear_extrude(height=0.6) text("SOFPAD R3", size=7, halign="center", font="Arial:style=Bold");
+    translate([0,bat_y-3,plate_t-0.5]) linear_extrude(height=0.6) text("BATTERY", size=4, halign="center", font="Arial");
+    translate([-car_w/2-14,car_y-2,plate_t-0.5]) linear_extrude(height=0.6) text("L", size=5, halign="center", font="Arial:style=Bold");
+    translate([car_w/2+14,car_y-2,plate_t-0.5]) linear_extrude(height=0.6) text("R", size=5, halign="center", font="Arial:style=Bold");
   }
   for(dx=[-1,1],dy=[-1,1]) translate([dx*(bat_w/2+1.3),bat_y+dy*(bat_l/2+1.2),plate_t-0.2]) linear_extrude(height=2.4) rr(5,5,1);
+  // cable hooks: two per side next to the carrier hold the FFC slack in a neat loop
+  for(sx=[-1,1],dy=[-8,8]) translate([sx*(car_w/2+3.5),car_y+dy,plate_t-0.2]) {
+    cylinder(d=3,h=7.4);
+    translate([-sx*1.2,0,6.2]) cylinder(d=5.2,h=1.2);
+  }
   // carrier: four foam pads under the corners and four locator posts at the edges (no screws)
   for(sx=[-1,1],sy=[-1,1]) {
     translate([sx*(car_w/2-4),car_y+sy*(car_l/2-4),plate_t-0.2]) linear_extrude(height=car_z-plate_t+0.2) square([8,8],center=true);

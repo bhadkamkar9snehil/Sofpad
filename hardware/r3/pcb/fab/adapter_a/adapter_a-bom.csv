@@ -1,0 +1,4 @@
+Comment,Designator,Footprint,Quantity
+FH12-16S-0.5SH,J1,Hirose_FH12-16S-0.5SH_1x16-1MP_P0.50mm_Horizontal,1
+Pro Micro left row (pads 1-12),HL,PinHeader_1x12_P2.54mm_Vertical,1
+Pro Micro right row (pads 24-13),HR,PinHeader_1x12_P2.54mm_Vertical,1

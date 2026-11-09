@@ -20,6 +20,7 @@ CANDIDATES = [
     os.environ.get("OPENSCAD", ""),
     r"C:\Program Files\OpenSCAD (Nightly)\openscad.exe",
 ]
+ENV = dict(os.environ, OPENSCAD_FONT_PATH=r"C:/Windows/Fonts")
 OPENSCAD = next(c for c in CANDIDATES if c and Path(c).exists())
 
 NO_OVERLAP = [
@@ -40,7 +41,7 @@ def run(part, a="", b=""):
     cmd = [OPENSCAD, "--backend=manifold", "--export-format", "binstl",
            "-D", f'part="{part}"', "-D", f'chk_a="{a}"', "-D", f'chk_b="{b}"',
            "-o", str(out), str(SCAD)]
-    r = subprocess.run(cmd, capture_output=True, text=True)
+    r = subprocess.run(cmd, capture_output=True, text=True, env=ENV)
     if not out.exists():
         return 0  # OpenSCAD writes nothing for an empty result
     return struct.unpack_from("<I", out.read_bytes(), 80)[0]
@@ -83,7 +84,7 @@ def main():
         (BUILD / "chk.stl").replace(BUILD / f"{part}.stl") if (BUILD / "chk.stl").exists() else None
         subprocess.run([OPENSCAD, "--backend=manifold", "--export-format", "binstl",
                         "-D", f'part="{part}"', "-o", str(BUILD / f"{part}.stl"), str(SCAD)],
-                       capture_output=True)
+                       capture_output=True, env=ENV)
     for part in ("shell", "bottom"):
         c = components(BUILD / f"{part}.stl")
         print(f"{'FAIL' if c != 1 else 'ok  '} {part} connected components: {c}")

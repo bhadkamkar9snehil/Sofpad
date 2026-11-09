@@ -185,7 +185,7 @@ def route(board, pcb_path):
     ses = pcb_path.with_suffix(".ses")
     ses.unlink(missing_ok=True)
     pcbnew.ExportSpecctraDSN(board, str(dsn))
-    cmd = [str(JAVA), "-jar", str(FREEROUTING), "-de", str(dsn), "-do", str(ses), "-mp", "40"]
+    cmd = [str(JAVA), "-Xmx8g", "-jar", str(FREEROUTING), "-de", str(dsn), "-do", str(ses), "-mp", os.environ.get("ROUTE_PASSES", "12")]
     r = subprocess.run(cmd, capture_output=True, text=True, timeout=1500)
     log = (r.stdout + r.stderr)[-1500:]
     (pcb_path.with_suffix(".route.log")).write_text(r.stdout + r.stderr, encoding="utf-8")

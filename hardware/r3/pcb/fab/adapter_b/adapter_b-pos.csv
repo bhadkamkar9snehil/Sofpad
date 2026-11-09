@@ -1,0 +1,4 @@
+Ref,Val,Package,PosX,PosY,Rot,Side
+"HL","Pro Micro left row (pads 1-12)","PinHeader_1x12_P2.54mm_Vertical",16.620000,-10.230000,0.000000,top
+"HR","Pro Micro right row (pads 24-13)","PinHeader_1x12_P2.54mm_Vertical",1.380000,-10.230000,0.000000,top
+"J1","FH12-16S-0.5SH","Hirose_FH12-16S-0.5SH_1x16-1MP_P0.50mm_Horizontal",9.000000,-5.250000,180.000000,top
