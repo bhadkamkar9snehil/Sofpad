@@ -1,6 +1,6 @@
 Quantity,Type,Manufacturer,MPN,INR_each,INR_extended,Status,Purchase_URL
 1,BLE USB MCU module,Seeed Technology / Raytac,113990582 / MDBT50Q-1MV2,1141.32,1141.32,Select,https://www.digikey.in/en/products/detail/seeed-technology-co-ltd/113990582/9697025
-1,43x40mm I2C touchpad,Azoteq,TPS43-201A-S,423.04,423.04,Select; check lifecycle; buy spares,https://www.mouser.in/c/embedded-solutions/sensor-modules/?m=Azoteq
+1,43x40mm I2C touchpad,Azoteq,TPS43-201A-S,423.04,423.04,"Buy 1 only (no spares). Mouser India, INR, GST invoice",https://www.mouser.in/c/embedded-solutions/sensor-modules/?m=Azoteq
 1,LiPo power-path charger,Texas Instruments,BQ24074RGTR,232.19,232.19,Design network pending,https://www.digikey.in/en/products/detail/texas-instruments/BQ24074RGTR/5142985
 1,3.3V buck regulator,Texas Instruments,TPS62740DSST,189.19,189.19,Design network pending,https://www.digikey.in/en/products/detail/texas-instruments/TPS62740DSST/4503015
 1,Protected LiPo 1100mAh,NOVA,603450,239.00,239.00,Check actual pack and charge rate,https://robu.in/product/nova-603450-1100mah-3-7v-micro-lipo-battery-pack/
@@ -9,19 +9,20 @@ Quantity,Type,Manufacturer,MPN,INR_each,INR_extended,Status,Purchase_URL
 4,16-pin 0.5mm FFC socket,Molex,5034801600,147.42,589.68,Check cable contact direction,https://www.digikey.in/en/products/detail/molex/5034801600/2356627
 1,16-pin 203mm FFC,GCT,05-16-D-0203-A-4-06-4-T,127.66,127.66,Check route length,https://www.digikey.in/en/products/detail/gct/05-16-D-0203-A-4-06-4-T/21266407
 1,16-pin 50mm FFC,GCT,05-16-A-0050-A-4-06-4-T,107.47,107.47,Check route length,https://www.digikey.in/en/products/detail/gct/05-16-A-0050-A-4-06-4-T/21266921
-1,6-pin FPC socket for TPS43,TBD,TBD,,,Pitch open; measure TPS43 tail,
+1,"6-pin FPC socket 1.0 mm pitch, TPS43 host (candidate A)",Generic (Robu or DigiKey India),"6-pin 1.0 mm ZIF, bottom contact",,,Buy both pitches; fit the one that matches the TPS43 tail; the other is returned/unused,
+1,"6-pin FPC socket 0.5 mm pitch, TPS43 host (candidate B)",Generic (Robu or DigiKey India),"6-pin 0.5 mm ZIF, bottom contact",,,Buy both pitches; fit the one that matches the TPS43 tail; the other is returned/unused,
 1,2pin JST-PH PCB header,JST,S2B-PH-K-S,11.47,11.47,Check battery connector,https://www.digikey.in/en/products/detail/jst-sales-america-inc/S2B-PH-K-S/926626
-1,2pin JST-PH housing,JST,PHR-2,,,Unpriced and may not be needed,https://www.digikey.in/en/products/result?keywords=PHR-2
+1,2pin JST-PH housing,JST,PHR-2,,,Required: mates with the S2B-PH-K-S header,https://www.digikey.in/en/products/result?keywords=PHR-2
 2,JST-PH crimp contact,JST,SPH-002T-P0.5S,3.91,7.82,Check wire AWG,https://www.digikey.in/en/products/detail/jst-sales-america-inc/SPH-002T-P0-5S/527358
-1,10k NTC,Vishay,NTCLE100E3103JB0,57.07,57.07,Check TI TS bias network,https://www.digikey.in/en/products/detail/vishay-beyschlag-draloric-bc-components/NTCLE100E3103JB0/769411
+1,10k NTC,Vishay,NTCLE100E3103JB0,57.07,57.07,Tape to the cell; TS bias per BQ24074 datasheet,https://www.digikey.in/en/products/detail/vishay-beyschlag-draloric-bc-components/NTCLE100E3103JB0/769411
 1,USB ESD protection,STMicroelectronics,USBLC6-2SC6,51.60,51.60,Check stock and footprint,https://www.digikey.in/en/products/detail/stmicroelectronics/USBLC6-2SC6/1121688
 1,Custom carrier PCB,Custom,Unreleased,,,Not orderable before schematic and layout,
 2,Custom passive Pro Micro socket adapter PCBs,Custom,Unreleased,,,Not orderable before schematic and layout,
-1,3D printed shell,Custom,Unibody_Shell.stl,,,Prototype export,
-1,3D printed service cover,Custom,Service_Bottom.stl,,,Prototype export,
-1,3D printed trackpad retainer,Custom,Trackpad retainer (TPS43 CAD pending),,,Prototype export,
-1,3.3V buck 2.2uH inductor,TBD,TBD,,,Choose from TI reference after layout,
-2,USB-C CC1/CC2 pull-down resistors,TBD,5.1k ohm 1%,,,Choose package after layout,
-1,LiPo charging resistor and capacitor network,TBD,TBD,,,Choose after cell datasheet and charger design,
-1,3.3V power and USB decoupling network,TBD,TBD,,,Choose from TI Raytac references,
-1,Heat-set inserts screws battery tape and gasket,TBD,TBD,,,Measure physical parts before order,
+1,3D printed shell,IAMRapid (India),Unibody_Shell.stl,,,"FDM PETG black, 600 mm bed, sanded, primed and matte painted; est INR 1500-3000",
+1,3D printed service cover,IAMRapid (India),Service_Bottom.stl,,,Same material and finish as shell; est INR 1000-2000,
+1,3D printed trackpad retainer,IAMRapid (India),TPS43_Retainer.stl,,,Same order; est INR 150,
+1,3.3V buck 2.2uH inductor,Murata,LQM21PN2R2MGHD,,,"TI-recommended 2.2 uH, 0805",
+2,USB-C CC1/CC2 pull-down resistors,Yageo,RC0402FR-075K1L,,,5.1k 1% 0402,
+1,LiPo charging resistor and capacitor network,Yageo,RC0402FR-072KL + RC0402FR-073K3L,,,"R_ISET 2.0k 1% (445 mA, 0.4C) and R_ILIM 3.3k (488 mA input); EN1 high, EN2 low",
+1,3.3V power and USB decoupling network,Murata/Samsung,"GRM155 0402 X5R: 10uF x6, 100nF x10, 1uF x4, 4.7k x2 (I2C)",,,Per TI/Raytac reference,
+1,Heat-set inserts screws battery tape and gasket,Generic,"M2 x 3 mm brass inserts x20, M2 x 6 screws x20, 3 mm foam tape, battery tape",,,Quantities from CAD boss count,
