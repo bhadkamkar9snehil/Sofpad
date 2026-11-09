@@ -4,7 +4,11 @@
 
 Sofpad combines two Sofle RGB keyboard PCB halves inside a slim unibody enclosure. A single **Nordic nRF52840** controller reads both halves over internal wired connections and operates a **40 mm Cirque SPI trackpad**. One protected LiPo battery powers the device. One USB-C port provides charging and wired USB HID. Bluetooth Low Energy (BLE) HID is planned for wireless operation.
 
-> **Project state — 9 November 2026:** R3 is a source-verified architecture and preliminary CAD design, **not** a fabricated, assembled, or firmware-tested keyboard. The GitHub repository currently contains only a subset of the source files. Do not treat the presence of a path below as proof that the corresponding file is already committed.
+> **Project state — 9 November 2026:** R3 is a source-verified architecture and preliminary CAD design, **not** a fabricated, assembled, or firmware-tested keyboard. The complete source package was uploaded as `Sofpad_All_Source_Files.zip` according to the repository owner. The archive is the source-package distribution; the repository also contains selected individual files.
+
+## Source archive
+
+**[Sofpad_All_Source_Files.zip](./Sofpad_All_Source_Files.zip)** contains the complete project source package, including all three design revisions, KiCad PCB reference, OpenSCAD source, STL exports, renders, wiring notes, and bills of materials. Extract the archive to work with individual files. The archive's exact GitHub path has not been independently confirmed through the connector.
 
 ## Design principles
 
@@ -248,7 +252,7 @@ sofle_single_controller/
   reference/Sofle_RGB/PCB/SofleKeyboard.kicad_pcb
 ```
 
-**Repository availability:** These are source-package paths. Some files may not yet exist in GitHub because the binary/source upload is incomplete. The README documents the intended project structure; it does not claim the whole package is already hosted.
+**Repository layout:** The paths above describe the contents of the source archive. They are not necessarily separate files in the repository root. Download and extract `Sofpad_All_Source_Files.zip` to access the full folder structure.
 
 ## Engineering status
 
@@ -262,7 +266,7 @@ sofle_single_controller/
 | Case CAD | Preliminary SCAD and STL exports | Print and measure fit samples |
 | USB-C port and switch | Concept cutouts | Check real component alignment |
 | Firmware | Requirements defined | Implement and test |
-| Complete GitHub source upload | Incomplete | Commit remaining source and binary files |
+| Source archive | Uploaded by repository owner; GitHub path not independently confirmed | Confirm the archive link resolves |
 
 ## Build sequence
 
