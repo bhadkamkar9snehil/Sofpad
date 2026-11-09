@@ -1,0 +1,28 @@
+Quantity,Type,Manufacturer,MPN,INR_each,INR_extended,Status,Purchase_URL
+1,BLE USB MCU module,Seeed Technology / Raytac,113990582 / MDBT50Q-1MV2,1141.32,1141.32,Select,https://www.digikey.in/en/products/detail/seeed-technology-co-ltd/113990582/9697025
+1,40mm SPI touchpad,Cirque,TM040040-2024-301,920.05,920.05,Select,https://www.mouser.in/en/ProductDetail/Cirque/TM040040-2024-301
+1,LiPo power-path charger,Texas Instruments,BQ24074RGTR,232.19,232.19,Design network pending,https://www.digikey.in/en/products/detail/texas-instruments/BQ24074RGTR/5142985
+1,3.3V buck regulator,Texas Instruments,TPS62740DSST,189.19,189.19,Design network pending,https://www.digikey.in/en/products/detail/texas-instruments/TPS62740DSST/4503015
+1,Protected LiPo 1100mAh,NOVA,603450,239.00,239.00,Check actual pack and charge rate,https://robu.in/product/nova-603450-1100mah-3-7v-micro-lipo-battery-pack/
+1,USB-C receptacle,GCT,USB4085-GF-A,86.95,86.95,Select,https://www.digikey.in/en/products/detail/gct/USB4085-GF-A/9859733
+1,Power slide switch,E-Switch,EG1213,72.28,72.28,Check housing dimensions,https://www.digikey.in/en/products/detail/e-switch/EG1213/101735
+4,16-pin 0.5mm FFC socket,Molex,5034801600,147.42,589.68,Check cable contact direction,https://www.digikey.in/en/products/detail/molex/5034801600/2356627
+1,16-pin 203mm FFC,GCT,05-16-D-0203-A-4-06-4-T,127.66,127.66,Check route length,https://www.digikey.in/en/products/detail/gct/05-16-D-0203-A-4-06-4-T/21266407
+1,16-pin 50mm FFC,GCT,05-16-A-0050-A-4-06-4-T,107.47,107.47,Check route length,https://www.digikey.in/en/products/detail/gct/05-16-A-0050-A-4-06-4-T/21266921
+1,12-pin 0.5mm FFC socket,Molex,0781271220,140.71,140.71,Select,https://www.digikey.in/en/products/detail/molex/0781271220/9693742
+1,12-pin 100mm FFC,GCT,05-12-D-0101-A-4-06-4-T,111.79,111.79,Check contact direction,https://www.digikey.in/en/products/detail/gct/05-12-D-0101-A-4-06-4-T/21266649
+1,2pin JST-PH PCB header,JST,S2B-PH-K-S,11.47,11.47,Check battery connector,https://www.digikey.in/en/products/detail/jst-sales-america-inc/S2B-PH-K-S/926626
+1,2pin JST-PH housing,JST,PHR-2,,,Unpriced and may not be needed,https://www.digikey.in/en/products/result?keywords=PHR-2
+2,JST-PH crimp contact,JST,SPH-002T-P0.5S,3.91,7.82,Check wire AWG,https://www.digikey.in/en/products/detail/jst-sales-america-inc/SPH-002T-P0-5S/527358
+1,10k NTC,Vishay,NTCLE100E3103JB0,57.07,57.07,Check TI TS bias network,https://www.digikey.in/en/products/detail/vishay-beyschlag-draloric-bc-components/NTCLE100E3103JB0/769411
+1,USB ESD protection,STMicroelectronics,USBLC6-2SC6,51.60,51.60,Check stock and footprint,https://www.digikey.in/en/products/detail/stmicroelectronics/USBLC6-2SC6/1121688
+1,Custom carrier PCB,Custom,Unreleased,,,Not orderable before schematic and layout,
+2,Custom passive Pro Micro socket adapter PCBs,Custom,Unreleased,,,Not orderable before schematic and layout,
+1,3D printed shell,Custom,Unibody_Shell.stl,,,Prototype export,
+1,3D printed service cover,Custom,Service_Bottom.stl,,,Prototype export,
+1,3D printed trackpad retainer,Custom,Cirque40_Retainer.stl,,,Prototype export,
+1,3.3V buck 2.2uH inductor,TBD,TBD,,,Choose from TI reference after layout,
+2,USB-C CC1/CC2 pull-down resistors,TBD,5.1k ohm 1%,,,Choose package after layout,
+1,LiPo charging resistor and capacitor network,TBD,TBD,,,Choose after cell datasheet and charger design,
+1,3.3V power and USB decoupling network,TBD,TBD,,,Choose from TI Raytac references,
+1,Heat-set inserts screws battery tape and gasket,TBD,TBD,,,Measure physical parts before order,

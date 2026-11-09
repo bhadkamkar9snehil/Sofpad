@@ -1,0 +1,236 @@
+{
+  "origin": "Josef Adamcik Sofle RGB KiCad PCB, commit fb294f7c58d0f91c379a9ef339159d4d056643e9",
+  "board": "reference/Sofle_RGB/PCB/SofleKeyboard.kicad_pcb",
+  "matrix": {
+    "rows": [
+      "row0",
+      "row1",
+      "row2",
+      "row3",
+      "row4"
+    ],
+    "columns": [
+      "col0",
+      "col1",
+      "col2",
+      "col3",
+      "col4",
+      "SW25A"
+    ],
+    "switches": 30,
+    "note": "SW25 is encoder push-button and is included"
+  },
+  "promicro_pad_to_net": {
+    "1": "LED",
+    "2": "DATA",
+    "3": "GND",
+    "4": "GND",
+    "5": "SDA",
+    "6": "SCL",
+    "7": "Net-(U1-Pad7)",
+    "8": "row0",
+    "9": "row1",
+    "10": "row2",
+    "11": "row3",
+    "12": "row4",
+    "13": "SW25A",
+    "14": "col4",
+    "15": "col3",
+    "16": "col2",
+    "17": "col1",
+    "18": "col0",
+    "19": "ENCB",
+    "20": "ENCA",
+    "21": "VCC",
+    "22": "RESET",
+    "23": "GND",
+    "24": "Net-(U1-Pad24)"
+  },
+  "keys": [
+    {
+      "switch": "SW1",
+      "row": "row0",
+      "col": "SW25A",
+      "diode_net": "Net-(D1-Pad2)"
+    },
+    {
+      "switch": "SW2",
+      "row": "row0",
+      "col": "col4",
+      "diode_net": "Net-(D2-Pad2)"
+    },
+    {
+      "switch": "SW3",
+      "row": "row0",
+      "col": "col3",
+      "diode_net": "Net-(D3-Pad2)"
+    },
+    {
+      "switch": "SW4",
+      "row": "row0",
+      "col": "col2",
+      "diode_net": "Net-(D4-Pad2)"
+    },
+    {
+      "switch": "SW5",
+      "row": "row0",
+      "col": "col1",
+      "diode_net": "Net-(D5-Pad2)"
+    },
+    {
+      "switch": "SW6",
+      "row": "row0",
+      "col": "col0",
+      "diode_net": "Net-(D6-Pad2)"
+    },
+    {
+      "switch": "SW7",
+      "row": "row1",
+      "col": "SW25A",
+      "diode_net": "Net-(D7-Pad2)"
+    },
+    {
+      "switch": "SW8",
+      "row": "row1",
+      "col": "col4",
+      "diode_net": "Net-(D8-Pad2)"
+    },
+    {
+      "switch": "SW9",
+      "row": "row1",
+      "col": "col3",
+      "diode_net": "Net-(D9-Pad2)"
+    },
+    {
+      "switch": "SW10",
+      "row": "row1",
+      "col": "col2",
+      "diode_net": "Net-(D10-Pad2)"
+    },
+    {
+      "switch": "SW11",
+      "row": "row1",
+      "col": "col1",
+      "diode_net": "Net-(D11-Pad2)"
+    },
+    {
+      "switch": "SW12",
+      "row": "row1",
+      "col": "col0",
+      "diode_net": "Net-(D12-Pad2)"
+    },
+    {
+      "switch": "SW13",
+      "row": "row2",
+      "col": "SW25A",
+      "diode_net": "Net-(D13-Pad2)"
+    },
+    {
+      "switch": "SW14",
+      "row": "row2",
+      "col": "col4",
+      "diode_net": "Net-(D14-Pad2)"
+    },
+    {
+      "switch": "SW15",
+      "row": "row2",
+      "col": "col3",
+      "diode_net": "Net-(D15-Pad2)"
+    },
+    {
+      "switch": "SW16",
+      "row": "row2",
+      "col": "col2",
+      "diode_net": "Net-(D16-Pad2)"
+    },
+    {
+      "switch": "SW17",
+      "row": "row2",
+      "col": "col1",
+      "diode_net": "Net-(D17-Pad2)"
+    },
+    {
+      "switch": "SW18",
+      "row": "row2",
+      "col": "col0",
+      "diode_net": "Net-(D18-Pad2)"
+    },
+    {
+      "switch": "SW19",
+      "row": "row3",
+      "col": "SW25A",
+      "diode_net": "Net-(D19-Pad2)"
+    },
+    {
+      "switch": "SW20",
+      "row": "row3",
+      "col": "col4",
+      "diode_net": "Net-(D20-Pad2)"
+    },
+    {
+      "switch": "SW21",
+      "row": "row3",
+      "col": "col3",
+      "diode_net": "Net-(D21-Pad2)"
+    },
+    {
+      "switch": "SW22",
+      "row": "row3",
+      "col": "col2",
+      "diode_net": "Net-(D22-Pad2)"
+    },
+    {
+      "switch": "SW23",
+      "row": "row3",
+      "col": "col1",
+      "diode_net": "Net-(D23-Pad2)"
+    },
+    {
+      "switch": "SW24",
+      "row": "row3",
+      "col": "col0",
+      "diode_net": "Net-(D24-Pad2)"
+    },
+    {
+      "switch": "SW25",
+      "row": "row4",
+      "col": "SW25A",
+      "diode_net": "SW25B"
+    },
+    {
+      "switch": "SW26",
+      "row": "row4",
+      "col": "col4",
+      "diode_net": "Net-(D26-Pad2)"
+    },
+    {
+      "switch": "SW27",
+      "row": "row4",
+      "col": "col3",
+      "diode_net": "Net-(D27-Pad2)"
+    },
+    {
+      "switch": "SW28",
+      "row": "row4",
+      "col": "col2",
+      "diode_net": "Net-(D28-Pad2)"
+    },
+    {
+      "switch": "SW29",
+      "row": "row4",
+      "col": "col1",
+      "diode_net": "Net-(D29-Pad2)"
+    },
+    {
+      "switch": "SW30",
+      "row": "row4",
+      "col": "col0",
+      "diode_net": "Net-(D30-Pad2)"
+    }
+  ],
+  "verified": {
+    "all_30_positions_unique": true,
+    "five_rows_six_columns": true,
+    "encoders_A_B_at_20_19": true
+  }
+}
