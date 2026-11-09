@@ -1,6 +1,6 @@
 {
   "origin": "Josef Adamcik Sofle RGB KiCad PCB, commit fb294f7c58d0f91c379a9ef339159d4d056643e9",
-  "board": "reference/Sofle_RGB/PCB/SofleKeyboard.kicad_pcb",
+  "board": "reference\\Sofle_RGB\\PCB\\SofleKeyboard.kicad_pcb",
   "matrix": {
     "rows": [
       "row0",

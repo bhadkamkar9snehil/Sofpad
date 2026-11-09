@@ -1,4 +1,4 @@
-"""Render the one-controller Sofle RGB and Cirque 40-mm case with Blender 4.x.
+"""Render the one-controller Sofle RGB and TPS43 case with Blender 4.x.
 
 Usage: blender -b --python render_blender.py
 All dimensions are millimetres. Keycap volumes are illustrative.
@@ -173,9 +173,8 @@ def keyboard_appearance():
             x = (RIGHT_X + encoder["x"]) if side == "right" else (SIDE+BOARD_W-encoder["x"])
             y = END + encoder["y"]
             cylinder(f"{side} encoder", (x,y,TOP+7.1), 6.45, 9.0, GUNMETAL, .35)
-    # The exact purchased part has a 40-mm round adhesive overlay.
-    cylinder("Cirque 40-mm SPI round touch surface", (PAD_X,PAD_Y,TOP-.01),
-             19.9,.12,BLACK,.12)
+    # TPS43 43 x 40 mm rectangular touch surface with 47.5 x 44 mm overlay.
+    cube("TPS43 overlay", (PAD_X,PAD_Y,TOP-.2), (47.5,44,.5), BLACK, .2)
     # This physical insert matches the modelled USB-C port cutout, which is
     # on the rear edge. The case CAD controls the actual manufacturing hole.
     cube("USB-C connector depth", (USB_X,H-2.8,8.8), (9.2,5.8,3.2), PLASTIC, .6)
@@ -188,7 +187,7 @@ def keyboard_appearance():
 
 
 def exploded_components():
-    retainer = load_mesh("TPS43_Retainer.stl", "Cirque circular four-screw retainer", GRAPHITE)
+    retainer = load_mesh("TPS43_Retainer.stl", "TPS43 rectangular four-screw retainer", GRAPHITE)
     retainer.location = (PAD_X,PAD_Y,9.9)
     battery = cube("One protected NOVA 603450 cell, indicative envelope",
                    (PAD_X,25,6.45), (54,38,8),BLUE,1.25)
