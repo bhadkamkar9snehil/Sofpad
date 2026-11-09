@@ -160,6 +160,26 @@
    "value": "10k",
    "sym": "Device:R"
   },
+  "R13": {
+   "fp": "Resistor_SMD:R_0402_1005Metric",
+   "value": "470k",
+   "sym": "Device:R"
+  },
+  "R14": {
+   "fp": "Resistor_SMD:R_0402_1005Metric",
+   "value": "470k",
+   "sym": "Device:R"
+  },
+  "R15": {
+   "fp": "Resistor_SMD:R_0402_1005Metric",
+   "value": "470k",
+   "sym": "Device:R"
+  },
+  "R16": {
+   "fp": "Resistor_SMD:R_0402_1005Metric",
+   "value": "470k",
+   "sym": "Device:R"
+  },
   "C1": {
    "fp": "Capacitor_SMD:C_0402_1005Metric",
    "value": "1uF",
@@ -387,7 +407,11 @@
    "U5.8",
    "C8.1",
    "C10.1",
-   "TP4.1"
+   "TP4.1",
+   "R13.1",
+   "R14.1",
+   "R15.1",
+   "R16.1"
   ],
   "EN_SW": [
    "U3.12",
@@ -468,19 +492,23 @@
   ],
   "LEFT_ENC_A": [
    "U1.60",
-   "J7.12"
+   "J7.12",
+   "R13.2"
   ],
   "LEFT_ENC_B": [
    "U1.56",
-   "J7.13"
+   "J7.13",
+   "R14.2"
   ],
   "RIGHT_ENC_A": [
    "U1.59",
-   "J8.12"
+   "J8.12",
+   "R15.2"
   ],
   "RIGHT_ENC_B": [
    "U1.57",
-   "J8.13"
+   "J8.13",
+   "R16.2"
   ],
   "SDA": [
    "U1.20",

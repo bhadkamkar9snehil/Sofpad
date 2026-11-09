@@ -1,0 +1,207 @@
+(pcb C:\Users\Admin\Documents\Sofpad\hardware\r3\pcb\adapter\adapter_b.dsn
+  (parser
+    (string_quote ")
+    (space_in_quoted_tokens on)
+    (host_cad "KiCad's Pcbnew")
+    (host_version "10.0.7")
+  )
+  (resolution um 10)
+  (unit um)
+  (structure
+    (layer F.Cu
+      (type signal)
+      (property
+        (index 0)
+      )
+    )
+    (layer B.Cu
+      (type signal)
+      (property
+        (index 1)
+      )
+    )
+    (boundary
+      (path pcb 0  16617.9 -2.312  16850.7 -39.19  17074.9 -112.038  17285 -219.062
+            17475.7 -357.628  17642.4 -524.322  17780.9 -715.04  17888 -925.087
+            17960.8 -1149.29  17997.7 -1382.13  18000 -1500  18000 -38500
+            17997.7 -38617.9  17960.8 -38850.7  17888 -39074.9  17780.9 -39285
+            17642.4 -39475.7  17475.7 -39642.4  17285 -39780.9  17074.9 -39888
+            16850.7 -39960.8  16617.9 -39997.7  16500 -40000  1500 -40000
+            1382.13 -39997.7  1149.29 -39960.8  925.087 -39888  715.04 -39780.9
+            524.322 -39642.4  357.628 -39475.7  219.062 -39285  112.038 -39074.9
+            39.19 -38850.7  2.312 -38617.9  0 -38500  0 -1500  2.312 -1382.13
+            39.19 -1149.29  112.038 -925.087  219.062 -715.04  357.628 -524.322
+            524.322 -357.628  715.04 -219.062  925.087 -112.038  1149.29 -39.19
+            1382.13 -2.312  1500 0  16500 0  16617.9 -2.312)
+    )
+    (plane GND (polygon F.Cu 0  300 -300  17700 -300  17700 -39700  300 -39700  300 -300))
+    (plane GND (polygon B.Cu 0  300 -300  17700 -300  17700 -39700  300 -39700  300 -300))
+    (via "Via[0-1]_600:300_um")
+    (rule
+      (width 200)
+      (clearance 150)
+      (clearance 37.5 (type smd_smd))
+    )
+  )
+  (placement
+    (component PinHeader_1x12_P2.54mm_Vertical
+      (place HR 1379.999 -10230 front 0 (PN "Pro Micro right row (pads 24-13)"))
+      (place HL 16620 -10230 front 0 (PN "Pro Micro left row (pads 1-12)"))
+    )
+    (component "Hirose_FH12-16S-0.5SH_1x16-1MP_P0.50mm_Horizontal"
+      (place J1 9000 -5250 front 180 (PN "FH12-16S-0.5SH"))
+    )
+  )
+  (library
+    (image PinHeader_1x12_P2.54mm_Vertical
+      (outline (polygon signal 0  1765 -29705  -1765 -29705  -1765 1765  1765 1765))
+      (outline (path signal 120  -1380 1380  0 1380))
+      (outline (path signal 120  -1380 0  -1380 1380))
+      (outline (path signal 120  -1380 -1270  -1380 -29320))
+      (outline (path signal 120  -1380 -1270  1380 -1270))
+      (outline (path signal 120  -1380 -29320  1380 -29320))
+      (outline (path signal 120  1380 -1270  1380 -29320))
+      (outline (path signal 100  -1270 635  -635 1270))
+      (outline (path signal 100  -1270 -29210  -1270 635))
+      (outline (path signal 100  -635 1270  1270 1270))
+      (outline (path signal 100  1270 1270  1270 -29210))
+      (outline (path signal 100  1270 -29210  -1270 -29210))
+      (pin Rect[A]Pad_1700.000000x1700.000000_um 1 0 0)
+      (pin Round[A]Pad_1700.000000_um 2 0 -2540)
+      (pin Round[A]Pad_1700.000000_um 3 0 -5080)
+      (pin Round[A]Pad_1700.000000_um 4 0 -7620)
+      (pin Round[A]Pad_1700.000000_um 5 0 -10160)
+      (pin Round[A]Pad_1700.000000_um 6 0 -12700)
+      (pin Round[A]Pad_1700.000000_um 7 0 -15240)
+      (pin Round[A]Pad_1700.000000_um 8 0 -17780)
+      (pin Round[A]Pad_1700.000000_um 9 0 -20320)
+      (pin Round[A]Pad_1700.000000_um 10 0 -22860)
+      (pin Round[A]Pad_1700.000000_um 11 0 -25400)
+      (pin Round[A]Pad_1700.000000_um 12 0 -27940)
+    )
+    (image "Hirose_FH12-16S-0.5SH_1x16-1MP_P0.50mm_Horizontal"
+      (outline (polygon signal 0  -7045 2995  7045 2995  7045 -4895  -7045 -4895))
+      (outline (path signal 120  -5650 1300  -5650 -40))
+      (outline (path signal 120  -5650 -2760  -5650 -4500))
+      (outline (path signal 120  -5650 -4500  5650 -4500))
+      (outline (path signal 120  -4160 1300  -5650 1300))
+      (outline (path signal 120  -4160 1300  -4160 2500))
+      (outline (path signal 120  4160 1300  5650 1300))
+      (outline (path signal 120  5650 1300  5650 -40))
+      (outline (path signal 120  5650 -4500  5650 -2760))
+      (outline (path signal 100  -5550 1200  -5550 -3400))
+      (outline (path signal 100  -5550 -3400  -4950 -3400))
+      (outline (path signal 100  -5450 -3700  -5450 -4400))
+      (outline (path signal 100  -5450 -4400  0 -4400))
+      (outline (path signal 100  -4950 -3400  -4950 -3700))
+      (outline (path signal 100  -4950 -3700  -5450 -3700))
+      (outline (path signal 100  -4250 1200  -3750 492.893))
+      (outline (path signal 100  -3750 492.893  -3250 1200))
+      (outline (path signal 100  0 1200  -5550 1200))
+      (outline (path signal 100  0 1200  5550 1200))
+      (outline (path signal 100  4950 -3400  4950 -3700))
+      (outline (path signal 100  4950 -3700  5450 -3700))
+      (outline (path signal 100  5450 -3700  5450 -4400))
+      (outline (path signal 100  5450 -4400  0 -4400))
+      (outline (path signal 100  5550 1200  5550 -3400))
+      (outline (path signal 100  5550 -3400  4950 -3400))
+      (pin Rect[T]Pad_300.000000x1300.000000_um 1 -3750 1850)
+      (pin Rect[T]Pad_300.000000x1300.000000_um 2 -3250 1850)
+      (pin Rect[T]Pad_300.000000x1300.000000_um 3 -2750 1850)
+      (pin Rect[T]Pad_300.000000x1300.000000_um 4 -2250 1850)
+      (pin Rect[T]Pad_300.000000x1300.000000_um 5 -1750 1850)
+      (pin Rect[T]Pad_300.000000x1300.000000_um 6 -1250 1850)
+      (pin Rect[T]Pad_300.000000x1300.000000_um 7 -750 1850)
+      (pin Rect[T]Pad_300.000000x1300.000000_um 8 -250 1850)
+      (pin Rect[T]Pad_300.000000x1300.000000_um 9 250 1850)
+      (pin Rect[T]Pad_300.000000x1300.000000_um 10 750 1850)
+      (pin Rect[T]Pad_300.000000x1300.000000_um 11 1250 1850)
+      (pin Rect[T]Pad_300.000000x1300.000000_um 12 1750 1850)
+      (pin Rect[T]Pad_300.000000x1300.000000_um 13 2250 1850)
+      (pin Rect[T]Pad_300.000000x1300.000000_um 14 2750 1850)
+      (pin Rect[T]Pad_300.000000x1300.000000_um 15 3250 1850)
+      (pin Rect[T]Pad_300.000000x1300.000000_um 16 3750 1850)
+      (pin Rect[T]Pad_1800.000000x2200.000000_um MP -5650 -1400)
+      (pin Rect[T]Pad_1800.000000x2200.000000_um MP@1 5650 -1400)
+    )
+    (padstack Round[A]Pad_1700.000000_um
+      (shape (circle F.Cu 1700))
+      (shape (circle B.Cu 1700))
+      (attach off)
+    )
+    (padstack Rect[T]Pad_300.000000x1300.000000_um
+      (shape (rect F.Cu -150 -650 150 650))
+      (attach off)
+    )
+    (padstack Rect[A]Pad_1700.000000x1700.000000_um
+      (shape (rect F.Cu -850 -850 850 850))
+      (shape (rect B.Cu -850 -850 850 850))
+      (attach off)
+    )
+    (padstack Rect[T]Pad_1800.000000x2200.000000_um
+      (shape (rect F.Cu -900 -1100 900 1100))
+      (attach off)
+    )
+    (padstack "Via[0-1]_600:300_um"
+      (shape (circle F.Cu 600))
+      (shape (circle B.Cu 600))
+      (attach off)
+    )
+  )
+  (network
+    (net ROW0
+      (pins HL-8 J1-1)
+    )
+    (net ROW1
+      (pins HL-9 J1-2)
+    )
+    (net ROW2
+      (pins HL-10 J1-3)
+    )
+    (net ROW3
+      (pins HL-11 J1-4)
+    )
+    (net ROW4
+      (pins HL-12 J1-5)
+    )
+    (net COL0
+      (pins HR-7 J1-6)
+    )
+    (net COL1
+      (pins HR-8 J1-7)
+    )
+    (net COL2
+      (pins HR-9 J1-8)
+    )
+    (net COL3
+      (pins HR-10 J1-9)
+    )
+    (net COL4
+      (pins HR-11 J1-10)
+    )
+    (net COL5
+      (pins HR-12 J1-11)
+    )
+    (net ENC_A
+      (pins HR-5 J1-12)
+    )
+    (net ENC_B
+      (pins HR-6 J1-13)
+    )
+    (net GND
+      (pins HR-2 HL-3 HL-4 J1-14)
+    )
+    (class kicad_default COL0 COL1 COL2 COL3 COL4 COL5 ENC_A ENC_B GND ROW0
+      ROW1 ROW2 ROW3 ROW4
+      (circuit
+        (use_via "Via[0-1]_600:300_um")
+      )
+      (rule
+        (width 200)
+        (clearance 150)
+      )
+    )
+  )
+  (wiring
+  )
+)

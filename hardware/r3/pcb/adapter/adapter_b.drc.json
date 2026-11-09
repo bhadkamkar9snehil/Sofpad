@@ -1,0 +1,151 @@
+{
+    "$schema": "https://schemas.kicad.org/drc.v1.json",
+    "coordinate_units": "mm",
+    "date": "2026-11-10T01:28:34",
+    "ignored_checks": [
+        {
+            "description": "Footprint has no courtyard defined",
+            "key": "missing_courtyard"
+        },
+        {
+            "description": "Track endpoint not centered on via",
+            "key": "track_not_centered_on_via"
+        },
+        {
+            "description": "Tuning profile track geometries",
+            "key": "tuning_profile_track_geometries"
+        },
+        {
+            "description": "Footprint doesn't match symbol's footprint filters",
+            "key": "footprint_filters_mismatch"
+        },
+        {
+            "description": "Silkscreen clearance",
+            "key": "silk_overlap"
+        },
+        {
+            "description": "Silkscreen clipped by solder mask",
+            "key": "silk_over_copper"
+        },
+        {
+            "description": "Silkscreen clipped by board edge",
+            "key": "silk_edge_clearance"
+        },
+        {
+            "description": "Footprint component type doesn't match footprint pads",
+            "key": "footprint_type_mismatch"
+        },
+        {
+            "description": "Footprint not found in libraries",
+            "key": "lib_footprint_issues"
+        },
+        {
+            "description": "Footprint doesn't match copy in library",
+            "key": "lib_footprint_mismatch"
+        }
+    ],
+    "included_severities": [
+        "error",
+        "warning",
+        "exclusion"
+    ],
+    "kicad_version": "10.0.7",
+    "schematic_parity": [],
+    "source": "adapter_b.kicad_pcb",
+    "unconnected_items": [
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Zone [GND] on F.Cu, priority 0",
+                    "pos": {
+                        "x": 0.3,
+                        "y": 0.3
+                    },
+                    "uuid": "68432f7f-2283-4d56-8536-686b406d0ea3"
+                },
+                {
+                    "description": "PTH pad 2 [GND] of HR",
+                    "pos": {
+                        "x": 1.38,
+                        "y": 12.34
+                    },
+                    "uuid": "5c864cbe-6542-448b-8db0-b0a335b67fcd"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        }
+    ],
+    "violations": [
+        {
+            "description": "Courtyards overlap",
+            "items": [
+                {
+                    "description": "Footprint J1",
+                    "pos": {
+                        "x": 9.0,
+                        "y": 5.65
+                    },
+                    "uuid": "26bc3943-c49c-48c7-99f8-40d66d57b532"
+                },
+                {
+                    "description": "Footprint HR",
+                    "pos": {
+                        "x": 1.38,
+                        "y": 9.8
+                    },
+                    "uuid": "60d95482-553f-41e2-925b-70f23092acdc"
+                }
+            ],
+            "severity": "error",
+            "type": "courtyards_overlap"
+        },
+        {
+            "description": "Courtyards overlap",
+            "items": [
+                {
+                    "description": "Footprint J1",
+                    "pos": {
+                        "x": 9.0,
+                        "y": 5.65
+                    },
+                    "uuid": "26bc3943-c49c-48c7-99f8-40d66d57b532"
+                },
+                {
+                    "description": "Footprint HL",
+                    "pos": {
+                        "x": 16.62,
+                        "y": 9.8
+                    },
+                    "uuid": "aa966006-24a2-47b5-a10a-0523f2e1c6fa"
+                }
+            ],
+            "severity": "error",
+            "type": "courtyards_overlap"
+        },
+        {
+            "description": "Thermal relief connection to zone incomplete (layer F.Cu; zone min spoke count 2; actual 1)",
+            "items": [
+                {
+                    "description": "Zone [GND] on F.Cu, priority 0",
+                    "pos": {
+                        "x": 0.3,
+                        "y": 0.3
+                    },
+                    "uuid": "68432f7f-2283-4d56-8536-686b406d0ea3"
+                },
+                {
+                    "description": "Pad 14 [GND] of J1 on F.Cu",
+                    "pos": {
+                        "x": 6.25,
+                        "y": 7.5
+                    },
+                    "uuid": "654b29b8-e48d-4644-9a04-65c28c83330d"
+                }
+            ],
+            "severity": "error",
+            "type": "starved_thermal"
+        }
+    ]
+}

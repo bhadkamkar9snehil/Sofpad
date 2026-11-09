@@ -177,6 +177,18 @@ module padface() translate([pad_cx,pad_cy,top_z-0.05]) linear_extrude(height=0.0
 module padbody() translate([pad_cx,pad_cy,pad_top_z-pad_t]) linear_extrude(height=under_top-(pad_top_z-pad_t)) rr(pad_w,pad_h,2);   // part below the skin
 module retainer_placed() translate([pad_cx,pad_cy,boss_bottom-ret_t]) retainer();
 module screen_body() translate([0,scr_cy,under_top-scr_t/2]) cube([scr_w,scr_h,scr_t],center=true);
+// Pro Micro adapters: soldered straight into the Sofle U1 holes (plastic spacer removed), 18 x 39.5 mm,
+// FFC connector on the end that points at the PCB edge. Local half-frame position from the Sofle KiCad file.
+adp_x = 17.75; adp_y = 94.7; adp_w = 18; adp_l = 40; adp_t = 1.0; adp_conn = 2.0; adp_gap = 0.5;
+module adapter_boards() for(s=["left","right"]) half_pose(s) translate([adp_x-adp_w/2,adp_y-adp_l/2,pcb_top_z+adp_gap]) cube([adp_w,adp_l,adp_t]);
+module adapter_conns() for(s=["left","right"]) half_pose(s) translate([adp_x-7.1,adp_y+adp_l/2-8.3,pcb_top_z+adp_gap+adp_t]) cube([14.2,8,adp_conn]);
+module adapters() for(s=["left","right"]) half_pose(s)
+  translate([adp_x,adp_y,pcb_top_z+adp_gap]) {
+    color([0.05,0.30,0.22]) translate([-adp_w/2,-adp_l/2,0]) cube([adp_w,adp_l,adp_t]);
+    color([0.9,0.88,0.8]) translate([-7.1,adp_l/2-8.3,adp_t]) cube([14.2,8,adp_conn]);
+  }
+module adapter_body() union() { for(s=["left","right"]) half_pose(s)
+  translate([adp_x-adp_w/2,adp_y-adp_l/2,pcb_top_z+adp_gap]) cube([adp_w,adp_l,adp_t+adp_conn]); }
 module cavity() translate([0,0,plate_t]) linear_extrude(height=under_top-plate_t) plan(wall);
 module usb_env() translate([usb_x,y_rear-wall-3.6,port_z]) cube([9,6,3.3],center=true);
 
@@ -184,15 +196,20 @@ module by_name(n) {
   if(n=="battery") battery(); else if(n=="carrier") carrier(); else if(n=="pcbs") pcbs();
   else if(n=="padbody") padbody(); else if(n=="retainer") retainer_placed(); else if(n=="cavity") cavity();
   else if(n=="bosses") { pcb_bosses(); pad_bosses(); } else if(n=="platebosses") plate_bosses();
+  else if(n=="adapters") adapter_body();
   else if(n=="usb") usb_env(); else if(n=="screen") screen_body();
 }
 
 if(part=="shell") shell();
 else if(part=="bottom") bottom();
 else if(part=="retainer") retainer();
+else if(part=="retainer_placed") retainer_placed();
 else if(part=="keys") keys();
 else if(part=="switches") switches();
+else if(part=="adapters") adapter_boards();
+else if(part=="adapter_conns") adapter_conns();
 else if(part=="screen") screen_body();
+else if(part=="padbody") padbody();
 else if(part=="pcbs") pcbs();
 else if(part=="knobs") knobs();
 else if(part=="battery") battery();

@@ -64,7 +64,8 @@ def add_zone(board, layer, net, w, h, inset=0.3):
     z.SetNet(net)
     z.SetLocalClearance(mm(0.2))
     z.SetMinThickness(mm(0.15))
-    z.SetPadConnection(pcbnew.ZONE_CONNECTION_THERMAL)
+    z.SetPadConnection(pcbnew.ZONE_CONNECTION_FULL)
+    z.SetIslandRemovalMode(pcbnew.ISLAND_REMOVAL_MODE_ALWAYS)
     ol = z.Outline()
     ol.NewOutline()
     for x, y in [(inset, inset), (w - inset, inset), (w - inset, h - inset), (inset, h - inset)]:
@@ -103,7 +104,7 @@ def build(name, variant, w, h, layers, placement, holes, keepouts=(), mirror_x=F
     ds = board.GetDesignSettings()
     ds.m_TrackMinWidth = mm(0.15)
     ds.m_MinClearance = mm(0.15)
-    ds.m_ViasMinSize = mm(0.5)
+    ds.m_ViasMinSize = mm(0.6)
     ds.m_ViasMinAnnularWidth = mm(0.13)
     ds.m_MinThroughDrill = mm(0.3)
     ds.m_CopperEdgeClearance = mm(0.3)
@@ -111,7 +112,7 @@ def build(name, variant, w, h, layers, placement, holes, keepouts=(), mirror_x=F
     nc = ds.m_NetSettings.GetDefaultNetclass()
     nc.SetClearance(mm(0.15))
     nc.SetTrackWidth(mm(0.2))
-    nc.SetViaDiameter(mm(0.5))
+    nc.SetViaDiameter(mm(0.6))
     nc.SetViaDrill(mm(0.3))
     nets = {}
     for n in net["nets"]:
@@ -161,14 +162,14 @@ def write_project(path):
     pro = {
         "meta": {"filename": path.name, "version": 3},
         "board": {"design_settings": {
-            "rules": {"min_clearance": 0.15, "min_track_width": 0.15, "min_via_diameter": 0.5,
+            "rules": {"min_clearance": 0.15, "min_track_width": 0.15, "min_via_diameter": 0.6,
                       "min_through_hole_diameter": 0.3, "min_copper_edge_clearance": 0.3,
                       "min_hole_to_hole": 0.25, "min_via_annular_width": 0.13, "min_silk_clearance": 0.0},
             "rule_severities": {"silk_over_copper": "ignore", "silk_overlap": "ignore",
                                 "silk_edge_clearance": "ignore", "lib_footprint_issues": "ignore",
                                 "lib_footprint_mismatch": "ignore"}}},
         "net_settings": {"classes": [{"name": "Default", "clearance": 0.15, "track_width": 0.2,
-                                      "via_diameter": 0.5, "via_drill": 0.3, "wire_width": 6,
+                                      "via_diameter": 0.6, "via_drill": 0.3, "wire_width": 6,
                                       "bus_width": 12, "line_style": 0, "microvia_diameter": 0.3,
                                       "microvia_drill": 0.1, "diff_pair_width": 0.2, "diff_pair_gap": 0.25,
                                       "diff_pair_via_gap": 0.25, "pcb_color": "rgba(0, 0, 0, 0.000)",

@@ -29,9 +29,9 @@ NO_OVERLAP = [
     ("platebosses", "carrier"), ("platebosses", "retainer"), ("platebosses", "pcbs"),
     ("bosses", "battery"), ("bosses", "carrier"), ("usb", "battery"),
     ("screen", "battery"), ("screen", "carrier"), ("screen", "pcbs"), ("screen", "retainer"),
-    ("screen", "bosses"), ("screen", "platebosses"),
+    ("screen", "bosses"), ("screen", "platebosses"), ("adapters", "bosses"), ("adapters", "battery"), ("adapters", "carrier"), ("adapters", "screen"),
 ]
-INSIDE_CAVITY = ["battery", "carrier", "pcbs", "padbody", "retainer", "usb", "screen"]
+INSIDE_CAVITY = ["battery", "carrier", "pcbs", "padbody", "retainer", "usb", "screen", "adapters"]
 
 
 def run(part, a="", b=""):

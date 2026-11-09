@@ -63,7 +63,8 @@ for i, v in enumerate(["SWDIO", "SWDCLK", "RESET", "3V3", "GND"], 1):
 
 # passives: (ref, value, footprint)
 for ref, val in [("R1", "5.1k"), ("R2", "5.1k"), ("R3", "2.0k"), ("R4", "3.3k"), ("R5", "47k"), ("R6", "3.0k"),
-                 ("R7", "100k"), ("R8", "4.7k"), ("R9", "4.7k"), ("R10", "1M"), ("R11", "1M"), ("R12", "10k")]:
+                 ("R7", "100k"), ("R8", "4.7k"), ("R9", "4.7k"), ("R10", "1M"), ("R11", "1M"), ("R12", "10k"),
+                 ("R13", "470k"), ("R14", "470k"), ("R15", "470k"), ("R16", "470k")]:
     d.part(ref, "Device", "R", R0402, val)
 for ref, val, fp in [("C1", "1uF", C0402), ("C2", "10uF", C0603), ("C3", "10uF", C0603), ("C4", "4.7uF", C0603),
                      ("C5", "10uF", C0603), ("C6", "10uF", C0603), ("C7", "100nF", C0402), ("C8", "1uF", C0402),
@@ -115,10 +116,12 @@ for i, pad in enumerate(["49", "19", "16", "47", "61", "50"]):
     c(f"LEFT_COL{i}", f"U1.{pad}", f"J7.{6 + i}")
 for i, pad in enumerate(["42", "44", "43", "46", "45", "48"]):
     c(f"RIGHT_COL{i}", f"U1.{pad}", f"J8.{6 + i}")
-c("LEFT_ENC_A", "U1.60", "J7.12")
-c("LEFT_ENC_B", "U1.56", "J7.13")
-c("RIGHT_ENC_A", "U1.59", "J8.12")
-c("RIGHT_ENC_B", "U1.57", "J8.13")
+c("LEFT_ENC_A", "U1.60", "J7.12", "R13.2")
+c("LEFT_ENC_B", "U1.56", "J7.13", "R14.2")
+c("RIGHT_ENC_A", "U1.59", "J8.12", "R15.2")
+c("RIGHT_ENC_B", "U1.57", "J8.13", "R16.2")
+# 470k external pull-ups: encoder contacts can sit closed, so the internal 13k pull-up would waste ~250 uA (power design in ARCHITECTURE.md)
+c("+3V3", "R13.1", "R14.1", "R15.1", "R16.1")
 c("GND", "J7.14", "J8.14")
 # ---------------- shared I2C bus: TPS65, DRV2605L, LIS3DH ----------------
 c("SDA", "U1.20", "R8.2", "J6.6", "U4.3", "U5.6")
