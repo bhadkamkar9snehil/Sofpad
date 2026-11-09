@@ -1,0 +1,165 @@
+# Sofpad
+
+**A compact, one-piece ergonomic keyboard based on Sofle RGB, with a built-in trackpad, one controller, and one battery.**
+
+The current **R3 concept** combines two original Sofle RGB PCB halves in a single printed unibody. A single nRF52840 controller scans both halves and operates a 40 mm Cirque SPI trackpad. One rechargeable LiPo powers the device. The planned interface provides wired USB HID and wireless Bluetooth Low Energy (BLE) HID.
+
+> **Engineering status:** Source-verified architecture and preliminary CAD. This project is **not** a production-ready PCB, tested firmware, or validated LiPo charging design. The repository includes R1 and R2 historical concepts and R3 source files.
+
+## Quick links
+
+| Resource | Location |
+|---|---|
+| **Complete original source package** | [Sofpad_All_Source_Files.zip](archives/Sofpad_All_Source_Files.zip) |
+| **R3 engineering specification** | [Architecture and electrical design](hardware/r3/ARCHITECTURE.md) |
+| **R3 bill of materials** | [BOM.md](hardware/r3/BOM.md) · [BOM.csv](hardware/r3/BOM.csv) |
+| **R3 CAD source** | [SofleRGB_SingleController_Cirque.scad](cad/r3/SofleRGB_SingleController_Cirque.scad) |
+| **R3 original notes** | [README.md](hardware/r3/README.md) |
+| **Reference PCB** | [SofleKeyboard.kicad_pcb](hardware/r3/reference/Sofle_RGB/PCB/SofleKeyboard.kicad_pcb) |
+| **Earlier R1 / R2 concepts** | [R1](cad/r1/) · [R2](cad/r2/) |
+| **Upstream license** | [LICENSE-SOFLE.txt](LICENSE-SOFLE.txt) |
+
+## Design goals
+
+- One nRF52840 microcontroller for all keyboard inputs, both encoders, and the touchpad.
+- One internal wired connection to each Sofle RGB PCB, using passive Pro Micro socket adapters.
+- One protected LiPo battery and one rear USB-C port for charging and USB HID.
+- USB keyboard and mouse HID plus BLE keyboard and mouse HID in the planned firmware.
+- A continuous upper shell, removable service cover, and trackpad retainer.
+- Existing RGB LEDs and OLED displays disconnected for the first low-power revision.
+
+## Hardware architecture
+
+```mermaid
+flowchart TB
+  subgraph CASE["One-piece Sofpad enclosure"]
+    L["Left Sofle RGB PCB<br/>30 switch positions + encoder"] --> A["Left passive socket adapter"]
+    R["Right Sofle RGB PCB<br/>30 switch positions + encoder"] --> B["Right passive socket adapter"]
+    A -->|"16-pin FFC"| MCU["One nRF52840 carrier PCB"]
+    B -->|"16-pin FFC"| MCU
+    PAD["Cirque TM040040-2024-301<br/>40 mm SPI trackpad"] -->|"12-pin FFC / SPI"| MCU
+    CELL["One protected 1100 mAh LiPo"] --> PWR["Charger + 3.3 V buck"]
+    USBC["USB-C connector"] --> PWR
+    PWR --> MCU
+  end
+  MCU -->|"USB HID"| HOST["Computer"]
+  MCU -.->|"BLE HID, planned"| HOST
+```
+
+Neither keyboard half needs a separate MCU. The two original ATmega32U4 Pro Micro boards are removed. Passive adapters connect existing key and encoder signals to the single nRF52840 carrier.
+
+### Keyboard matrix and controller allocation
+
+The source Sofle RGB PCB has **30 diode-protected switch positions per half**. The two halves share **five row inputs** and use **six columns per half**.
+
+| Interface | Signals | Preliminary nRF52840 GPIO |
+|---|---:|---|
+| Shared rows | 5 | P0.13–P0.17 |
+| Right columns | 6 | P0.19–P0.24 |
+| Left columns | 6 | P0.25–P0.27, P1.00–P1.02 |
+| Left encoder A/B | 2 | P1.03–P1.04 |
+| Right encoder A/B | 2 | P1.05–P1.06 |
+| Trackpad SPI SCK/MISO/MOSI/SS/DR | 5 | P0.04–P0.08 |
+| Battery ADC | 1 | P0.02 |
+| USB and SWD | Dedicated | Module USB and debug pins |
+
+Each passive keyboard adapter uses a **16-way FFC**. Pins 1–5 carry rows, 6–11 carry columns, 12–13 carry encoder signals, and 14 carries ground. Pins 15–16 remain unused. Check actual connector orientation before manufacturing.
+
+The detailed signal mapping, original Pro Micro pad references, and Raytac module pad numbers are in [ARCHITECTURE.md](hardware/r3/ARCHITECTURE.md).
+
+### Trackpad
+
+The current revision selects **Cirque TM040040-2024-301**, a **40 mm SPI** trackpad. The 2024 suffix identifies the SPI version. R1 and R2 used an earlier Azoteq TPS43 trackpad concept and must not be confused with the R3 design.
+
+The current trackpad connects through a 12-position FFC: SCK, MISO, MOSI, chip select, data ready, 3.3 V, and ground. The physical connector direction, PCB notches, and mechanical clearance still require a fit check.
+
+## Charging and power
+
+```mermaid
+flowchart TD
+  USB["Rear USB-C, 5 V"] --> CHG["TI BQ24074<br/>charge + power path"]
+  BAT["Protected LiPo<br/>3.7 V nominal"] <-->|"charge/discharge"| CHG
+  CHG --> SW["Master switch<br/>buck enable"]
+  SW --> REG["TI TPS62740<br/>3.3 V regulator"]
+  REG --> MCU["nRF52840 carrier"]
+  REG --> PAD["Cirque SPI trackpad"]
+  USB -->|"USB D+/D− and VBUS"| MCU
+```
+
+The R3 concept uses a protected **NOVA 603450, 1100 mAh** LiPo. The rear master switch controls regulator enable, not the battery-positive lead. The charger can remain connected to the battery while the keyboard is off.
+
+**Do not construct the battery circuit from this overview.** Charging current, thermistor network, USB limits, cell dimensions, protection, and regulator values are not final. See the design gates in [ARCHITECTURE.md](hardware/r3/ARCHITECTURE.md).
+
+## Mechanical concept
+
+The one-piece upper shell is about **390 × 136 mm**. Its layout contains both Sofle PCB halves, the 40 mm circular trackpad, a controller bay, battery space, and rear port cutouts.
+
+| Revision | Purpose | Important distinction |
+|---|---|---|
+| **R1** | Initial couch-style case and wiring study | Azoteq TPS43 |
+| **R2** | Intermediate one-piece shell, service cover, retainer | Azoteq TPS43 |
+| **R3** | Current single-controller mechanical and electrical plan | Cirque 40 mm SPI + nRF52840 |
+
+Open the [R3 OpenSCAD design](cad/r3/SofleRGB_SingleController_Cirque.scad) to edit the current case concept. The CAD exports are preliminary and require real component measurements.
+
+## Repository structure
+
+```text
+Sofpad/
+├── README.md
+├── LICENSE-SOFLE.txt
+├── archives/
+│   └── Sofpad_All_Source_Files.zip     Exact original complete source package
+├── hardware/
+│   └── r3/
+│       ├── README.md                   Original R3 engineering overview
+│       ├── ARCHITECTURE.md
+│       ├── BOM.md
+│       ├── BOM.csv
+│       ├── source_pinmap.json
+│       ├── verify_matrix.py
+│       └── reference/Sofle_RGB/PCB/SofleKeyboard.kicad_pcb
+├── cad/
+│   ├── r1/                             Original couch case and fit coupon
+│   ├── r2/                             Intermediate unibody
+│   └── r3/                             Current Cirque unibody and renders
+└── docs/
+    └── legacy/
+        └── QMK_and_wiring.md          Historical two-controller wiring concept
+```
+
+### Source-file integrity
+
+**The original ZIP is the authoritative source package.** The manual individual-file upload flattened version directories and overwrote some same-named files. Several files uploaded as **zero-byte blobs**, including the shared geometry, renders, and some STL exports. These empty files remain visible in the organized folders, but they cannot be used as valid CAD data. Extract the original archive for the exact working source of each revision.
+
+The original root README was also uploaded as an empty file. This README replaces it with project documentation.
+
+## Component summary
+
+| Part | Selected model |
+|---|---|
+| Wireless MCU | Raytac MDBT50Q-1MV2, Nordic nRF52840 |
+| Trackpad | Cirque TM040040-2024-301, 40 mm SPI |
+| Power-path charger | TI BQ24074RGTR |
+| 3.3 V regulator | TI TPS62740DSST |
+| LiPo | NOVA 603450 protected 1100 mAh |
+| USB-C | GCT USB4085-GF-A |
+| Power switch | E-Switch EG1213 |
+| Internal connections | 16-pin FFC cables and passive Pro Micro socket adapters |
+
+The R3 BOM lists reference part prices, not a final build cost. Custom PCBs, assembly, printing, shipping, and unselected components need separate costing.
+
+## Remaining engineering work
+
+1. Measure the physical keyboard PCBs, trackpad, cell, connectors, and switch.
+2. Finalize passive socket adapters and FFC contact orientation.
+3. Design the nRF52840 carrier, charger, regulator, USB-C and RF antenna area.
+4. Build and check a small mechanical fit sample before the full print.
+5. Implement keyboard scanning, encoders, Cirque SPI, USB HID, BLE HID, and power management.
+6. Validate safe charging, wake/sleep operation, all inputs, wireless stability, and case fit.
+
+**R3 is a development project, not a tested finished product.**
+
+## Attribution
+
+The PCB and derived case geometry use the [SofleKeyboard](https://github.com/josefadamcik/SofleKeyboard) project by Josef Adamcik. Source PCB commit: `fb294f7c58d0f91c379a9ef339159d4d056643e9`. Preserve the included upstream license notices for Sofle, Lily58, Helix, crkbd, and Ergo42. A separate license for new Sofpad-specific work has not been selected.
