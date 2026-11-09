@@ -1,0 +1,574 @@
+{
+ "parts": {
+  "U1": {
+   "fp": "RF_Module:Raytac_MDBT50Q",
+   "value": "MDBT50Q-1MV2",
+   "sym": "RF_Module:MDBT50Q-1MV2"
+  },
+  "U2": {
+   "fp": "Package_DFN_QFN:VQFN-16-1EP_3x3mm_P0.5mm_EP1.6x1.6mm",
+   "value": "BQ24074RGTR",
+   "sym": "Battery_Management:BQ24074RGT"
+  },
+  "U3": {
+   "fp": "Package_SON:WSON-12-1EP_3x2mm_P0.5mm_EP1x2.65",
+   "value": "TPS62740DSST",
+   "sym": "Sofpad:TPS62740"
+  },
+  "U4": {
+   "fp": "Package_SO:MSOP-10_3x3mm_P0.5mm",
+   "value": "DRV2605LDGSR",
+   "sym": "Driver:DRV2605LDGS"
+  },
+  "U5": {
+   "fp": "Package_LGA:LGA-16_3x3mm_P0.5mm_LayoutBorder3x5y",
+   "value": "LIS3DHTR",
+   "sym": "Sensor_Motion:LIS3DH"
+  },
+  "U6": {
+   "fp": "Package_TO_SOT_SMD:SOT-23-6",
+   "value": "USBLC6-2SC6",
+   "sym": "Power_Protection:USBLC6-2SC6"
+  },
+  "J1": {
+   "fp": "Connector_USB:USB_C_Receptacle_GCT_USB4085",
+   "value": "GCT USB4085-GF-A",
+   "sym": "Connector:USB_C_Receptacle_USB2.0_16P"
+  },
+  "SW1": {
+   "fp": "Button_Switch_SMD:SW_SPDT_PCM12",
+   "value": "C&K PCM12SMTR",
+   "sym": "Switch:SW_SPDT"
+  },
+  "J2": {
+   "fp": "Connector_JST:JST_PH_S2B-PH-K_1x02_P2.00mm_Horizontal",
+   "value": "Battery S2B-PH-K-S",
+   "sym": "Connector_Generic:Conn_01x02"
+  },
+  "J3": {
+   "fp": "Connector_PinHeader_1.27mm:PinHeader_1x02_P1.27mm_Vertical",
+   "value": "Cell NTC",
+   "sym": "Connector_Generic:Conn_01x02"
+  },
+  "J4": {
+   "fp": "Connector_JST:JST_SH_SM02B-SRSS-TB_1x02-1MP_P1.00mm_Horizontal",
+   "value": "LRA SM02B-SRSS-TB",
+   "sym": "Connector_Generic:Conn_01x02"
+  },
+  "J5": {
+   "fp": "Connector_JST:JST_PH_S8B-PH-K_1x08_P2.00mm_Horizontal",
+   "value": "Screen S8B-PH-K-S",
+   "sym": "Connector_Generic:Conn_01x08"
+  },
+  "J6": {
+   "fp": "Connector_JST:JST_SH_SM06B-SRSS-TB_1x06-1MP_P1.00mm_Horizontal",
+   "value": "TPS65 breakout SM06B-SRSS-TB",
+   "sym": "Connector_Generic:Conn_01x06"
+  },
+  "J7": {
+   "fp": "Connector_FFC-FPC:Hirose_FH12-16S-0.5SH_1x16-1MP_P0.50mm_Horizontal",
+   "value": "Left FFC FH12-16S-0.5SH",
+   "sym": "Connector_Generic:Conn_01x16"
+  },
+  "J8": {
+   "fp": "Connector_FFC-FPC:Hirose_FH12-16S-0.5SH_1x16-1MP_P0.50mm_Horizontal",
+   "value": "Right FFC FH12-16S-0.5SH",
+   "sym": "Connector_Generic:Conn_01x16"
+  },
+  "TP1": {
+   "fp": "TestPoint:TestPoint_Pad_D1.0mm",
+   "value": "SWDIO",
+   "sym": "Connector:TestPoint"
+  },
+  "TP2": {
+   "fp": "TestPoint:TestPoint_Pad_D1.0mm",
+   "value": "SWDCLK",
+   "sym": "Connector:TestPoint"
+  },
+  "TP3": {
+   "fp": "TestPoint:TestPoint_Pad_D1.0mm",
+   "value": "RESET",
+   "sym": "Connector:TestPoint"
+  },
+  "TP4": {
+   "fp": "TestPoint:TestPoint_Pad_D1.0mm",
+   "value": "3V3",
+   "sym": "Connector:TestPoint"
+  },
+  "TP5": {
+   "fp": "TestPoint:TestPoint_Pad_D1.0mm",
+   "value": "GND",
+   "sym": "Connector:TestPoint"
+  },
+  "R1": {
+   "fp": "Resistor_SMD:R_0402_1005Metric",
+   "value": "5.1k",
+   "sym": "Device:R"
+  },
+  "R2": {
+   "fp": "Resistor_SMD:R_0402_1005Metric",
+   "value": "5.1k",
+   "sym": "Device:R"
+  },
+  "R3": {
+   "fp": "Resistor_SMD:R_0402_1005Metric",
+   "value": "2.0k",
+   "sym": "Device:R"
+  },
+  "R4": {
+   "fp": "Resistor_SMD:R_0402_1005Metric",
+   "value": "3.3k",
+   "sym": "Device:R"
+  },
+  "R5": {
+   "fp": "Resistor_SMD:R_0402_1005Metric",
+   "value": "47k",
+   "sym": "Device:R"
+  },
+  "R6": {
+   "fp": "Resistor_SMD:R_0402_1005Metric",
+   "value": "3.0k",
+   "sym": "Device:R"
+  },
+  "R7": {
+   "fp": "Resistor_SMD:R_0402_1005Metric",
+   "value": "100k",
+   "sym": "Device:R"
+  },
+  "R8": {
+   "fp": "Resistor_SMD:R_0402_1005Metric",
+   "value": "4.7k",
+   "sym": "Device:R"
+  },
+  "R9": {
+   "fp": "Resistor_SMD:R_0402_1005Metric",
+   "value": "4.7k",
+   "sym": "Device:R"
+  },
+  "R10": {
+   "fp": "Resistor_SMD:R_0402_1005Metric",
+   "value": "1M",
+   "sym": "Device:R"
+  },
+  "R11": {
+   "fp": "Resistor_SMD:R_0402_1005Metric",
+   "value": "1M",
+   "sym": "Device:R"
+  },
+  "R12": {
+   "fp": "Resistor_SMD:R_0402_1005Metric",
+   "value": "10k",
+   "sym": "Device:R"
+  },
+  "C1": {
+   "fp": "Capacitor_SMD:C_0402_1005Metric",
+   "value": "1uF",
+   "sym": "Device:C"
+  },
+  "C2": {
+   "fp": "Capacitor_SMD:C_0603_1608Metric",
+   "value": "10uF",
+   "sym": "Device:C"
+  },
+  "C3": {
+   "fp": "Capacitor_SMD:C_0603_1608Metric",
+   "value": "10uF",
+   "sym": "Device:C"
+  },
+  "C4": {
+   "fp": "Capacitor_SMD:C_0603_1608Metric",
+   "value": "4.7uF",
+   "sym": "Device:C"
+  },
+  "C5": {
+   "fp": "Capacitor_SMD:C_0603_1608Metric",
+   "value": "10uF",
+   "sym": "Device:C"
+  },
+  "C6": {
+   "fp": "Capacitor_SMD:C_0603_1608Metric",
+   "value": "10uF",
+   "sym": "Device:C"
+  },
+  "C7": {
+   "fp": "Capacitor_SMD:C_0402_1005Metric",
+   "value": "100nF",
+   "sym": "Device:C"
+  },
+  "C8": {
+   "fp": "Capacitor_SMD:C_0402_1005Metric",
+   "value": "1uF",
+   "sym": "Device:C"
+  },
+  "C9": {
+   "fp": "Capacitor_SMD:C_0402_1005Metric",
+   "value": "1uF",
+   "sym": "Device:C"
+  },
+  "C10": {
+   "fp": "Capacitor_SMD:C_0402_1005Metric",
+   "value": "100nF",
+   "sym": "Device:C"
+  },
+  "C11": {
+   "fp": "Capacitor_SMD:C_0402_1005Metric",
+   "value": "100nF",
+   "sym": "Device:C"
+  },
+  "C12": {
+   "fp": "Capacitor_SMD:C_0603_1608Metric",
+   "value": "10uF",
+   "sym": "Device:C"
+  },
+  "L1": {
+   "fp": "Inductor_SMD:L_0805_2012Metric",
+   "value": "2.2uH",
+   "sym": "Device:L"
+  }
+ },
+ "nets": {
+  "GND": [
+   "J1.A1",
+   "J1.B1",
+   "J1.A12",
+   "J1.B12",
+   "J1.SH",
+   "U6.2",
+   "R1.2",
+   "R2.2",
+   "C1.2",
+   "U2.8",
+   "U2.17",
+   "U2.4",
+   "U2.5",
+   "C2.2",
+   "C3.2",
+   "J2.2",
+   "C4.2",
+   "J3.2",
+   "R3.2",
+   "R4.2",
+   "R5.2",
+   "R6.2",
+   "U3.3",
+   "U3.4",
+   "U3.13",
+   "C5.2",
+   "C6.2",
+   "SW1.3",
+   "C7.2",
+   "C12.2",
+   "C8.2",
+   "C10.2",
+   "TP5.1",
+   "U1.1",
+   "U1.2",
+   "U1.15",
+   "U1.33",
+   "U1.55",
+   "J7.14",
+   "J8.14",
+   "J6.3",
+   "U5.5",
+   "U5.10",
+   "U5.12",
+   "R12.2",
+   "C9.2",
+   "U4.8",
+   "U4.4",
+   "J5.2",
+   "R11.2",
+   "C11.2"
+  ],
+  "VBUS": [
+   "J1.A4",
+   "J1.B4",
+   "J1.A9",
+   "J1.B9",
+   "U6.5",
+   "U2.13",
+   "C1.1",
+   "U1.32"
+  ],
+  "CC1": [
+   "J1.A5",
+   "R1.1"
+  ],
+  "CC2": [
+   "J1.B5",
+   "R2.1"
+  ],
+  "USB_DP": [
+   "J1.A6",
+   "J1.B6",
+   "U6.1",
+   "U6.6",
+   "U1.35"
+  ],
+  "USB_DM": [
+   "J1.A7",
+   "J1.B7",
+   "U6.3",
+   "U6.4",
+   "U1.34"
+  ],
+  "VSYS": [
+   "U2.10",
+   "U2.11",
+   "C2.1",
+   "U3.1",
+   "C4.1",
+   "R7.1",
+   "U3.11",
+   "U3.10",
+   "U3.9",
+   "U3.8",
+   "SW1.1"
+  ],
+  "VBAT": [
+   "U2.2",
+   "U2.3",
+   "C3.1",
+   "J2.1",
+   "R10.1"
+  ],
+  "EN1": [
+   "U2.6",
+   "R7.2"
+  ],
+  "TS": [
+   "U2.1",
+   "J3.1"
+  ],
+  "ISET": [
+   "U2.16",
+   "R3.1"
+  ],
+  "ILIM": [
+   "U2.12",
+   "R4.1"
+  ],
+  "ITERM": [
+   "U2.15",
+   "R6.1"
+  ],
+  "TMR": [
+   "U2.14",
+   "R5.1"
+  ],
+  "CHG": [
+   "U2.9",
+   "U1.4"
+  ],
+  "PGOOD": [
+   "U2.7",
+   "U1.5"
+  ],
+  "SW_NODE": [
+   "U3.2",
+   "L1.1"
+  ],
+  "+3V3": [
+   "L1.2",
+   "U3.5",
+   "C5.1",
+   "C6.1",
+   "U1.28",
+   "U1.30",
+   "C7.1",
+   "C12.1",
+   "R8.1",
+   "R9.1",
+   "J5.1",
+   "J6.4",
+   "U4.10",
+   "U5.1",
+   "U5.14",
+   "U5.8",
+   "C8.1",
+   "C10.1",
+   "TP4.1"
+  ],
+  "EN_SW": [
+   "U3.12",
+   "SW1.2"
+  ],
+  "ROW0": [
+   "U1.37",
+   "J7.1",
+   "J8.1"
+  ],
+  "ROW1": [
+   "U1.36",
+   "J7.2",
+   "J8.2"
+  ],
+  "ROW2": [
+   "U1.39",
+   "J7.3",
+   "J8.3"
+  ],
+  "ROW3": [
+   "U1.38",
+   "J7.4",
+   "J8.4"
+  ],
+  "ROW4": [
+   "U1.41",
+   "J7.5",
+   "J8.5"
+  ],
+  "LEFT_COL0": [
+   "U1.49",
+   "J7.6"
+  ],
+  "LEFT_COL1": [
+   "U1.19",
+   "J7.7"
+  ],
+  "LEFT_COL2": [
+   "U1.16",
+   "J7.8"
+  ],
+  "LEFT_COL3": [
+   "U1.47",
+   "J7.9"
+  ],
+  "LEFT_COL4": [
+   "U1.61",
+   "J7.10"
+  ],
+  "LEFT_COL5": [
+   "U1.50",
+   "J7.11"
+  ],
+  "RIGHT_COL0": [
+   "U1.42",
+   "J8.6"
+  ],
+  "RIGHT_COL1": [
+   "U1.44",
+   "J8.7"
+  ],
+  "RIGHT_COL2": [
+   "U1.43",
+   "J8.8"
+  ],
+  "RIGHT_COL3": [
+   "U1.46",
+   "J8.9"
+  ],
+  "RIGHT_COL4": [
+   "U1.45",
+   "J8.10"
+  ],
+  "RIGHT_COL5": [
+   "U1.48",
+   "J8.11"
+  ],
+  "LEFT_ENC_A": [
+   "U1.60",
+   "J7.12"
+  ],
+  "LEFT_ENC_B": [
+   "U1.56",
+   "J7.13"
+  ],
+  "RIGHT_ENC_A": [
+   "U1.59",
+   "J8.12"
+  ],
+  "RIGHT_ENC_B": [
+   "U1.57",
+   "J8.13"
+  ],
+  "SDA": [
+   "U1.20",
+   "R8.2",
+   "J6.6",
+   "U4.3",
+   "U5.6"
+  ],
+  "SCL": [
+   "U1.21",
+   "R9.2",
+   "J6.5",
+   "U4.2",
+   "U5.4"
+  ],
+  "TP_RDY": [
+   "U1.22",
+   "J6.1"
+  ],
+  "TP_NRST": [
+   "U1.23",
+   "J6.2"
+  ],
+  "ACC_INT": [
+   "U1.24",
+   "U5.11"
+  ],
+  "SA0": [
+   "U5.7",
+   "R12.1"
+  ],
+  "HAPTIC_EN": [
+   "U1.7",
+   "U4.5"
+  ],
+  "DRV_REG": [
+   "U4.1",
+   "C9.1"
+  ],
+  "LRA_P": [
+   "U4.7",
+   "J4.1"
+  ],
+  "LRA_N": [
+   "U4.9",
+   "J4.2"
+  ],
+  "LCD_MOSI": [
+   "U1.14",
+   "J5.3"
+  ],
+  "LCD_SCK": [
+   "U1.12",
+   "J5.4"
+  ],
+  "LCD_CS": [
+   "U1.10",
+   "J5.5"
+  ],
+  "LCD_DC": [
+   "U1.13",
+   "J5.6"
+  ],
+  "LCD_RST": [
+   "U1.26",
+   "J5.7"
+  ],
+  "LCD_BL": [
+   "U1.3",
+   "J5.8"
+  ],
+  "VBAT_SENSE": [
+   "U1.11",
+   "R10.2",
+   "R11.1",
+   "C11.1"
+  ],
+  "SWDIO": [
+   "U1.51",
+   "TP1.1"
+  ],
+  "SWDCLK": [
+   "U1.53",
+   "TP2.1"
+  ],
+  "RESET": [
+   "U1.40",
+   "TP3.1"
+  ]
+ }
+}

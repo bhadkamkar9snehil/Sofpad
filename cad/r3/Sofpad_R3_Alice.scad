@@ -18,6 +18,8 @@ $fn = 48;
 ang = 12;              // Alice tilt of each half, degrees (backs lean toward centre)
 g = 92;                // gap between the two half pivots at the front edge
 margin = 11;           // PCB outline to outer wall
+rear_bump = 8;         // extra depth of the centre rear bay (carrier, USB-C, switch)
+bay_hw = 36;           // half width of the rear bay before the margin
 wall = 3.2;
 
 // ----- Heights -----
@@ -31,20 +33,22 @@ top_z = under_top + skin_t;   // 17.1
 plate_t = 1.8;
 edge_r = 2.0;          // top edge radius, built from 5 steps
 
-// ----- Centre trackpad: Azoteq TPS65-201A-S -----
-pad_w = 65;  pad_h = 49;
-ov_w = 69.5; ov_h = 53;  ov_t = 0.75;       // overlay recess
-win_w = 66.0; win_h = 49.8;
-ret_w = 73;  ret_h = 57;  ret_t = 2;
-ret_sx = 34.5; ret_sy = 26.5;
-pad_top_z = 13.25;                          // module top; verify with sample
-pad_cx = 0;  pad_cy = 25;
-
+// ----- Centre trackpad: Azoteq TPS65-201A-S (adhesive-only module, Azoteq datasheet v1.02) -----
+// The module is glued to the underside of a 1.0 mm printed skin. No window, no overlay part.
+pad_w = 65;  pad_h = 49;  pad_t = 2.03;      // module outline and thickness incl. adhesive
+pad_skin = 1.0;                              // skin thickness over the pad (limit 1.2)
+pad_top_z = top_z - pad_skin;                // module top face
+pad_cx = 0;  pad_cy = 26;
+ret_ring_w = 69; ret_ring_h = 53;            // retainer ring outer
+ret_in_w = 61;   ret_in_h = 45;              // ring opening: 2 mm contact on the module edge
+boss_bottom = under_top - 4.0;               // pad bosses hang 4 mm from the skin
+ret_t = 2;                                   // ear thickness, under the boss
+ret_screws = [[-20,-29],[20,-29],[-20,29],[20,29]];   // relative to pad centre
 // ----- Behind the pad: battery (lying) then carrier -----
-bat_w = 52; bat_l = 36; bat_t = 8;  bat_y0 = 56;     // NOVA 603450: 50 x 34 x 6 plus margin
-car_w = 46; car_l = 22; car_t = 1.6; car_z = 5.6;    // carrier envelope, underside height
-usb_x = -6; sw_x = 8;
-usb_w = 11; usb_h = 5.1; sw_w = 10; sw_h = 4.2; port_z = 8.8;
+bat_w = 52; bat_l = 36; bat_t = 8;  bat_y0 = 59;     // NOVA 603450: 50 x 34 x 6 plus margin
+car_w = 62; car_l = 28; car_t = 1.0; car_z = 3.0;    // carrier envelope, underside height
+usb_x = -10; sw_x = 12;
+usb_w = 11; usb_h = 5.1; sw_w = 10; sw_h = 4.2; port_z = 5.7;   // centres: board top 4.0 + half the part height
 
 mx_hole = 14.25;
 enc_hole = 7.5;
@@ -57,7 +61,7 @@ scr_cy = 88; scr_win_dy = 2;                   // module centre y; window offset
 
 hy = board_h*cos(ang);
 hx = g/2 - board_h*sin(ang);
-y_rear = hy + margin;
+y_rear = hy + rear_bump + margin;
 car_y = y_rear - wall - 1.2 - car_l/2;       // carrier sits against the rear wall
 bat_y = bat_y0 + bat_l/2;
 
@@ -73,6 +77,7 @@ module plan_core() {
   half_pose("right") polygon(board_outline);
   half_pose("left")  polygon(board_outline);
   polygon([[-g/2,0],[g/2,0],[hx,hy],[-hx,hy]]);
+  translate([-bay_hw,hy-10]) square([2*bay_hw,10+rear_bump]);   // rear bay
 }
 module plan(inset=0) { offset(delta=-inset) offset(r=margin) plan_core(); }
 
@@ -96,10 +101,8 @@ module screen_frame() translate([0,scr_cy,under_top-scr_t-0.2]) difference() {
   linear_extrude(height=scr_t+0.4) rr(scr_w+3.6,scr_h+3.6,2);
   translate([0,0,-0.1]) linear_extrude(height=scr_t+0.6) rr(scr_w+0.4,scr_h+0.4,1.5);
 }
-module pad_cuts() translate([pad_cx,pad_cy,0]) {
-  translate([0,0,top_z-ov_t-0.15]) linear_extrude(height=ov_t+0.4) rr(ov_w,ov_h,2);
-  translate([0,0,under_top-0.2]) linear_extrude(height=skin_t+0.45) rr(win_w,win_h,2);
-}
+module pad_cuts() translate([pad_cx,pad_cy,under_top-0.2]) linear_extrude(height=pad_top_z-under_top+0.2)
+  rr(pad_w+0.4,pad_h+0.4,2);    // pocket in the skin underside: leaves a 1.0 mm skin
 module port_cuts() {
   translate([usb_x-usb_w/2,y_rear-7,port_z-usb_h/2]) cube([usb_w,8,usb_h]);
   translate([sw_x-sw_w/2,y_rear-7,port_z-sw_h/2]) cube([sw_w,8,sw_h]);
@@ -110,8 +113,8 @@ module insert_boss(d,h) difference() { cylinder(d=d,h=h); translate([0,0,-0.1]) 
 module insert_boss_top(d,h) difference() { cylinder(d=d,h=h); translate([0,0,h-insert_depth]) cylinder(d=insert_d,h=insert_depth+0.1); }
 module pcb_bosses() for(s=["left","right"]) half_pose(s) for(h=board_mount_holes)
   translate([h[0],h[1],pcb_top_z]) insert_boss(7.4,under_top-pcb_top_z+0.5);
-module pad_bosses() translate([pad_cx,pad_cy,0]) for(dx=[-ret_sx,ret_sx],dy=[-ret_sy,ret_sy])
-  translate([dx,dy,pad_top_z]) insert_boss(7.5,under_top-pad_top_z+0.5);
+module pad_bosses() translate([pad_cx,pad_cy,0]) for(q=ret_screws)
+  translate([q[0],q[1],boss_bottom]) insert_boss(7,under_top-boss_bottom+0.5);
 
 // Plate screws sit in the ring between the bevelled PCB outline and the wall (local half frame).
 o = 4.4;
@@ -140,12 +143,20 @@ module bottom() {
   for(dx=[-1,1],dy=[-1,1]) translate([dx*(bat_w/2+1.3),bat_y+dy*(bat_l/2+1.2),plate_t-0.2]) linear_extrude(height=2.4) rr(5,5,1);
   for(dx=[-car_w/2+4,car_w/2-4],dy=[-car_l/2+3,car_l/2-3]) translate([dx,car_y+dy,plate_t-0.2]) insert_boss_top(5,car_z-plate_t+0.2);
 }
+// Retainer: ring that carries the module edge, four ears that screw up into the pad bosses.
 module retainer() {
+  ring_h = pad_top_z - pad_t - (boss_bottom - ret_t);          // ring top meets the module underside
   difference() {
-    linear_extrude(height=ret_t) rr(ret_w,ret_h,4);
-    translate([0,0,-0.1]) linear_extrude(height=ret_t+0.2) rr(pad_w-3,pad_h-3,1.5);
-    for(dx=[-ret_sx,ret_sx],dy=[-ret_sy,ret_sy]) translate([dx,dy,-0.1]) cylinder(d=screw_hole,h=ret_t+0.2);
-    translate([-6,ret_h/2-8,-0.1]) cube([12,12,ret_t+0.2]);   // FFC exit to the rear
+    union() {
+      linear_extrude(height=ring_h) rr(ret_ring_w,ret_ring_h,3);
+      for(q=ret_screws) hull() {
+        translate([q[0],q[1]*0.5]) linear_extrude(height=ret_t) square([8,4],center=true);
+        translate([q[0],q[1]]) linear_extrude(height=ret_t) circle(d=7);
+      }
+    }
+    translate([0,0,-0.1]) linear_extrude(height=ring_h+0.2) rr(ret_in_w,ret_in_h,2);
+    for(q=ret_screws) translate([q[0],q[1],-0.1]) cylinder(d=screw_hole,h=ret_t+0.2);
+    translate([-6,ret_ring_h/2-6,-0.1]) cube([12,8,ring_h+0.2]);    // FFC exit to the rear
   }
 }
 
@@ -158,9 +169,9 @@ module keys() for(s=["left","right"]) half_pose(s) for(k=key_positions)
 module knobs() for(s=["left","right"]) half_pose(s) for(e=encoder_positions) translate([e[0],e[1],top_z+2.8]) cylinder(d=13,h=9);
 module battery() translate([0,bat_y,plate_t+0.65+bat_t/2]) cube([bat_w,bat_l,bat_t],center=true);
 module carrier() translate([0,car_y,car_z+car_t/2]) cube([car_w,car_l,car_t],center=true);
-module padface() translate([pad_cx,pad_cy,top_z-ov_t+0.03]) linear_extrude(height=ov_t-0.2) rr(ov_w,ov_h,2);
-module padbody() translate([pad_cx,pad_cy,pad_top_z-3]) linear_extrude(height=3) rr(pad_w,pad_h,2);
-module retainer_placed() translate([pad_cx,pad_cy,pad_top_z-ret_t]) retainer();
+module padface() translate([pad_cx,pad_cy,top_z-0.05]) linear_extrude(height=0.08) rr(pad_w,pad_h,2);
+module padbody() translate([pad_cx,pad_cy,pad_top_z-pad_t]) linear_extrude(height=under_top-(pad_top_z-pad_t)) rr(pad_w,pad_h,2);   // part below the skin
+module retainer_placed() translate([pad_cx,pad_cy,boss_bottom-ret_t]) retainer();
 module screen_body() translate([0,scr_cy,under_top-scr_t/2]) cube([scr_w,scr_h,scr_t],center=true);
 module cavity() translate([0,0,plate_t]) linear_extrude(height=under_top-plate_t) plan(wall);
 module usb_env() translate([usb_x,y_rear-wall-3.6,port_z]) cube([9,6,3.3],center=true);
@@ -185,4 +196,4 @@ else if(part=="carrier") carrier();
 else if(part=="padface") padface();
 else if(part=="overlap") intersection(){ by_name(chk_a); by_name(chk_b); }
 else if(part=="outside") difference(){ by_name(chk_a); by_name(chk_b); }
-else { shell(); translate([0,0,-0.1]) bottom(); pcbs(); switches(); keys(); knobs(); battery(); carrier(); padface(); translate([pad_cx,pad_cy,pad_top_z-ret_t]) retainer(); }
+else { shell(); translate([0,0,-0.1]) bottom(); pcbs(); switches(); keys(); knobs(); battery(); carrier(); padface(); retainer_placed(); }
