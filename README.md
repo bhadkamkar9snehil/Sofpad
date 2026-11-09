@@ -6,6 +6,22 @@ The current **R3 concept** combines two original Sofle RGB PCB halves in a singl
 
 > **Engineering status:** Source-verified architecture and preliminary CAD. This project is **not** a production-ready PCB, tested firmware, or validated LiPo charging design. The repository includes R1 and R2 historical concepts and R3 source files.
 
+## Render gallery
+
+### R3 — current single-controller Cirque concept
+
+![Sofpad R3: hero view, top view, rear USB-C and switch openings, and bottom service access](docs/images/sofpad-r3-gallery.webp)
+
+*Four views from the original R3 CAD render set: hero, top, rear ports, and service cover.*
+
+### R2 — earlier TPS43 unibody concept
+
+![Sofpad R2: hero view, top view, rear ports, and bottom service access](docs/images/sofpad-r2-gallery.webp)
+
+*Four views from the earlier R2 CAD design. R2 uses the TPS43 concept and is not the current R3 trackpad.*
+
+These galleries are optimized previews made from the **original eight PNG renders**. For full-resolution renders, use `sofle_single_controller/cad/render_*.png` and `sofle_unibody_v2/render_*.png` inside the [complete source ZIP](archives/Sofpad_All_Source_Files.zip).
+
 ## Quick links
 
 | Resource | Location |
@@ -17,6 +33,7 @@ The current **R3 concept** combines two original Sofle RGB PCB halves in a singl
 | **R3 original notes** | [README.md](hardware/r3/README.md) |
 | **Reference PCB** | [SofleKeyboard.kicad_pcb](hardware/r3/reference/Sofle_RGB/PCB/SofleKeyboard.kicad_pcb) |
 | **Earlier R1 / R2 concepts** | [R1](cad/r1/) · [R2](cad/r2/) |
+| **Render galleries** | [Current R3](docs/images/sofpad-r3-gallery.webp) · [Earlier R2](docs/images/sofpad-r2-gallery.webp) |
 | **Upstream license** | [LICENSE-SOFLE.txt](LICENSE-SOFLE.txt) |
 
 ## Design goals
@@ -108,6 +125,7 @@ Open the [R3 OpenSCAD design](cad/r3/SofleRGB_SingleController_Cirque.scad) to e
 Sofpad/
 ├── README.md
 ├── LICENSE-SOFLE.txt
+├── docs/images/                       Optimized R2 and R3 render galleries
 ├── archives/
 │   └── Sofpad_All_Source_Files.zip     Exact original complete source package
 ├── hardware/
@@ -130,7 +148,7 @@ Sofpad/
 
 ### Source-file integrity
 
-**The original ZIP is the authoritative source package.** The manual individual-file upload flattened version directories and overwrote some same-named files. Several files uploaded as **zero-byte blobs**, including the shared geometry, renders, and some STL exports. These empty files remain visible in the organized folders, but they cannot be used as valid CAD data. Extract the original archive for the exact working source of each revision.
+**The original ZIP is the authoritative source package.** The manual individual-file upload flattened version directories and overwrote some same-named files. Several files uploaded as **zero-byte blobs**, including shared geometry, renders, and some STL exports. An audit of the original 49 archive files found **21 exact individual-file matches, 14 empty files, 10 missing files, and 3 license-file differences**, plus the separate root layout PNG included in the archive. The original archive still contains the full source. The new render galleries do not replace full-resolution original PNG files. These empty files remain visible in the organized folders, but they cannot be used as valid CAD data. Extract the original archive for the exact working source of each revision.
 
 The original root README was also uploaded as an empty file. This README replaces it with project documentation.
 
