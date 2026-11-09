@@ -9,14 +9,14 @@ Status key: **Select** = exact orderable manufacturer part; **Check** = exact pr
 | Qty | Item | Manufacturer part number | Source / purchase link | INR each | Status |
 |---:|---|---|---|---:|---|
 | 1 | Single BLE/USB MCU module; 61-pad, 48 GPIO | Seeed `113990582` (Raytac `MDBT50Q-1MV2`) | [DigiKey India](https://www.digikey.in/en/products/detail/seeed-technology-co-ltd/113990582/9697025) | 1,141.32 | Select; Raytac antenna clearance required |
-| 1 | 43 × 40 mm I2C trackpad, ZIF, adhesive overlay | Azoteq `TPS43-201A-S` | [Mouser India](https://www.mouser.in/c/embedded-solutions/sensor-modules/?m=Azoteq) (search `TPS43-201A-S`) | about 423 | Select; stock varies; buy 2–3 spares; check lifecycle with Azoteq |
+| 1 | 65 × 49 mm I2C trackpad, ZIF, adhesive overlay, centre of case | Azoteq `TPS65-201A-S` | [Mouser India](https://www.mouser.in/c/embedded-solutions/sensor-modules/?m=Azoteq) (search `TPS65-201A-S`) | about 600 (estimate) | Buy exactly 1. Confirm price at checkout |
 | 1 | Single-cell charger with USB/system power path | TI `BQ24074RGTR` | [DigiKey India](https://www.digikey.in/en/products/detail/texas-instruments/BQ24074RGTR/5142985) | 232.19 | Select; design network pending (TS, ILIM, ISET) |
 | 1 | 3.3 V low-power buck, 300 mA | TI `TPS62740DSST` | [DigiKey India](https://www.digikey.in/en/products/detail/texas-instruments/TPS62740DSST/4503015) | 189.19 | Select; design network pending; no high-power RGB load |
 | 1 | Protected single-cell 1100 mAh LiPo with 75 mm cable | NOVA `603450` | [Robu India](https://robu.in/product/nova-603450-1100mah-3-7v-micro-lipo-battery-pack/) | 239.00 | Check pack dimensions, lead termination, max charge current |
 | 1 | USB-C, USB 2.0, 24-pin form | GCT `USB4085-GF-A` | [DigiKey India](https://www.digikey.in/en/products/detail/gct/USB4085-GF-A/9859733) | 86.95 | Select; footprint/port position to check |
 | 1 | Right-angle slide SPDT, 5 mm actuator | E-Switch `EG1213` | [DigiKey India](https://www.digikey.in/en/products/detail/e-switch/EG1213/101735) | 72.28 | Check against case slot |
 
-**Priced-parts subtotal (TPS43, sum of `INR_extended` in BOM.csv, 9 Nov 2026):** **₹3,336.74**. This excludes connectors, flex cables, protection, passive parts, PCB fabrication, assembly, printing, shipping, and taxes. It is **not** the complete project price.
+**Priced-parts subtotal (TPS65 and extras, sum of `INR_extended` in BOM.csv, 10 Nov 2026):** **₹3,933.70**. Includes estimates for the TPS65, haptic driver and actuator, accelerometer and feet. Excludes unpriced lines (PHR-2, passives), PCB fabrication, printing, shipping and tax.
 
 ## Electrical connectors, cables, and safety parts
 
@@ -25,7 +25,7 @@ Status key: **Select** = exact orderable manufacturer part; **Check** = exact pr
 | 4 | 16-pin 0.5 mm FFC lock sockets; one per PCB adapter and two on carrier | Molex `5034801600` | [DigiKey India](https://www.digikey.in/en/products/detail/molex/5034801600/2356627) | 147.42 | Select; reversible contacts, verify actual cable pin order |
 | 1 | Left 16-pin FFC, 203 mm, opposite-side contacts | GCT `05-16-D-0203-A-4-06-4-T` | [DigiKey India](https://www.digikey.in/en/products/detail/gct/05-16-D-0203-A-4-06-4-T/21266407) | 127.66 | Check length after measuring route |
 | 1 | Right 16-pin FFC, 50 mm, same-side contacts | GCT `05-16-A-0050-A-4-06-4-T` | [DigiKey India](https://www.digikey.in/en/products/detail/gct/05-16-A-0050-A-4-06-4-T/21266921) | 107.47 | Check length after measuring route |
-| 1 | 6-pin FPC host socket for TPS43 | TBD | — | — | **Open**: pitch not in datasheet text. Measure the TPS43 tail first. |
+| 2 | 6-pin FPC host sockets for TPS65 (1.0 mm and 0.5 mm) | Generic | — | — | Buy both pitches; fit the one that matches the TPS65 tail |
 | 1 | 2-pin 2.0 mm JST-PH PCB header | JST `S2B-PH-K-S` | [DigiKey India](https://www.digikey.in/en/products/detail/jst-sales-america-inc/S2B-PH-K-S/926626) | 11.47 | Select; verify polarity before insertion |
 | 1 | JST-PH 2-way matching housing | JST `PHR-2` | [DigiKey India search](https://www.digikey.in/en/products/result?keywords=PHR-2) | — | Check battery cable type |
 | 2 | JST-PH crimp sockets, 24–30 AWG | JST `SPH-002T-P0.5S` | [DigiKey India](https://www.digikey.in/en/products/detail/jst-sales-america-inc/SPH-002T-P0-5S/527358) | 3.91 | Check wire size; needs crimp tool |
@@ -43,7 +43,7 @@ The old tracked subtotal was **₹4,086.25** (Cirque version). The Cirque (₹92
 | 1 | Right Pro Micro socket adapter PCB | 24 pad footprint to 16-way FFC; uses only 14 active nets | **Design**: encoder/USB clearance to check |
 | 1 | Main unibody case | 390 × 135.85 mm upper shell, source-shaped key openings | Preliminary OpenSCAD model |
 | 1 | Bottom service cover | One 1100 mAh cell bay | Preliminary OpenSCAD model |
-| 1 | Trackpad bracket | Old 40 mm round Cirque retainer. **Obsolete.** Redo for the 43 × 40 mm TPS43. | CAD update pending |
+| 1 | Trackpad retainer | `retainer.stl`, 73 × 57 mm, for the 65 × 49 mm TPS65 | Done in CAD |
 | 1 set | Printed-case hardware | M2 heat-set inserts, matching short M2 screws, thin nonconductive sensor gasket, cell-safe adhesive | Select after actual wall and boss print test |
 | 2 | USB-C CC resistors | 5.1 kΩ ±1% each | Required on carrier |
 | 1 | TPS62740 inductor | 2.2 µH, saturation current selected to TI design | Exact vendor part after PCB layout |

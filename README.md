@@ -2,25 +2,30 @@
 
 **A compact, one-piece ergonomic keyboard based on Sofle RGB, with a built-in trackpad, one controller, and one battery.**
 
-The current **R3 concept** combines two original Sofle RGB PCB halves in a single printed unibody. A single nRF52840 controller scans both halves and operates a 40 mm Cirque SPI trackpad. One rechargeable LiPo powers the device. The planned interface provides wired USB HID and wireless Bluetooth Low Energy (BLE) HID.
+The current **R3 concept** puts two original Sofle RGB PCB halves in one printed unibody, tilted 12° in an Alice-style plan. One nRF52840 controller scans both halves. A large **Azoteq TPS65 trackpad sits in the centre between the thumb clusters**, so either thumb reaches it. One LiPo powers the device. The planned interface is wired USB HID and wireless BLE HID.
 
 > **Engineering status:** Source-verified architecture and preliminary CAD. This project is **not** a production-ready PCB, tested firmware, or validated LiPo charging design. The repository includes R1 and R2 historical concepts and R3 source files.
 
 ## Render gallery
 
-### R3 — current single-controller Cirque concept
+All renders come from the CAD in [cad/r3](cad/r3/), built by `render_case.py` from the exported STLs.
+They are in [docs/images](docs/images/).
 
-![Sofpad R3: hero view, top view, rear USB-C and switch openings, and bottom service access](docs/images/sofpad-r3-gallery.webp)
+### R3 — current Alice-style case with centre trackpad
 
-*Four views from the original R3 CAD render set: hero, top, rear ports, and service cover.*
+![Sofpad R3 hero view](docs/images/sofpad-r3-hero.png)
+
+![Sofpad R3 top view: tilted halves, OLED windows, encoders, centre trackpad](docs/images/sofpad-r3-top.png)
+
+![Sofpad R3 internals: PCB halves, battery and carrier on the service plate](docs/images/sofpad-r3-internals.png)
+
+![Sofpad R3 rear: USB-C and power switch](docs/images/sofpad-r3-rear.png)
+
+*Keycaps, knobs, battery, carrier and trackpad are fit-check envelopes. The shell, PCB outlines, key positions and mount holes are real geometry.*
 
 ### R2 — earlier TPS43 unibody concept
 
 ![Sofpad R2: hero view, top view, rear ports, and bottom service access](docs/images/sofpad-r2-gallery.webp)
-
-*Four views from the earlier R2 CAD design. R2 uses the TPS43 concept and is not the current R3 trackpad.*
-
-These galleries are optimized previews made from the **original eight PNG renders**. For full-resolution renders, use `sofle_single_controller/cad/render_*.png` and `sofle_unibody_v2/render_*.png` inside the [complete source ZIP](archives/Sofpad_All_Source_Files.zip).
 
 ## Quick links
 
@@ -29,17 +34,19 @@ These galleries are optimized previews made from the **original eight PNG render
 | **Complete original source package** | [Sofpad_All_Source_Files.zip](archives/Sofpad_All_Source_Files.zip) |
 | **R3 engineering specification** | [Architecture and electrical design](hardware/r3/ARCHITECTURE.md) |
 | **R3 bill of materials** | [BOM.md](hardware/r3/BOM.md) · [BOM.csv](hardware/r3/BOM.csv) |
-| **R3 CAD source** | [SofleRGB_SingleController_Cirque.scad](cad/r3/SofleRGB_SingleController_Cirque.scad) |
+| **R3 CAD source** | [Sofpad_R3_Alice.scad](cad/r3/Sofpad_R3_Alice.scad) · checks: [check_design.py](cad/r3/check_design.py) |
 | **R3 original notes** | [README.md](hardware/r3/README.md) |
 | **Reference PCB** | [SofleKeyboard.kicad_pcb](hardware/r3/reference/Sofle_RGB/PCB/SofleKeyboard.kicad_pcb) |
 | **Earlier R1 / R2 concepts** | [R1](cad/r1/) · [R2](cad/r2/) |
-| **Render galleries** | [Current R3](docs/images/sofpad-r3-gallery.webp) · [Earlier R2](docs/images/sofpad-r2-gallery.webp) |
+| **Renders** | [docs/images](docs/images/) |
 | **Upstream license** | [LICENSE-SOFLE.txt](LICENSE-SOFLE.txt) |
 
 ## Design goals
 
 - One nRF52840 microcontroller for all keyboard inputs, both encoders, and the touchpad.
 - One internal wired connection to each Sofle RGB PCB, using passive Pro Micro socket adapters.
+- Alice-style 12° tilt per half and a centre trackpad between the thumb clusters.
+- Both OLED windows and both rotary encoders stay in use.
 - One protected LiPo battery and one rear USB-C port for charging and USB HID.
 - USB keyboard and mouse HID plus BLE keyboard and mouse HID in the planned firmware.
 - A continuous upper shell, removable service cover, and trackpad retainer.
@@ -54,7 +61,7 @@ flowchart TB
     R["Right Sofle RGB PCB<br/>30 switch positions + encoder"] --> B["Right passive socket adapter"]
     A -->|"16-pin FFC"| MCU["One nRF52840 carrier PCB"]
     B -->|"16-pin FFC"| MCU
-    PAD["Cirque TM040040-2024-301<br/>40 mm SPI trackpad"] -->|"12-pin FFC / SPI"| MCU
+    PAD["Azoteq TPS65-201A-S<br/>65 x 49 mm I2C trackpad"] -->|"6-pin FPC / I2C"| MCU
     CELL["One protected 1100 mAh LiPo"] --> PWR["Charger + 3.3 V buck"]
     USBC["USB-C connector"] --> PWR
     PWR --> MCU
@@ -76,7 +83,7 @@ The source Sofle RGB PCB has **30 diode-protected switch positions per half**. T
 | Left columns | 6 | P0.25–P0.27, P1.00–P1.02 |
 | Left encoder A/B | 2 | P1.03–P1.04 |
 | Right encoder A/B | 2 | P1.05–P1.06 |
-| Trackpad SPI SCK/MISO/MOSI/SS/DR | 5 | P0.04–P0.08 |
+| Trackpad I2C SDA/SCL/RDY/NRST | 4 | P0.04–P0.07 |
 | Battery ADC | 1 | P0.02 |
 | USB and SWD | Dedicated | Module USB and debug pins |
 
@@ -86,9 +93,7 @@ The detailed signal mapping, original Pro Micro pad references, and Raytac modul
 
 ### Trackpad
 
-The current revision selects **Cirque TM040040-2024-301**, a **40 mm SPI** trackpad. The 2024 suffix identifies the SPI version. R1 and R2 used an earlier Azoteq TPS43 trackpad concept and must not be confused with the R3 design.
-
-The current trackpad connects through a 12-position FFC: SCK, MISO, MOSI, chip select, data ready, 3.3 V, and ground. The physical connector direction, PCB notches, and mechanical clearance still require a fit check.
+The current revision uses the **Azoteq TPS65-201A-S**: 65 × 49 mm, IQS550, I2C at 400 kHz, address 0x74, 6-pin FPC (RDY, NRST, GND, VDDHI, SCL, SDA). It shares its pinout and the ZMK driver with the TPS43. The pad sits in the centre of the case because both thumbs can reach it and the space between the tilted halves would otherwise be empty. The earlier Cirque SPI trackpad is retired.
 
 ## Charging and power
 
@@ -99,7 +104,7 @@ flowchart TD
   CHG --> SW["Master switch<br/>buck enable"]
   SW --> REG["TI TPS62740<br/>3.3 V regulator"]
   REG --> MCU["nRF52840 carrier"]
-  REG --> PAD["Cirque SPI trackpad"]
+  REG --> PAD["TPS65 I2C trackpad"]
   USB -->|"USB D+/D− and VBUS"| MCU
 ```
 
@@ -109,15 +114,15 @@ The R3 concept uses a protected **NOVA 603450, 1100 mAh** LiPo. The rear master 
 
 ## Mechanical concept
 
-The one-piece upper shell is about **390 × 136 mm**. Its layout contains both Sofle PCB halves, the 40 mm circular trackpad, a controller bay, battery space, and rear port cutouts.
+The one-piece upper shell is **383 × 153 × 17.5 mm**. The two Sofle halves are tilted 12° toward the user. The trackpad fills the front centre. The battery lies behind it, and the carrier PCB sits against the rear wall with USB-C and the power switch. Everything except the PCB halves rides on the removable service plate, so one set of screws opens the case.
 
 | Revision | Purpose | Important distinction |
 |---|---|---|
 | **R1** | Initial couch-style case and wiring study | Azoteq TPS43 |
 | **R2** | Intermediate one-piece shell, service cover, retainer | Azoteq TPS43 |
-| **R3** | Current single-controller mechanical and electrical plan | Cirque 40 mm SPI + nRF52840 |
+| **R3** | Current Alice-style case, single controller | Azoteq TPS65 centre pad + nRF52840 |
 
-Open the [R3 OpenSCAD design](cad/r3/SofleRGB_SingleController_Cirque.scad) to edit the current case concept. The CAD exports are preliminary and require real component measurements.
+Open the [R3 OpenSCAD design](cad/r3/Sofpad_R3_Alice.scad) to edit the case, and run `python cad/r3/check_design.py` after every change. The checks prove part clearances, cavity fit, single-piece shell and plate, and closed meshes. The CAD is preliminary and needs real component measurements.
 
 ## Repository structure
 
@@ -125,7 +130,7 @@ Open the [R3 OpenSCAD design](cad/r3/SofleRGB_SingleController_Cirque.scad) to e
 Sofpad/
 ├── README.md
 ├── LICENSE-SOFLE.txt
-├── docs/images/                       Optimized R2 and R3 render galleries
+├── docs/images/                       All renders (R3 PNGs, R2 gallery)
 ├── archives/
 │   └── Sofpad_All_Source_Files.zip     Exact original complete source package
 ├── hardware/
@@ -140,7 +145,7 @@ Sofpad/
 ├── cad/
 │   ├── r1/                             Original couch case and fit coupon
 │   ├── r2/                             Intermediate unibody
-│   └── r3/                             Current Cirque unibody and renders
+│   └── r3/                             Current Alice-style case, checks, render script
 └── docs/
     └── legacy/
         └── QMK_and_wiring.md          Historical two-controller wiring concept
@@ -157,7 +162,7 @@ The original root README was also uploaded as an empty file. This README replace
 | Part | Selected model |
 |---|---|
 | Wireless MCU | Raytac MDBT50Q-1MV2, Nordic nRF52840 |
-| Trackpad | Cirque TM040040-2024-301, 40 mm SPI |
+| Trackpad | Azoteq TPS65-201A-S, 65 x 49 mm I2C |
 | Power-path charger | TI BQ24074RGTR |
 | 3.3 V regulator | TI TPS62740DSST |
 | LiPo | NOVA 603450 protected 1100 mAh |
@@ -173,7 +178,7 @@ The R3 BOM lists reference part prices, not a final build cost. Custom PCBs, ass
 2. Finalize passive socket adapters and FFC contact orientation.
 3. Design the nRF52840 carrier, charger, regulator, USB-C and RF antenna area.
 4. Build and check a small mechanical fit sample before the full print.
-5. Implement keyboard scanning, encoders, Cirque SPI, USB HID, BLE HID, and power management.
+5. Implement keyboard scanning, encoders, TPS65 I2C, USB HID, BLE HID, and power management.
 6. Validate safe charging, wake/sleep operation, all inputs, wireless stability, and case fit.
 
 **R3 is a development project, not a tested finished product.**

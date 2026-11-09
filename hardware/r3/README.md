@@ -1,4 +1,4 @@
-# Sofle RGB couch keyboard — single nRF52840, single battery, Azoteq TPS43 I2C
+# Sofle RGB couch keyboard — single nRF52840, single battery, Azoteq TPS65 I2C
 
 Engineering package R3 · 9 November 2026
 
@@ -8,7 +8,7 @@ Engineering package R3 · 9 November 2026
 - Both existing ATmega32U4 Pro Micro boards are removed. Each socket receives a **passive adapter**.
 - Two internal 16-way flex cables connect the adapters to **one** nRF52840 carrier PCB.
 - Both halves share five row inputs. Each half keeps six separate column outputs and two encoder signals.
-- One **Azoteq TPS43-201A-S** 43 × 40 mm I2C trackpad sits in the right zone. **CAD still models the old round Cirque. Update it next.**
+- One **Azoteq TPS65-201A-S** 65 × 49 mm I2C trackpad sits in the centre of the case between the thumb clusters.
 - One protected 1100 mAh LiPo supplies the complete unit through a 3.3 V regulator.
 - The charger and USB HID data share one rear USB-C port. A rear switch controls regulator enable.
 - One MCU firmware image will provide Windows USB and BLE keyboard/mouse HID.
@@ -26,7 +26,7 @@ The source KiCad PCB was checked. The wiring architecture is feasible with one n
 | `verify_matrix.py` | Source KiCad net/pad checker (uses KiCad `pcbnew`) |
 | `source_pinmap.json` | Output of KiCad net verification |
 | `reference/Sofle_RGB/PCB/SofleKeyboard.kicad_pcb` | Exact upstream source PCB used for the verification |
-| `cad/SofleRGB_SingleController_Cirque.scad` | Editable parametric case geometry |
+| `cad/Sofpad_R3_Alice.scad` | Editable parametric case geometry |
 | `cad/sofle_rgb_geometry.scad` | Source-derived Sofle switch and mounting positions |
 | `cad/sofle_components.scad` | Source-derived board footprint and component reference points |
 | `cad/Unibody_Shell.stl` | Preliminary continuous upper shell for 3D printing |
@@ -48,7 +48,7 @@ RGB LEDs and OLED displays remain off in this low-power first revision. The sour
 
 ## Print and fit procedure
 
-1. Open `cad/SofleRGB_SingleController_Cirque.scad` in OpenSCAD.
+1. Open `cad/Sofpad_R3_Alice.scad` in OpenSCAD.
 2. Adjust dimensions after measuring the purchased trackpad and cell.
 3. Export each `part`: `shell`, `bottom`, and `trackpad_frame`.
 4. Print a local trackpad, USB-C, and switch fit sample first.

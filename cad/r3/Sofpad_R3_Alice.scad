@@ -97,6 +97,7 @@ module port_cuts() {
 
 // ----- Bosses -----
 module insert_boss(d,h) difference() { cylinder(d=d,h=h); translate([0,0,-0.1]) cylinder(d=insert_d,h=insert_depth+0.1); }
+module insert_boss_top(d,h) difference() { cylinder(d=d,h=h); translate([0,0,h-insert_depth]) cylinder(d=insert_d,h=insert_depth+0.1); }
 module pcb_bosses() for(s=["left","right"]) half_pose(s) for(h=board_mount_holes)
   translate([h[0],h[1],pcb_top_z]) insert_boss(7.4,under_top-pcb_top_z+0.5);
 module pad_bosses() translate([pad_cx,pad_cy,0]) for(dx=[-ret_sx,ret_sx],dy=[-ret_sy,ret_sy])
@@ -126,8 +127,8 @@ module bottom() {
     linear_extrude(height=plate_t) plan(wall+0.55);
     for(p=screws) translate([p[0],p[1],-0.1]) cylinder(d=screw_hole,h=plate_t+0.2);
   }
-  for(dx=[-1,1],dy=[-1,1]) translate([dx*(bat_w/2+1.3),bat_y+dy*(bat_l/2+1.2),plate_t]) linear_extrude(height=2.2) rr(5,5,1);
-  for(dx=[-car_w/2+4,car_w/2-4],dy=[-car_l/2+3,car_l/2-3]) translate([dx,car_y+dy,plate_t]) insert_boss(5,car_z-plate_t);
+  for(dx=[-1,1],dy=[-1,1]) translate([dx*(bat_w/2+1.3),bat_y+dy*(bat_l/2+1.2),plate_t-0.2]) linear_extrude(height=2.4) rr(5,5,1);
+  for(dx=[-car_w/2+4,car_w/2-4],dy=[-car_l/2+3,car_l/2-3]) translate([dx,car_y+dy,plate_t-0.2]) insert_boss_top(5,car_z-plate_t+0.2);
 }
 module retainer() {
   difference() {
@@ -149,7 +150,7 @@ module padface() translate([pad_cx,pad_cy,top_z-ov_t+0.03]) linear_extrude(heigh
 module padbody() translate([pad_cx,pad_cy,pad_top_z-3]) linear_extrude(height=3) rr(pad_w,pad_h,2);
 module retainer_placed() translate([pad_cx,pad_cy,pad_top_z-ret_t]) retainer();
 module cavity() translate([0,0,plate_t]) linear_extrude(height=under_top-plate_t) plan(wall);
-module usb_env() translate([usb_x,y_rear-wall-3,port_z]) cube([9,6,3.3],center=true);
+module usb_env() translate([usb_x,y_rear-wall-3.6,port_z]) cube([9,6,3.3],center=true);
 
 module by_name(n) {
   if(n=="battery") battery(); else if(n=="carrier") carrier(); else if(n=="pcbs") pcbs();

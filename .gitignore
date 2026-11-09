@@ -10,3 +10,4 @@ _autosave-*
 .DS_Store
 Thumbs.db
 cad/r3/build/*.log
+cad/r3/build/chk.stl

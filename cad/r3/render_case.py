@@ -11,6 +11,7 @@ from mathutils import Vector
 
 HERE = Path(__file__).resolve().parent
 BUILD = HERE / "build"
+OUT = HERE.parent.parent / "docs" / "images"
 
 
 def mat(name, color, rough=0.5, metal=0.0):
@@ -83,16 +84,16 @@ def shot(cam, name, loc, target, scale, w=1800, h=1000):
     s.render.engine = "CYCLES"
     s.cycles.samples = 24
     s.render.resolution_x, s.render.resolution_y = w, h
-    s.render.filepath = str(HERE / name)
+    s.render.filepath = str(OUT / name)
     bpy.ops.render.render(write_still=True)
     print("RENDERED", name, flush=True)
 
 
 cam = setup(["shell", "bottom", "keys", "knobs", "padface"])
-shot(cam, "render_hero.png", (-300, -420, 420), (20, 60, 0), 520)
-shot(cam, "render_top.png", (20, 60, 700), (20, 60, 0), 470)
+shot(cam, "sofpad-r3-hero.png", (-300, -420, 420), (0, 60, 0), 520)
+shot(cam, "sofpad-r3-top.png", (0, 60, 700), (0, 60, 0), 470)
 # internals: remove shell and keys to show PCBs, battery, carrier on the plate
 cam = setup(["bottom", "pcbs", "battery", "carrier", "retainer"])
-shot(cam, "render_internals.png", (20, 60, 700), (20, 60, 0), 470)
+shot(cam, "sofpad-r3-internals.png", (0, 60, 700), (0, 60, 0), 470)
 cam = setup(["shell", "bottom"])
-shot(cam, "render_rear.png", (30, 520, 120), (30, 100, 8), 300)
+shot(cam, "sofpad-r3-rear.png", (30, 520, 120), (30, 100, 8), 300)
