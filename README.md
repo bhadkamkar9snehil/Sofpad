@@ -184,6 +184,7 @@ Hardware
 Firmware and software (not started)
 7. ZMK board `sofpad_r3`: matrix, encoders, USB and Bluetooth, power.
 8. TPS65 driver and gestures, haptics, accelerometer wake. Use the Azoteq IQS550 driver's native two-finger gestures (scroll, no layer key), and test cursor acceleration on fast swipes on macOS and Windows (a commercial TPS43 board stutters there). Power the nRF52840 from a verified ZMK reference stack (XIAO nRF52840 boards are the proven one).
+   Power rules from other ZMK builds: no pull-up/pull-down that conducts at idle (10 kΩ at 3.3 V = 330 µA per encoder line; use the nRF internal pulls, driven only while scanning); keep the MCU able to sleep (µA asleep, mA awake); the memory-in-pixel screen is the right choice over OLED; measure the real draw on the bench and compare with the ZMK Power Profiler. QMK has an IQS5xx driver and the Linux kernel `iqs5xx.c` documents the IQS550 register protocol, so use them as references if the ZMK driver needs fixes.
 9. Screen UI and the USB raw HID link. Then `sofpad-host` on the PC.
 
 Deferred
