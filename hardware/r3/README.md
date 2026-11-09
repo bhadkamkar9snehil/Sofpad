@@ -1,4 +1,4 @@
-# Sofle RGB couch keyboard — single nRF52840, single battery, Cirque SPI
+# Sofle RGB couch keyboard — single nRF52840, single battery, Azoteq TPS43 I2C
 
 Engineering package R3 · 9 November 2026
 
@@ -8,7 +8,7 @@ Engineering package R3 · 9 November 2026
 - Both existing ATmega32U4 Pro Micro boards are removed. Each socket receives a **passive adapter**.
 - Two internal 16-way flex cables connect the adapters to **one** nRF52840 carrier PCB.
 - Both halves share five row inputs. Each half keeps six separate column outputs and two encoder signals.
-- One **Cirque TM040040-2024-301** 40 mm SPI trackpad sits in a circular recess on the right.
+- One **Azoteq TPS43-201A-S** 43 × 40 mm I2C trackpad sits in the right zone. **CAD still models the old round Cirque. Update it next.**
 - One protected 1100 mAh LiPo supplies the complete unit through a 3.3 V regulator.
 - The charger and USB HID data share one rear USB-C port. A rear switch controls regulator enable.
 - One MCU firmware image will provide Windows USB and BLE keyboard/mouse HID.
@@ -19,7 +19,8 @@ The source KiCad PCB was checked. The wiring architecture is feasible with one n
 
 | File | Purpose |
 |---|---|
-| `ARCHITECTURE.md` | Existing PCB nets, FFC wire table, MCU pin map, Cirque SPI pins, charging path, engineering gates |
+| `ELECTRICAL_REVIEW.md` | Datasheet check of the electronics, trackpad choice, open risks |
+| `ARCHITECTURE.md` | Existing PCB nets, FFC wire table, MCU pin map, TPS43 I2C pins, charging path, engineering gates |
 | `BOM.md` | Source-linked parts list with exact manufacturer numbers and India prices |
 | `BOM.csv` | Machine-readable component quantities, prices, and status |
 | `verify_matrix.py` | Source KiCad net/pad checker (uses KiCad `pcbnew`) |
@@ -30,7 +31,7 @@ The source KiCad PCB was checked. The wiring architecture is feasible with one n
 | `cad/sofle_components.scad` | Source-derived board footprint and component reference points |
 | `cad/Unibody_Shell.stl` | Preliminary continuous upper shell for 3D printing |
 | `cad/Service_Bottom.stl` | Preliminary removable bottom cover |
-| `cad/Cirque40_Retainer.stl` | Preliminary circular trackpad retaining plate |
+| `cad/Cirque40_Retainer.stl` | **Obsolete** round Cirque retaining plate. Redo for the TPS43. |
 | `cad/layout_components.json` | Key/encoder positions for illustration |
 | `cad/render_blender.py` | Code-native Blender rendering of CAD and illustrative keycaps |
 | `cad/render_*.png` | Concept images rendered from the actual STL geometry |
