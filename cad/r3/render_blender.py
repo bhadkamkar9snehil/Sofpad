@@ -188,7 +188,7 @@ def keyboard_appearance():
 
 
 def exploded_components():
-    retainer = load_mesh("Cirque40_Retainer.stl", "Cirque circular four-screw retainer", GRAPHITE)
+    retainer = load_mesh("TPS43_Retainer.stl", "Cirque circular four-screw retainer", GRAPHITE)
     retainer.location = (PAD_X,PAD_Y,9.9)
     battery = cube("One protected NOVA 603450 cell, indicative envelope",
                    (PAD_X,25,6.45), (54,38,8),BLUE,1.25)

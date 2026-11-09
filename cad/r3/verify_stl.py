@@ -43,6 +43,6 @@ def inspect(path):
 
 
 if __name__ == "__main__":
-    for part in ("Unibody_Shell.stl", "Service_Bottom.stl", "Cirque40_Retainer.stl"):
+    for part in ("Unibody_Shell.stl", "Service_Bottom.stl", "TPS43_Retainer.stl"):
         inspect(HERE / part)
     print("PASS: three closed STL triangle meshes")

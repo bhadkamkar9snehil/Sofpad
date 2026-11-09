@@ -31,7 +31,7 @@ The source KiCad PCB was checked. The wiring architecture is feasible with one n
 | `cad/sofle_components.scad` | Source-derived board footprint and component reference points |
 | `cad/Unibody_Shell.stl` | Preliminary continuous upper shell for 3D printing |
 | `cad/Service_Bottom.stl` | Preliminary removable bottom cover |
-| `cad/Cirque40_Retainer.stl` | **Obsolete** round Cirque retaining plate. Redo for the TPS43. |
+| `cad/TPS43_Retainer.stl` | **Obsolete** round Cirque retaining plate. Redo for the TPS43. |
 | `cad/layout_components.json` | Key/encoder positions for illustration |
 | `cad/render_blender.py` | Code-native Blender rendering of CAD and illustrative keycaps |
 | `cad/render_*.png` | Concept images rendered from the actual STL geometry |
