@@ -5,30 +5,44 @@ Quantity,Type,Manufacturer,MPN,INR_each,INR_extended,Status,Purchase_URL
 1,3.3V buck regulator,Texas Instruments,TPS62740DSST,189.19,189.19,Design network pending,https://www.digikey.in/en/products/detail/texas-instruments/TPS62740DSST/4503015
 1,Protected LiPo 1100mAh,NOVA,603450,239.00,239.00,Check actual pack and charge rate,https://robu.in/product/nova-603450-1100mah-3-7v-micro-lipo-battery-pack/
 1,USB-C receptacle,GCT,USB4085-GF-A,86.95,86.95,Select,https://www.digikey.in/en/products/detail/gct/USB4085-GF-A/9859733
-1,Power slide switch,E-Switch,EG1213,72.28,72.28,Check housing dimensions,https://www.digikey.in/en/products/detail/e-switch/EG1213/101735
-4,16-pin 0.5mm FFC socket,Molex,5034801600,147.42,589.68,Check cable contact direction,https://www.digikey.in/en/products/detail/molex/5034801600/2356627
-1,16-pin 203mm FFC,GCT,05-16-D-0203-A-4-06-4-T,127.66,127.66,Check route length,https://www.digikey.in/en/products/detail/gct/05-16-D-0203-A-4-06-4-T/21266407
-1,16-pin 50mm FFC,GCT,05-16-A-0050-A-4-06-4-T,107.47,107.47,Check route length,https://www.digikey.in/en/products/detail/gct/05-16-A-0050-A-4-06-4-T/21266921
-1,"6-pin FPC socket 1.0 mm pitch, TPS65 host (candidate A)",Generic (Robu or DigiKey India),"6-pin 1.0 mm ZIF, bottom contact",,,Buy both pitches; fit the one that matches the TPS43 tail; the other is returned/unused,
-1,"6-pin FPC socket 0.5 mm pitch, TPS65 host (candidate B)",Generic (Robu or DigiKey India),"6-pin 0.5 mm ZIF, bottom contact",,,Buy both pitches; fit the one that matches the TPS43 tail; the other is returned/unused,
+1,"Power slide switch SPDT, side actuator",C&K,PCM12SMTR,70.00,70.00,Replaces EG1213 (no KiCad footprint). DigiKey India; est price,https://www.digikey.in/en/products/result?keywords=PCM12SMTR
+4,16-pin 0.5mm FFC socket,Hirose,FH12-16S-0.5SH(55),147.42,589.68,Matches the PCB footprint. Price copied from the Molex line; confirm at DigiKey India,https://www.digikey.in/en/products/result?keywords=FH12-16S-0.5SH
+1,16-pin 203mm FFC,GCT,05-16-D-0203-A-4-06-4-T,127.66,127.66,Same-side (A) or opposite-side (D) contacts depends on how each adapter faces: buy both A and D of each length,https://www.digikey.in/en/products/detail/gct/05-16-D-0203-A-4-06-4-T/21266407
+1,16-pin 50mm FFC,GCT,05-16-A-0050-A-4-06-4-T,107.47,107.47,Buy both A and D of each length,https://www.digikey.in/en/products/detail/gct/05-16-A-0050-A-4-06-4-T/21266921
+1,"TPS65 FPC-to-pin breakout, 6-pin 1.0 mm pitch",Generic,FPC 6P 1.0mm adapter board,40.00,40.00,"The datasheet text does not give the flex pitch: buy both pitches, use the one that fits. Robu or similar; est",
+1,"TPS65 FPC-to-pin breakout, 6-pin 0.5 mm pitch",Generic,FPC 6P 0.5mm adapter board,40.00,40.00,See the 1.0 mm line. Robu or similar; est,
 1,2pin JST-PH PCB header,JST,S2B-PH-K-S,11.47,11.47,Check battery connector,https://www.digikey.in/en/products/detail/jst-sales-america-inc/S2B-PH-K-S/926626
 1,2pin JST-PH housing,JST,PHR-2,,,Required: mates with the S2B-PH-K-S header,https://www.digikey.in/en/products/result?keywords=PHR-2
 2,JST-PH crimp contact,JST,SPH-002T-P0.5S,3.91,7.82,Check wire AWG,https://www.digikey.in/en/products/detail/jst-sales-america-inc/SPH-002T-P0-5S/527358
 1,10k NTC,Vishay,NTCLE100E3103JB0,57.07,57.07,Tape to the cell; TS bias per BQ24074 datasheet,https://www.digikey.in/en/products/detail/vishay-beyschlag-draloric-bc-components/NTCLE100E3103JB0/769411
 1,USB ESD protection,STMicroelectronics,USBLC6-2SC6,51.60,51.60,Check stock and footprint,https://www.digikey.in/en/products/detail/stmicroelectronics/USBLC6-2SC6/1121688
-1,Custom carrier PCB,Custom,Unreleased,,,Not orderable before schematic and layout,
-2,Custom passive Pro Micro socket adapter PCBs,Custom,Unreleased,,,Not orderable before schematic and layout,
-1,3D printed shell,IAMRapid (India),shell.stl,,,"FDM PETG black, 600 mm bed, sanded, primed and matte painted; est INR 1500-3000",
-1,3D printed service cover,IAMRapid (India),bottom.stl,,,Same material and finish as shell; est INR 1000-2000,
-1,3D printed trackpad retainer,IAMRapid (India),retainer.stl,,,Same order; est INR 150,
-1,3.3V buck 2.2uH inductor,Murata,LQM21PN2R2MGHD,,,"TI-recommended 2.2 uH, 0805",
-2,USB-C CC1/CC2 pull-down resistors,Yageo,RC0402FR-075K1L,,,5.1k 1% 0402,
-1,LiPo charging resistor and capacitor network,Yageo,RC0402FR-072KL + RC0402FR-073K3L,,,"R_ISET 2.0k 1% (445 mA, 0.4C) and R_ILIM 3.3k (488 mA input); EN1 high, EN2 low",
-1,3.3V power and USB decoupling network,Murata/Samsung,"GRM155 0402 X5R: 10uF x6, 100nF x10, 1uF x4, 4.7k x2 (I2C)",,,Per TI/Raytac reference,
+1,"Carrier PCB, 4-layer 62 x 28 mm, 1.0 mm",Custom,pcb/carrier (Gerbers in hardware/r3/pcb/fab),,,Design generated and routed; see ARCHITECTURE.md manufacturing section,
+2,"Adapter PCB, 2-layer 18 x 33 mm, variants A and B (mirror), one of each",Custom,"pcb/adapter_a, pcb/adapter_b",,,Same panel order. Pin headers 1x12 male x4 below,
+1,3D printed shell,IAMRapid (India),shell.stl,,,"FDM, 600 mm bed; no paint. Filament chosen at order (matte black PETG or ASA); est INR 1500-3000",
+1,3D printed service cover,IAMRapid (India),bottom.stl,,,Same filament as shell; est INR 1000-2000,
+1,3D printed trackpad retainer,IAMRapid (India),retainer.stl,,,Same order and filament; est INR 150,
 1,Haptic driver for trackpad click,Texas Instruments,DRV2605LDGSR,150.00,150.00,DigiKey India; est price; I2C 0x5A on bus A,
 1,LRA haptic actuator 10 mm,Generic,LRA 10mm 3V,120.00,120.00,Robu or similar; est price,
 1,Accelerometer for wake-on-lift,STMicroelectronics,LIS3DHTR,90.00,90.00,DigiKey India; est price; I2C 0x18 on bus A,
 1,Stick-on rubber feet set,Generic,12mm x 2mm,60.00,60.00,Any Indian stationery or hardware shop; est,
-1,2.0in 240x320 IPS SPI screen (ST7789),Waveshare,2inch LCD Module,1000.00,1000.00,"Robu.in showed it in stock; electronicscomp.in lists 1060.82; est price, confirm at checkout",https://robu.in
+1,2.0in 240x320 IPS SPI screen (ST7789),Waveshare,2inch LCD Module,1000.00,1000.00,"Waveshare 2inch LCD Module (PH2.0 8-pin cable included). Robu.in showed it in stock; est price, confirm at checkout",https://robu.in
 1,Foam tape for screen and battery,Generic,3mm,,,Hardware shop,
 1,Heat-set inserts screws battery tape and gasket,Generic,"M2 x 3 mm brass inserts x20, M2 x 6 screws x20, 3 mm foam tape, battery tape",,,Quantities from CAD boss count,
+4,Pin header 1x12 male 2.54 mm (adapter plug side),Generic,1x12 2.54mm,10.00,40.00,Hardware shop; est,
+1,JST SH 6-pin top-entry socket (TPS65 cable),JST,SM06B-SRSS-TB,40.00,40.00,"DigiKey India; est. Needs SHR-06V-S-B housing, SSH-003T crimps, 4 cm wire",
+1,JST SH 2-pin socket (haptic LRA),JST,SM02B-SRSS-TB,30.00,30.00,DigiKey India; est. Needs SHR-02V-S-B housing and crimps,
+1,JST PH 8-pin header (screen),JST,S8B-PH-K-S,35.00,35.00,DigiKey India; est. Mating cable ships with the screen,
+2,Resistor 0402 5.1k 1%,Yageo,RC0402FR-075K1L,,,"R1, R2 USB CC",
+1,Resistor 0402 2.0k 1%,Yageo,RC0402FR-072KL,,,"R3 ISET, 445 mA charge",
+1,Resistor 0402 3.3k 1%,Yageo,RC0402FR-073K3L,,,R4 ILIM,
+1,Resistor 0402 47k 1%,Yageo,RC0402FR-0747KL,,,"R5 charge timer, about 6 h",
+1,Resistor 0402 3.0k 1%,Yageo,RC0402FR-073KL,,,"R6 termination, about 45 mA",
+1,Resistor 0402 100k 1%,Yageo,RC0402FR-07100KL,,,R7 EN1 pull-up,
+2,Resistor 0402 4.7k 1%,Yageo,RC0402FR-074K7L,,,"R8, R9 I2C pull-ups",
+2,Resistor 0402 1M 1%,Yageo,RC0402FR-071ML,,,"R10, R11 battery sense divider",
+1,Resistor 0402 10k 1%,Yageo,RC0402FR-0710KL,,,R12 LIS3DH address select,
+3,Capacitor 0402 1uF X5R,Murata/Samsung,GRM155 1uF 10V,,,"C1, C8, C9",
+3,Capacitor 0402 100nF X7R,Murata/Samsung,GRM155 100nF 16V,,,"C7, C10, C11",
+1,Capacitor 0603 4.7uF X5R,Murata/Samsung,GRM188 4.7uF 10V,,,C4,
+5,Capacitor 0603 10uF X5R,Murata/Samsung,GRM188 10uF 10V,,,"C2, C3, C5, C6, C12",
+1,Inductor 0805 2.2uH,Murata,LQM21PN2R2MGHD,,,"L1, TPS62740 reference value",

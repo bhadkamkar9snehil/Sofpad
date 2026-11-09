@@ -150,9 +150,9 @@ Current CAD: `cad/r3/Sofpad_R3_Alice.scad`. Run `python cad/r3/check_design.py` 
 | Keyboard firmware | ZMK (Zephyr) on the nRF52840 with a custom board `sofpad_r3`. 12 column outputs, 5 row inputs with pull-downs, `diode-direction = "col2row"`. Two EC11 encoders. |
 | Trackpad | `AYM1607/zmk-driver-azoteq-iqs5xx` on I2C 0x74. It is tested on TPS43 and TPS65. Add tap, scroll and two-finger gestures through ZMK input processors. |
 | Haptics, motion | Small ZMK module: DRV2605L effects on tap and click. Zephyr `st,lis2dh` driver, interrupt wakes from idle (not soft-off; see the power section). |
-| Screen | Zephyr ST7789 display driver and LVGL. Screens: layer and mode, battery, USB or Bluetooth state, clock, media, PC stats. |
-| PC link (now) | USB raw HID: a custom report carries the display data from the PC. Same cable does keyboard, mouse and charging. |
-| PC app | `sofpad-host`: a small tray app. Starts as Python with `hidapi`. Sends time, CPU and GPU load, volume, now playing (Windows media session). |
+| Screen | Zephyr ST7789 display driver and LVGL. Screens that need no PC: layer and mode, battery, USB or Bluetooth state, uptime. With the optional app: clock, media, PC stats. |
+| PC link (optional) | USB raw HID: a custom report can carry extra data to the screen. The keyboard, trackpad and screen work with no PC software at all. |
+| PC app (optional, later) | `sofpad-host`: a small tray app for extra screen data (clock sync, CPU, volume, now playing). Never required. |
 | PC link over Bluetooth | Custom GATT service for the same display data. Deferred. |
 | Build | Local `west` build, then GitLab CI on the self-hosted runners. GitHub Actions is not allowed. Firmware lives in `firmware/` when started. |
 | Updates | USB DFU first. Over-the-air later. |

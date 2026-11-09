@@ -174,22 +174,16 @@ The R3 BOM lists reference part prices, not a final build cost. Custom PCBs, ass
 ## Remaining engineering work
 
 Hardware
-1. Measure the real TPS65, 2.0 in screen module, NOVA cell, connectors and switch. Update the CAD envelopes.
-2. Draw the carrier PCB and two passive adapter PCBs in KiCad. Run ERC and DRC.
-3. Confirm the TPS65 FPC pitch (both sockets are on the BOM) and the nRF pad numbers for the screen pins.
-4. Check charger behaviour with VBUS present and the switch OFF on a bench build.
-5. Order, print and fit a test piece (switch, plate, screen window, trackpad) before the full shell.
-6. Paint finish and print vendor quote (IAMRapid).
+1. Carrier and adapter PCBs: generated, ERC clean, routed. Finish DRC, then order (see Manufacturing in `ARCHITECTURE.md`).
+2. Print a small fit-test piece, then the full shell (no paint; filament chosen at order).
+3. Confirm the TPS65 flex pitch when the part arrives (both breakout boards are on the BOM).
 
 Firmware and software (not started)
-7. ZMK board `sofpad_r3`: matrix, encoders, USB and Bluetooth, power.
-8. TPS65 driver and gestures, haptics, accelerometer wake. Use the Azoteq IQS550 driver's native two-finger gestures (scroll, no layer key), and test cursor acceleration on fast swipes on macOS and Windows (a commercial TPS43 board stutters there). Power the nRF52840 from a verified ZMK reference stack (XIAO nRF52840 boards are the proven one).
-   Power rules from other ZMK builds: no pull-up/pull-down that conducts at idle (10 kΩ at 3.3 V = 330 µA per encoder line; use the nRF internal pulls, driven only while scanning); keep the MCU able to sleep (µA asleep, mA awake); the memory-in-pixel screen is the right choice over OLED; measure the real draw on the bench and compare with the ZMK Power Profiler. QMK has an IQS5xx driver and the Linux kernel `iqs5xx.c` documents the IQS550 register protocol, so use them as references if the ZMK driver needs fixes.
-   The full power and sleep/wake design is in [ARCHITECTURE.md](hardware/r3/ARCHITECTURE.md#power-and-sleepwake-design-decided-10-nov-2026): idle stays in System ON (no reboot on wake), every part has a µA wake path, and an accelerometer pre-wake hides the Bluetooth reconnect.
-9. Screen UI and the USB raw HID link. Then `sofpad-host` on the PC.
+4. ZMK board `sofpad_r3`: matrix, encoders, USB and Bluetooth, power.
+5. TPS65 driver and gestures, haptics, accelerometer wake, screen UI.
 
-Deferred
-10. Hinged tenting lift for each half.
-11. Display data over Bluetooth, over-the-air updates.
+Optional and deferred
+6. `sofpad-host` PC app for extra screen data. Never required.
+7. Hinged tenting lift for each half, display data over Bluetooth, over-the-air updates.
 
 **R3 is a development project, not a tested finished product.**

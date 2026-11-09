@@ -16,7 +16,7 @@ Status key: **Select** = exact orderable manufacturer part; **Check** = exact pr
 | 1 | USB-C, USB 2.0, 24-pin form | GCT `USB4085-GF-A` | [DigiKey India](https://www.digikey.in/en/products/detail/gct/USB4085-GF-A/9859733) | 86.95 | Select; footprint/port position to check |
 | 1 | Right-angle slide SPDT, 5 mm actuator | E-Switch `EG1213` | [DigiKey India](https://www.digikey.in/en/products/detail/e-switch/EG1213/101735) | 72.28 | Check against case slot |
 
-**Priced-parts subtotal (sum of `INR_extended` in BOM.csv, 10 Nov 2026):** **₹4,933.70**. Includes estimates for the TPS65, the 2.0 in screen, haptic parts, accelerometer and feet. Excludes unpriced lines (PHR-2, passives, foam), PCB fabrication, printing, shipping and tax. The full line list is `BOM.csv`.
+**Priced-parts subtotal (sum of `INR_extended` in BOM.csv, 10 Nov 2026):** **₹5,156.42**. Many lines are estimates (marked "est"). Excludes unpriced lines, PCB fabrication and assembly, printing, shipping and tax. The full line list is `BOM.csv`.
 
 ## Electrical connectors, cables, and safety parts
 

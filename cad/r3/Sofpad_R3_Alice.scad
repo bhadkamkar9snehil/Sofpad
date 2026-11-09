@@ -141,7 +141,11 @@ module bottom() {
     for(p=screws) translate([p[0],p[1],-0.1]) cylinder(d=screw_hole,h=plate_t+0.2);
   }
   for(dx=[-1,1],dy=[-1,1]) translate([dx*(bat_w/2+1.3),bat_y+dy*(bat_l/2+1.2),plate_t-0.2]) linear_extrude(height=2.4) rr(5,5,1);
-  for(dx=[-car_w/2+4,car_w/2-4],dy=[-car_l/2+3,car_l/2-3]) translate([dx,car_y+dy,plate_t-0.2]) insert_boss_top(5,car_z-plate_t+0.2);
+  // carrier: four foam pads under the corners and four locator posts at the edges (no screws)
+  for(sx=[-1,1],sy=[-1,1]) {
+    translate([sx*(car_w/2-4),car_y+sy*(car_l/2-4),plate_t-0.2]) linear_extrude(height=car_z-plate_t+0.2) square([8,8],center=true);
+    translate([sx*(car_w/2+0.9),car_y+sy*(car_l/2-4),plate_t-0.2]) linear_extrude(height=car_z+car_t-plate_t+0.2) square([1.6,8],center=true);
+  }
 }
 // Retainer: ring that carries the module edge, four ears that screw up into the pad bosses.
 module retainer() {
