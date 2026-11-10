@@ -1,0 +1,139 @@
+C:\Users\Admin\Documents\Sofpad\cad\r3\render_full.py:45: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  m.use_nodes = True
+C:\Users\Admin\Documents\Sofpad\cad\r3\render_full.py:166: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  gm.use_nodes = True
+09:06:06 | INFO: Data are loaded, start creating Blender stuff
+09:06:06 | INFO: Blender create Mesh node JST_SH_SM02B-SRSS-TB_1x02-1MP_P1.00mm_Horizontal
+09:06:06 | INFO: Blender create Mesh node R_0402_1005Metric
+09:06:06 | INFO: Blender create Mesh node C_0603_1608Metric
+09:06:06 | INFO: Blender create Mesh node MSOP-10_3x3mm_P0.5mm
+09:06:06 | INFO: Blender create Mesh node L_0805_2012Metric
+09:06:06 | INFO: Blender create Mesh node JST_SH_SM02B-SRSS-TB_1x02-1MP_P1.00mm_Horizontal
+09:06:06 | INFO: Blender create Mesh node JST_SH_SM06B-SRSS-TB_1x06-1MP_P1.00mm_Horizontal
+09:06:06 | INFO: Blender create Mesh node USB_C_Receptacle_GCT_USB4085
+09:06:07 | INFO: Blender create Mesh node C_0402_1005Metric
+09:06:07 | INFO: Blender create Mesh node body
+09:06:07 | INFO: Blender create Mesh node lock
+09:06:07 | INFO: Blender create Mesh node pins
+09:06:07 | INFO: Blender create Mesh node Raytac_MDBT50Q
+09:06:07 | INFO: Blender create Mesh node R_0402_1005Metric
+09:06:07 | INFO: Blender create Mesh node SOT-23-6
+09:06:07 | INFO: Blender create Mesh node body
+09:06:07 | INFO: Blender create Mesh node lock
+09:06:07 | INFO: Blender create Mesh node pins
+09:06:07 | INFO: Blender create Mesh node Fusion_sp
+09:06:07 | INFO: Blender create Mesh node C_0603_1608Metric
+09:06:07 | INFO: Blender create Mesh node R_0402_1005Metric
+09:06:07 | INFO: Blender create Mesh node R_0402_1005Metric
+09:06:07 | INFO: Blender create Mesh node R_0402_1005Metric
+09:06:07 | INFO: Blender create Mesh node C_0603_1608Metric
+09:06:07 | INFO: Blender create Mesh node R_0402_1005Metric
+09:06:07 | INFO: Blender create Mesh node C_0402_1005Metric
+09:06:07 | INFO: Blender create Mesh node C_0603_1608Metric
+09:06:07 | INFO: Blender create Mesh node C_0402_1005Metric
+09:06:07 | INFO: Blender create Mesh node R_0402_1005Metric
+09:06:07 | INFO: Blender create Mesh node C_0402_1005Metric
+09:06:07 | INFO: Blender create Mesh node C_0402_1005Metric
+09:06:07 | INFO: Blender create Mesh node R_0402_1005Metric
+09:06:07 | INFO: Blender create Mesh node R_0402_1005Metric
+09:06:07 | INFO: Blender create Mesh node C_0603_1608Metric
+09:06:07 | INFO: Blender create Mesh node R_0402_1005Metric
+09:06:07 | INFO: Blender create Mesh node R_0402_1005Metric
+09:06:07 | INFO: Blender create Mesh node R_0402_1005Metric
+09:06:07 | INFO: Blender create Mesh node LGA_16_3x3mm_P05mm_LayoutBorder3x5y
+09:06:07 | INFO: Blender create Mesh node R_0402_1005Metric
+09:06:07 | INFO: Blender create Mesh node C_0603_1608Metric
+09:06:07 | INFO: Blender create Mesh node R_0402_1005Metric
+09:06:07 | INFO: Blender create Mesh node C_0402_1005Metric
+09:06:07 | INFO: Blender create Mesh node R_0402_1005Metric
+09:06:07 | INFO: Blender create Mesh node R_0402_1005Metric
+09:06:07 | INFO: Blender create Mesh node carrier_PCB
+09:06:07 | INFO: glTF import finished in 0.59s
+C:\Users\Admin\Documents\Sofpad\cad\r3\render_full.py:45: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  m.use_nodes = True
+C:\Users\Admin\Documents\Sofpad\cad\r3\render_full.py:210: DeprecationWarning: 'World.use_nodes' is expected to be removed in Blender 6.0
+  w.use_nodes = True
+01:07.844  render           | Saved: 'C:\Users\Admin\Documents\Sofpad\docs\images\sofpad-r3-hero.png'
+RENDERED sofpad-r3-hero.png
+02:21.688  render           | Saved: 'C:\Users\Admin\Documents\Sofpad\docs\images\sofpad-r3-top.png'
+RENDERED sofpad-r3-top.png
+C:\Users\Admin\Documents\Sofpad\cad\r3\render_full.py:166: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  gm.use_nodes = True
+09:08:25 | INFO: Data are loaded, start creating Blender stuff
+09:08:25 | INFO: Blender create Mesh node JST_SH_SM02B-SRSS-TB_1x02-1MP_P1.00mm_Horizontal
+09:08:25 | INFO: Blender create Mesh node R_0402_1005Metric
+09:08:25 | INFO: Blender create Mesh node C_0603_1608Metric
+09:08:25 | INFO: Blender create Mesh node MSOP-10_3x3mm_P0.5mm
+09:08:25 | INFO: Blender create Mesh node L_0805_2012Metric
+09:08:25 | INFO: Blender create Mesh node JST_SH_SM02B-SRSS-TB_1x02-1MP_P1.00mm_Horizontal
+09:08:25 | INFO: Blender create Mesh node JST_SH_SM06B-SRSS-TB_1x06-1MP_P1.00mm_Horizontal
+09:08:25 | INFO: Blender create Mesh node USB_C_Receptacle_GCT_USB4085
+09:08:25 | INFO: Blender create Mesh node C_0402_1005Metric
+09:08:25 | INFO: Blender create Mesh node body
+09:08:25 | INFO: Blender create Mesh node lock
+09:08:25 | INFO: Blender create Mesh node pins
+09:08:25 | INFO: Blender create Mesh node Raytac_MDBT50Q
+09:08:25 | INFO: Blender create Mesh node R_0402_1005Metric
+09:08:25 | INFO: Blender create Mesh node SOT-23-6
+09:08:25 | INFO: Blender create Mesh node body
+09:08:25 | INFO: Blender create Mesh node lock
+09:08:25 | INFO: Blender create Mesh node pins
+09:08:25 | INFO: Blender create Mesh node Fusion_sp
+09:08:25 | INFO: Blender create Mesh node C_0603_1608Metric
+09:08:25 | INFO: Blender create Mesh node R_0402_1005Metric
+09:08:25 | INFO: Blender create Mesh node R_0402_1005Metric
+09:08:25 | INFO: Blender create Mesh node R_0402_1005Metric
+09:08:25 | INFO: Blender create Mesh node C_0603_1608Metric
+09:08:25 | INFO: Blender create Mesh node R_0402_1005Metric
+09:08:25 | INFO: Blender create Mesh node C_0402_1005Metric
+09:08:25 | INFO: Blender create Mesh node C_0603_1608Metric
+09:08:25 | INFO: Blender create Mesh node C_0402_1005Metric
+09:08:25 | INFO: Blender create Mesh node R_0402_1005Metric
+09:08:25 | INFO: Blender create Mesh node C_0402_1005Metric
+09:08:25 | INFO: Blender create Mesh node C_0402_1005Metric
+09:08:25 | INFO: Blender create Mesh node R_0402_1005Metric
+09:08:25 | INFO: Blender create Mesh node R_0402_1005Metric
+09:08:25 | INFO: Blender create Mesh node C_0603_1608Metric
+09:08:25 | INFO: Blender create Mesh node R_0402_1005Metric
+09:08:25 | INFO: Blender create Mesh node R_0402_1005Metric
+09:08:25 | INFO: Blender create Mesh node R_0402_1005Metric
+09:08:25 | INFO: Blender create Mesh node LGA_16_3x3mm_P05mm_LayoutBorder3x5y
+09:08:25 | INFO: Blender create Mesh node R_0402_1005Metric
+09:08:25 | INFO: Blender create Mesh node C_0603_1608Metric
+09:08:25 | INFO: Blender create Mesh node R_0402_1005Metric
+09:08:25 | INFO: Blender create Mesh node C_0402_1005Metric
+09:08:25 | INFO: Blender create Mesh node R_0402_1005Metric
+09:08:25 | INFO: Blender create Mesh node R_0402_1005Metric
+09:08:25 | INFO: Blender create Mesh node carrier_PCB
+09:08:25 | INFO: glTF import finished in 0.36s
+03:34.063  render           | Saved: 'C:\Users\Admin\Documents\Sofpad\docs\images\sofpad-r3-internals.png'
+RENDERED sofpad-r3-internals.png
+04:45.219  render           | Saved: 'C:\Users\Admin\Documents\Sofpad\docs\images\sofpad-r3-internals-3q.png'
+RENDERED sofpad-r3-internals-3q.png
+06:03.531  render           | Saved: 'C:\Users\Admin\Documents\Sofpad\docs\images\sofpad-r3-bay.png'
+RENDERED sofpad-r3-bay.png
+Blender 5.2.3 LTS (hash e13b728c6880 built 2026-10-22 01:37:16)
+Timer 'STL Import' took 3.40 ms
+Timer 'STL Import' took 1.87 ms
+Timer 'STL Import' took 0.28 ms
+Timer 'STL Import' took 1.46 ms
+Timer 'STL Import' took 0.78 ms
+Timer 'STL Import' took 0.66 ms
+Timer 'STL Import' took 0.38 ms
+Timer 'STL Import' took 0.27 ms
+Timer 'STL Import' took 0.48 ms
+Timer 'STL Import' took 4.10 ms
+Timer 'STL Import' took 11.96 ms
+Timer 'STL Import' took 0.41 ms
+Timer 'STL Import' took 3.45 ms
+Timer 'STL Import' took 2.80 ms
+Timer 'STL Import' took 0.42 ms
+Timer 'STL Import' took 1.16 ms
+Timer 'STL Import' took 0.79 ms
+Timer 'STL Import' took 0.63 ms
+Timer 'STL Import' took 0.40 ms
+Timer 'STL Import' took 0.40 ms
+Timer 'STL Import' took 0.72 ms
+Timer 'STL Import' took 0.61 ms
+
+Blender quit

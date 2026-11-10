@@ -236,7 +236,6 @@ def place_carrier(objs):
     mx = Vector((max(p.x for p in pts), max(p.y for p in pts), max(p.z for p in pts)))
     ext = mx - mn
     # glTF is y-up: the board plane is x/z. Rotate so the board lies in x/y with top side up.
-    root.rotation_euler = (math.radians(90), 0, 0)
     bpy.context.view_layer.update()
     pts = [o.matrix_world @ Vector(c) for o in objs if o.type == "MESH" for c in o.bound_box]
     mn = Vector((min(p.x for p in pts), min(p.y for p in pts), min(p.z for p in pts)))
@@ -251,6 +250,9 @@ def place_carrier(objs):
 
 
 def shot(cam, name, loc, target, scale, w=2000, h=1100, persp=False, lens=60, samples=36):
+    import os
+    if os.environ.get("SHOTS") and name not in os.environ["SHOTS"].split(","):
+        return
     cam.location = loc
     look(cam, target)
     if persp:

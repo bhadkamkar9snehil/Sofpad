@@ -1,8 +1,4 @@
 widened 2 removed vias 0
-carrier: 1 errors, 2 warnings, 4 unconnected {'clearance': 1, 'via_dangling': 2}
-   clearance Clearance violation ( clearance 0.1500 mm; actual 0.1475 mm) ['Track [+3V3] on B.Cu, length 1.0949 mm', 'Track [GND] on B.Cu, length 0.2828 mm']
-   unconnected: ['Track [GND] on F.Cu, length 1.1000 mm', 'Track [GND] on F.Cu, length 1.0000 mm']
-   unconnected: ['Pad 5 [PGOOD] of U1 on F.Cu', 'Pad 7 [PGOOD] of U2 on B.Cu']
-   unconnected: ['Pad 7 [HAPTIC_EN] of U1 on F.Cu', 'Pad 5 [HAPTIC_EN] of U4 on F.Cu']
-   unconnected: ['Pad 6 [EN1] of U2 on B.Cu', 'Track [EN1] on B.Cu, length 0.5986 mm']
+carrier: 1 errors, 1 warnings, 0 unconnected {'clearance': 1, 'via_dangling': 1}
+   clearance Clearance violation ( clearance 0.1500 mm; actual 0.1475 mm) ['Track [+3V3] on B.Cu, length 1.0933 mm', 'Track [GND] on B.Cu, length 0.2828 mm']
 done

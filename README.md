@@ -34,9 +34,10 @@ Hardware design is complete and being finished for ordering. Nothing is built or
 |---|---|
 | Case CAD | Done. Automated checks pass: no part overlaps, everything fits its cavity, shell and plate are single solids, meshes are closed |
 | Schematics | Carrier and both adapters generated, ERC clean |
-| PCB layout | Adapters routed, DRC clean. Carrier routed, final DRC pass in progress |
+| PCB layout | Carrier and both adapters routed. DRC: 0 errors, 0 unconnected |
+| Verification without hardware | Schematic, layout and generator netlists agree. Every key, encoder and ground path traced from the Sofle PCB to the nRF52840 GPIO. Power, divider and bus values checked against datasheet formulas. See [ARCHITECTURE.md](hardware/r3/ARCHITECTURE.md) |
 | Bill of materials | Done, India sourcing, about ₹5,156 in parts (some prices are estimates) |
-| Fabrication | PCB fab files exported for the adapters. Quotes and orders not placed |
+| Fabrication | Fab files exported for the carrier and both adapters (`hardware/r3/pcb/fab`). Quotes and orders not placed |
 | Firmware | Not started (ZMK) |
 | Bench test | Months away, after hardware is ordered and built |
 
@@ -100,7 +101,7 @@ Order settings (layers, mask, finish, assembly) are in the Manufacturing section
 
 ## Remaining work
 
-1. Finish the carrier DRC, export fab files, collect quotes (JLCPCB and Indian fabs), order boards and case.
+1. Collect quotes (JLCPCB and Indian fabs) from the exported fab files, then order boards and case.
 2. Print a small fit-test piece, then the full shell.
 3. Confirm the trackpad flex pitch when the part arrives (both breakout boards are on the BOM).
 4. Firmware: ZMK board definition, matrix, encoders, USB and Bluetooth, trackpad gestures, haptics, wake on lift, screen.
