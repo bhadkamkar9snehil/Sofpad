@@ -1,189 +1,115 @@
 # Sofpad
 
-**A compact, one-piece ergonomic keyboard based on Sofle RGB, with a built-in trackpad, one controller, and one battery.**
-
-The current **R3 concept** puts two original Sofle RGB PCB halves in one printed unibody, tilted 12° in an Alice-style plan. One nRF52840 controller scans both halves. A large **Azoteq TPS65 trackpad sits in the centre between the thumb clusters**, so either thumb reaches it. One LiPo powers the device. The planned interface is wired USB HID and wireless BLE HID.
-
-> **Engineering status:** Source-verified architecture and preliminary CAD. This project is **not** a production-ready PCB, tested firmware, or validated LiPo charging design. The repository includes R1 and R2 historical concepts and R3 source files.
-
-## Render gallery
-
-All renders come from the CAD in [cad/r3](cad/r3/), built by `render_case.py` from the exported STLs.
-They are in [docs/images](docs/images/).
-
-### R3 — current Alice-style case with centre trackpad
+**A wireless, split-layout mechanical keyboard in one piece: two Sofle RGB boards in an Alice-style tilted case, with a trackpad between the thumbs, one screen and one battery.**
 
 ![Sofpad R3 hero view](docs/images/sofpad-r3-hero.png)
 
-![Sofpad R3 top view: tilted halves, centre trackpad, screen, encoders](docs/images/sofpad-r3-top.png)
+## What it is
 
-![Sofpad R3 internals: PCB halves, battery and carrier on the service plate](docs/images/sofpad-r3-internals.png)
+Sofpad is a keyboard for the sofa and the desk. Two original [Sofle RGB](https://github.com/josefadamcik/SofleKeyboard) PCBs sit in a single printed shell, each tilted 12° like an Alice keyboard, so your hands rest naturally and the keyboard stays one object you can carry and lay on your lap. Between the thumb clusters sits a large trackpad that either thumb reaches, so the mouse never needs a separate hand movement.
 
-![Sofpad R3 rear: USB-C and power switch](docs/images/sofpad-r3-rear.png)
+One controller scans both halves. It talks to the computer over **USB-C cable or Bluetooth**, your choice at any time. The case is designed to look at home in a living room, and to be clean and serviceable on the inside: everything except the key boards rides on one removable plate.
 
-*Keycaps, knobs, battery, carrier and trackpad are fit-check envelopes. The shell, PCB outlines, key positions and mount holes are real geometry.*
+## Features
 
-### R2 — earlier TPS43 unibody concept
-
-![Sofpad R2: hero view, top view, rear ports, and bottom service access](docs/images/sofpad-r2-gallery.webp)
-
-## Quick links
-
-| Resource | Location |
+| | |
 |---|---|
-| **Complete original source package** | [Sofpad_All_Source_Files.zip](archives/Sofpad_All_Source_Files.zip) |
-| **R3 engineering specification** | [Architecture and electrical design](hardware/r3/ARCHITECTURE.md) |
-| **R3 bill of materials** | [BOM.md](hardware/r3/BOM.md) · [BOM.csv](hardware/r3/BOM.csv) |
-| **R3 CAD source** | [Sofpad_R3_Alice.scad](cad/r3/Sofpad_R3_Alice.scad) · checks: [check_design.py](cad/r3/check_design.py) |
-| **Reference PCB** | [SofleKeyboard.kicad_pcb](hardware/r3/reference/Sofle_RGB/PCB/SofleKeyboard.kicad_pcb) |
-| **Earlier R1 / R2 concepts** | [R1](cad/r1/) · [R2](cad/r2/) |
-| **Renders** | [docs/images](docs/images/) |
-| **Upstream license** | [LICENSE-SOFLE.txt](LICENSE-SOFLE.txt) |
+| **Layout** | Sofle RGB, 30 keys per half, tilted 12° per half in an Alice-style plan, flat vertically |
+| **Switches** | Cherry MX style, hot-swap |
+| **Pointing** | Azoteq TPS65 trackpad, 65 × 49 mm, centre front between the thumbs |
+| **Controls** | Two rotary encoders |
+| **Screen** | One 2.0 in IPS display (centre rear) replaces the two small OLEDs |
+| **Connectivity** | USB-C HID and Bluetooth LE HID, both always available |
+| **Feel** | Haptic feedback on the trackpad (DRV2605L + LRA) |
+| **Power** | One protected 1100 mAh LiPo, USB-C charging, power switch, wake on lift (LIS3DH) |
+| **Controller** | One nRF52840 carrier board; the two original Pro Micro boards are removed |
+| **Case** | 383 × 153 × 17.1 mm printed shell, one set of screws opens it, no paint |
+| **Software** | ZMK firmware. No PC app is ever required |
 
-## Design goals
+## Status
 
-- One nRF52840 microcontroller for all keyboard inputs, both encoders, and the touchpad.
-- One internal wired connection to each Sofle RGB PCB, using passive Pro Micro socket adapters.
-- Alice-style 12° tilt per half and a centre trackpad between the thumb clusters.
-- One large 2.0 in screen (centre rear) and both rotary encoders. Cherry MX style hot-swap switches.
-- USB-C cable or Bluetooth, both always available.
-- One protected LiPo battery and one rear USB-C port for charging and USB HID.
-- USB keyboard and mouse HID plus BLE keyboard and mouse HID in the planned firmware.
-- A continuous upper shell, removable service cover, and trackpad retainer.
-- Existing RGB LEDs and OLED displays disconnected. A single 2.0 in screen replaces the OLEDs.
+Hardware design is complete and being finished for ordering. Nothing is built or tested yet.
 
-## Hardware architecture
+| Area | State |
+|---|---|
+| Case CAD | Done. Automated checks pass: no part overlaps, everything fits its cavity, shell and plate are single solids, meshes are closed |
+| Schematics | Carrier and both adapters generated, ERC clean |
+| PCB layout | Adapters routed, DRC clean. Carrier routed, final DRC pass in progress |
+| Bill of materials | Done, India sourcing, about ₹5,156 in parts (some prices are estimates) |
+| Fabrication | PCB fab files exported for the adapters. Quotes and orders not placed |
+| Firmware | Not started (ZMK) |
+| Bench test | Months away, after hardware is ordered and built |
+
+This is a development project, not a tested product.
+
+## Gallery
+
+![Top view: tilted halves, centre trackpad, screen, encoders](docs/images/sofpad-r3-top.png)
+
+![Internals: PCB halves, battery and carrier on the service plate](docs/images/sofpad-r3-internals.png)
+
+![Rear: USB-C and power switch](docs/images/sofpad-r3-rear.png)
+
+Keycaps, knobs, battery, carrier and trackpad are fit-check envelopes. The shell, PCB outlines, key positions and mount holes are real geometry. Renders are in [docs/images](docs/images/).
+
+## How it works
 
 ```mermaid
 flowchart TB
   subgraph CASE["One-piece Sofpad enclosure"]
-    L["Left Sofle RGB PCB<br/>30 switch positions + encoder"] --> A["Left passive socket adapter"]
-    R["Right Sofle RGB PCB<br/>30 switch positions + encoder"] --> B["Right passive socket adapter"]
-    A -->|"16-pin FFC"| MCU["One nRF52840 carrier PCB"]
+    L["Left Sofle RGB PCB<br/>30 keys + encoder"] --> A["Left adapter"]
+    R["Right Sofle RGB PCB<br/>30 keys + encoder"] --> B["Right adapter"]
+    A -->|"16-pin FFC"| MCU["nRF52840 carrier PCB"]
     B -->|"16-pin FFC"| MCU
-    PAD["Azoteq TPS65-201A-S<br/>65 x 49 mm I2C trackpad"] -->|"6-pin FPC / I2C"| MCU
-    CELL["One protected 1100 mAh LiPo"] --> PWR["Charger + 3.3 V buck"]
-    USBC["USB-C connector"] --> PWR
+    PAD["Azoteq TPS65 trackpad"] -->|"I2C"| MCU
+    SCR["2.0 in IPS screen"] -->|"SPI"| MCU
+    CELL["Protected LiPo"] --> PWR["Charger + 3.3 V buck"]
+    USBC["USB-C"] --> PWR
     PWR --> MCU
   end
   MCU -->|"USB HID"| HOST["Computer"]
-  MCU -.->|"BLE HID, planned"| HOST
+  MCU -.->|"BLE HID"| HOST
 ```
 
-Neither keyboard half needs a separate MCU. The two original ATmega32U4 Pro Micro boards are removed. Passive adapters connect existing key and encoder signals to the single nRF52840 carrier.
+Each Sofle half keeps its keys, diodes and encoder. A small adapter solders into the old Pro Micro position and brings the matrix out on a 16-way flat cable to the single carrier board, which holds the MCU, charger, regulator, haptics driver, accelerometer and the screen and trackpad connectors. Power follows the sleep design in [ARCHITECTURE.md](hardware/r3/ARCHITECTURE.md): idle current of a few microamps, wake on key press or lift.
 
-### Keyboard matrix and controller allocation
+## Repository guide
 
-The source Sofle RGB PCB has **30 diode-protected switch positions per half**. The two halves share **five row inputs** and use **six columns per half**.
+| You want | Go to |
+|---|---|
+| Engineering specification | [hardware/r3/ARCHITECTURE.md](hardware/r3/ARCHITECTURE.md) |
+| Parts and prices | [BOM.md](hardware/r3/BOM.md) · [BOM.csv](hardware/r3/BOM.csv) |
+| PCB sources and fab export | [hardware/r3/pcb](hardware/r3/pcb/) (`carrier.py`, `adapter.py`, `build_pcb.py`, `fab_export.py`) |
+| Case CAD and checks | [cad/r3](cad/r3/): [Sofpad_R3_Alice.scad](cad/r3/Sofpad_R3_Alice.scad), `check_design.py`, [DESIGN_RULES.md](cad/r3/DESIGN_RULES.md) |
+| Renders | [docs/images](docs/images/) |
+| Earlier concepts | [R1](cad/r1/), [R2](cad/r2/), [original source package](archives/Sofpad_All_Source_Files.zip) |
 
-| Interface | Signals | Preliminary nRF52840 GPIO |
-|---|---:|---|
-| Shared rows | 5 | P0.13–P0.17 |
-| Right columns | 6 | P0.19–P0.24 |
-| Left columns | 6 | P0.25–P0.27, P1.00–P1.02 |
-| Left encoder A/B | 2 | P1.03–P1.04 |
-| Right encoder A/B | 2 | P1.05–P1.06 |
-| Trackpad I2C SDA/SCL/RDY/NRST | 4 | P0.04–P0.07 |
-| Battery ADC | 1 | P0.02 |
-| USB and SWD | Dedicated | Module USB and debug pins |
+### Build it
 
-Each passive keyboard adapter uses a **16-way FFC**. Pins 1–5 carry rows, 6–11 carry columns, 12–13 carry encoder signals, and 14 carries ground. Pins 15–16 remain unused. Check actual connector orientation before manufacturing.
-
-The detailed signal mapping, original Pro Micro pad references, and Raytac module pad numbers are in [ARCHITECTURE.md](hardware/r3/ARCHITECTURE.md).
-
-### Trackpad
-
-The current revision uses the **Azoteq TPS65-201A-S**: 65 × 49 mm, IQS550, I2C at 400 kHz, address 0x74, 6-pin FPC (RDY, NRST, GND, VDDHI, SCL, SDA). It shares its pinout and the ZMK driver with the TPS43. The pad sits in the centre of the case because both thumbs can reach it and the space between the tilted halves would otherwise be empty. The earlier Cirque SPI trackpad is retired.
-
-## Charging and power
-
-```mermaid
-flowchart TD
-  USB["Rear USB-C, 5 V"] --> CHG["TI BQ24074<br/>charge + power path"]
-  BAT["Protected LiPo<br/>3.7 V nominal"] <-->|"charge/discharge"| CHG
-  CHG --> SW["Master switch<br/>buck enable"]
-  SW --> REG["TI TPS62740<br/>3.3 V regulator"]
-  REG --> MCU["nRF52840 carrier"]
-  REG --> PAD["TPS65 I2C trackpad"]
-  USB -->|"USB D+/D− and VBUS"| MCU
-```
-
-The R3 concept uses a protected **NOVA 603450, 1100 mAh** LiPo. The rear master switch controls regulator enable, not the battery-positive lead. The charger can remain connected to the battery while the keyboard is off.
-
-**Do not construct the battery circuit from this overview.** Charging current, thermistor network, USB limits, cell dimensions, protection, and regulator values are not final. See the design gates in [ARCHITECTURE.md](hardware/r3/ARCHITECTURE.md).
-
-## Mechanical concept
-
-The one-piece upper shell is **383 × 153 × 17.1 mm**. The two Sofle halves are tilted 12° toward the user. The trackpad fills the front centre. The battery lies behind it, and the carrier PCB sits against the rear wall with USB-C and the power switch. Everything except the PCB halves rides on the removable service plate, so one set of screws opens the case.
-
-| Revision | Purpose | Important distinction |
-|---|---|---|
-| **R1** | Initial couch-style case and wiring study | Azoteq TPS43 |
-| **R2** | Intermediate one-piece shell, service cover, retainer | Azoteq TPS43 |
-| **R3** | Current Alice-style case, single controller | Azoteq TPS65 centre pad + nRF52840 |
-
-Open the [R3 OpenSCAD design](cad/r3/Sofpad_R3_Alice.scad) to edit the case, and run `python cad/r3/check_design.py` after every change. The checks prove part clearances, cavity fit, single-piece shell and plate, and closed meshes. The CAD is preliminary and needs real component measurements.
-
-## Repository structure
+Tools: OpenSCAD nightly (Manifold backend), KiCad 10, Freerouting 2.5 with Java 25, Blender 5.
 
 ```text
-Sofpad/
-├── README.md
-├── LICENSE-SOFLE.txt
-├── docs/images/                       All renders (R3 PNGs, R2 gallery)
-├── archives/
-│   └── Sofpad_All_Source_Files.zip     Exact original complete source package
-├── hardware/
-│   └── r3/
-│       ├── ARCHITECTURE.md
-│       ├── BOM.md
-│       ├── BOM.csv
-│       ├── source_pinmap.json
-│       ├── verify_matrix.py
-│       └── reference/Sofle_RGB/PCB/SofleKeyboard.kicad_pcb
-├── cad/
-│   ├── r1/                             Original couch case and fit coupon
-│   ├── r2/                             Intermediate unibody
-│   └── r3/                             Current Alice-style case, checks, render script
-└── docs/
-    └── legacy/
-        └── QMK_and_wiring.md          Historical two-controller wiring concept
+python cad/r3/check_design.py                  case checks, must print PASS
+python hardware/r3/pcb/erc.py carrier          schematic check
+python hardware/r3/pcb/build_pcb.py carrier    place and route (KiCad's Python)
+python hardware/r3/pcb/drc.py carrier carrier  design rule check
+python hardware/r3/pcb/fab_export.py carrier carrier   Gerbers, drill, placement, BOM, zip
 ```
 
-### Source-file integrity
+Order settings (layers, mask, finish, assembly) are in the Manufacturing section of [ARCHITECTURE.md](hardware/r3/ARCHITECTURE.md). The case prints in one piece on a large FDM printer, unpainted.
 
-**The original ZIP is the authoritative source package.** The manual individual-file upload flattened version directories and overwrote some same-named files. Several files uploaded as **zero-byte blobs**, including shared geometry, renders, and some STL exports. An audit of the original 49 archive files found **21 exact individual-file matches, 14 empty files, 10 missing files, and 3 license-file differences**, plus the separate root layout PNG included in the archive. The original archive still contains the full source. The new render galleries do not replace full-resolution original PNG files. These empty files remain visible in the organized folders, but they cannot be used as valid CAD data. Extract the original archive for the exact working source of each revision.
+## Remaining work
 
-The original root README was also uploaded as an empty file. This README replaces it with project documentation.
+1. Finish the carrier DRC, export fab files, collect quotes (JLCPCB and Indian fabs), order boards and case.
+2. Print a small fit-test piece, then the full shell.
+3. Confirm the trackpad flex pitch when the part arrives (both breakout boards are on the BOM).
+4. Firmware: ZMK board definition, matrix, encoders, USB and Bluetooth, trackpad gestures, haptics, wake on lift, screen.
+5. Deferred: hinged tenting lift, host data on the screen over Bluetooth, over-the-air updates, optional PC companion app.
 
-## Component summary
+## History and source integrity
 
-| Part | Selected model |
-|---|---|
-| Wireless MCU | Raytac MDBT50Q-1MV2, Nordic nRF52840 |
-| Trackpad | Azoteq TPS65-201A-S, 65 x 49 mm I2C |
-| Power-path charger | TI BQ24074RGTR |
-| 3.3 V regulator | TI TPS62740DSST |
-| LiPo | NOVA 603450 protected 1100 mAh |
-| USB-C | GCT USB4085-GF-A |
-| Power switch | E-Switch EG1213 |
-| Internal connections | 16-pin FFC cables and passive Pro Micro socket adapters |
+R1 (couch case) and R2 (TPS43 unibody) are kept as earlier concepts. The original ZIP is the authoritative source package: a manual file upload once flattened its folders and left 14 zero-byte files, so use the archive when you need an exact original.
 
-The R3 BOM lists reference part prices, not a final build cost. Custom PCBs, assembly, printing, shipping, and unselected components need separate costing.
+## License
 
-## Remaining engineering work
-
-Hardware
-1. Carrier and adapter PCBs: generated, ERC clean, routed. Finish DRC, then order (see Manufacturing in `ARCHITECTURE.md`).
-2. Print a small fit-test piece, then the full shell (no paint; filament chosen at order).
-3. Confirm the TPS65 flex pitch when the part arrives (both breakout boards are on the BOM).
-
-Firmware and software (not started)
-4. ZMK board `sofpad_r3`: matrix, encoders, USB and Bluetooth, power.
-5. TPS65 driver and gestures, haptics, accelerometer wake, screen UI.
-
-Optional and deferred
-6. `sofpad-host` PC app for extra screen data. Never required.
-7. Hinged tenting lift for each half, display data over Bluetooth, over-the-air updates.
-
-**R3 is a development project, not a tested finished product.**
+The Sofle RGB PCB is licensed by its author, see [LICENSE-SOFLE.txt](LICENSE-SOFLE.txt). Project license: [LICENSE](LICENSE).
