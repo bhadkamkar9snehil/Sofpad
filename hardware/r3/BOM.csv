@@ -7,14 +7,14 @@ Quantity,Type,Manufacturer,MPN,INR_each,INR_extended,Status,Purchase_URL
 1,USB-C receptacle,GCT,USB4085-GF-A,86.95,86.95,Select,https://www.digikey.in/en/products/detail/gct/USB4085-GF-A/9859733
 1,"Power slide switch SPDT, side actuator",C&K,PCM12SMTR,70.00,70.00,Replaces EG1213 (no KiCad footprint). DigiKey India; est price,https://www.digikey.in/en/products/result?keywords=PCM12SMTR
 4,16-pin 0.5mm FFC socket,Hirose,FH12-16S-0.5SH(55),147.42,589.68,Matches the PCB footprint. Price copied from the Molex line; confirm at DigiKey India,https://www.digikey.in/en/products/result?keywords=FH12-16S-0.5SH
-1,16-pin 203mm FFC,GCT,05-16-D-0203-A-4-06-4-T,127.66,127.66,Same-side (A) or opposite-side (D) contacts depends on how each adapter faces: buy both A and D of each length,https://www.digikey.in/en/products/detail/gct/05-16-D-0203-A-4-06-4-T/21266407
+1,16-pin 50mm FFC (second one),GCT,05-16-D-0050-A-4-06-4-T,107.47,107.47,"Both adapters sit about 9 mm from the carrier, so both cables are 50 mm. Buy A and D contact types so one fits",https://www.digikey.in/en/products/detail/gct/05-16-D-0203-A-4-06-4-T/21266407
 1,16-pin 50mm FFC,GCT,05-16-A-0050-A-4-06-4-T,107.47,107.47,Buy both A and D of each length,https://www.digikey.in/en/products/detail/gct/05-16-A-0050-A-4-06-4-T/21266921
 1,"TPS65 FPC-to-pin breakout, 6-pin 1.0 mm pitch",Generic,FPC 6P 1.0mm adapter board,40.00,40.00,"The datasheet text does not give the flex pitch: buy both pitches, use the one that fits. Robu or similar; est",
 1,"TPS65 FPC-to-pin breakout, 6-pin 0.5 mm pitch",Generic,FPC 6P 0.5mm adapter board,40.00,40.00,See the 1.0 mm line. Robu or similar; est,
-1,2pin JST-PH PCB header,JST,S2B-PH-K-S,11.47,11.47,Check battery connector,https://www.digikey.in/en/products/detail/jst-sales-america-inc/S2B-PH-K-S/926626
+1,2pin JST-PH SMD header (battery),JST,S2B-PH-SM4-TB,11.47,11.47,"SMD, so the fab places it. Mates with PHR-2",https://www.digikey.in/en/products/detail/jst-sales-america-inc/S2B-PH-K-S/926626
 1,2pin JST-PH housing,JST,PHR-2,,,Required: mates with the S2B-PH-K-S header,https://www.digikey.in/en/products/result?keywords=PHR-2
 2,JST-PH crimp contact,JST,SPH-002T-P0.5S,3.91,7.82,Check wire AWG,https://www.digikey.in/en/products/detail/jst-sales-america-inc/SPH-002T-P0-5S/527358
-1,10k NTC,Vishay,NTCLE100E3103JB0,57.07,57.07,Tape to the cell; TS bias per BQ24074 datasheet,https://www.digikey.in/en/products/detail/vishay-beyschlag-draloric-bc-components/NTCLE100E3103JB0/769411
+1,10k NTC,Vishay,NTCLE100E3103JB0,57.07,57.07,"Tape to the cell, plug into SM02B-SRSS-TB (add SHR-02V-S-B housing and crimps)",https://www.digikey.in/en/products/detail/vishay-beyschlag-draloric-bc-components/NTCLE100E3103JB0/769411
 1,USB ESD protection,STMicroelectronics,USBLC6-2SC6,51.60,51.60,Check stock and footprint,https://www.digikey.in/en/products/detail/stmicroelectronics/USBLC6-2SC6/1121688
 1,"Carrier PCB, 4-layer 62 x 28 mm, 1.0 mm",Custom,pcb/carrier (Gerbers in hardware/r3/pcb/fab),,,Design generated and routed; see ARCHITECTURE.md manufacturing section,
 2,"Adapter PCB, 2-layer 18 x 33 mm, variants A and B (mirror), one of each",Custom,"pcb/adapter_a, pcb/adapter_b",,,Same panel order. Pin headers 1x12 male x4 below,
@@ -31,7 +31,7 @@ Quantity,Type,Manufacturer,MPN,INR_each,INR_extended,Status,Purchase_URL
 4,Pin header 1x12 male 2.54 mm (adapter plug side),Generic,1x12 2.54mm,10.00,40.00,Hardware shop; est,
 1,JST SH 6-pin top-entry socket (TPS65 cable),JST,SM06B-SRSS-TB,40.00,40.00,"DigiKey India; est. Needs SHR-06V-S-B housing, SSH-003T crimps, 4 cm wire",
 1,JST SH 2-pin socket (haptic LRA),JST,SM02B-SRSS-TB,30.00,30.00,DigiKey India; est. Needs SHR-02V-S-B housing and crimps,
-1,JST PH 8-pin header (screen),JST,S8B-PH-K-S,35.00,35.00,DigiKey India; est. Mating cable ships with the screen,
+1,JST PH 8-pin SMD header (screen),JST,S8B-PH-SM4-TB,35.00,35.00,"SMD, so the fab places it. Mating cable ships with the screen",
 2,Resistor 0402 5.1k 1%,Yageo,RC0402FR-075K1L,,,"R1, R2 USB CC",
 1,Resistor 0402 2.0k 1%,Yageo,RC0402FR-072KL,,,"R3 ISET, 445 mA charge",
 1,Resistor 0402 3.3k 1%,Yageo,RC0402FR-073K3L,,,R4 ILIM,
@@ -46,3 +46,4 @@ Quantity,Type,Manufacturer,MPN,INR_each,INR_extended,Status,Purchase_URL
 1,Capacitor 0603 4.7uF X5R,Murata/Samsung,GRM188 4.7uF 10V,,,C4,
 5,Capacitor 0603 10uF X5R,Murata/Samsung,GRM188 10uF 10V,,,"C2, C3, C5, C6, C12",
 1,Inductor 0805 2.2uH,Murata,LQM21PN2R2MGHD,,,"L1, TPS62740 reference value",
+4,Resistor 0402 470k 1%,Yageo,RC0402FR-07470KL,,,"R13-R16 encoder pull-ups",

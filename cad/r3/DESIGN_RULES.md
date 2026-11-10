@@ -26,6 +26,10 @@
 | Showing a render before checking it | A render hides overlaps. | Run `python check_design.py` first. It proves part overlap, cavity fit, connectivity and closed meshes. |
 | Stale Cirque and TPS43 text | Renames were not searched for. | After changing a part, search all docs and scripts for the old name before committing. |
 | Guessed direction of the Alice tilt | Assumption not recorded. | Assumptions go into the table above with the reason, and into a named parameter. |
+| Trackpad stack 3 mm too low | Height copied from the older design. | Stack heights come from named parameters: PCB top, 5.0 mm to plate underside, 1.5 mm plate. |
+| Through-hole connector pads clashed with bottom parts | Pads exist on both copper sides. | Use SMD connectors wherever the opposite side carries parts. |
+| Router result judged from a stale log | Watcher fired after a killed run. | Wait for the log to say "routed" and for Java to exit, then read DRC. |
+| Router edge violations | Tracks allowed up to the board edge. | A 0.35 mm keep-out ring on every edge. Do not raise netclass clearance (breaks fine-pitch pads). |
 
 ## Workflow
 

@@ -41,13 +41,13 @@
    "sym": "Switch:SW_SPDT"
   },
   "J2": {
-   "fp": "Connector_JST:JST_PH_S2B-PH-K_1x02_P2.00mm_Horizontal",
-   "value": "Battery S2B-PH-K-S",
+   "fp": "Connector_JST:JST_PH_S2B-PH-SM4-TB_1x02-1MP_P2.00mm_Horizontal",
+   "value": "Battery S2B-PH-SM4-TB",
    "sym": "Connector_Generic:Conn_01x02"
   },
   "J3": {
-   "fp": "Connector_PinHeader_1.27mm:PinHeader_1x02_P1.27mm_Vertical",
-   "value": "Cell NTC",
+   "fp": "Connector_JST:JST_SH_SM02B-SRSS-TB_1x02-1MP_P1.00mm_Horizontal",
+   "value": "Cell NTC SM02B-SRSS-TB",
    "sym": "Connector_Generic:Conn_01x02"
   },
   "J4": {
@@ -56,8 +56,8 @@
    "sym": "Connector_Generic:Conn_01x02"
   },
   "J5": {
-   "fp": "Connector_JST:JST_PH_S8B-PH-K_1x08_P2.00mm_Horizontal",
-   "value": "Screen S8B-PH-K-S",
+   "fp": "Connector_JST:JST_PH_S8B-PH-SM4-TB_1x08-1MP_P2.00mm_Horizontal",
+   "value": "Screen S8B-PH-SM4-TB",
    "sym": "Connector_Generic:Conn_01x08"
   },
   "J6": {

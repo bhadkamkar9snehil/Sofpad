@@ -78,7 +78,7 @@ def add_keepout(board, x0, y0, x1, y1):
     """Rule area: no copper, tracks or vias (antenna keep-out)."""
     z = pcbnew.ZONE(board)
     z.SetIsRuleArea(True)
-    z.SetDoNotAllowCopperPour(True)
+    z.SetDoNotAllowZoneFills(True)
     z.SetDoNotAllowTracks(True)
     z.SetDoNotAllowVias(True)
     z.SetDoNotAllowPads(False)
@@ -107,7 +107,7 @@ def build(name, variant, w, h, layers, placement, holes, keepouts=(), mirror_x=F
     ds.m_ViasMinSize = mm(0.6)
     ds.m_ViasMinAnnularWidth = mm(0.13)
     ds.m_MinThroughDrill = mm(0.3)
-    ds.m_CopperEdgeClearance = mm(0.3)
+    ds.m_CopperEdgeClearance = mm(0.2)
     ds.m_HoleToHoleMin = mm(0.25)
     nc = ds.m_NetSettings.GetDefaultNetclass()
     nc.SetClearance(mm(0.15))
@@ -145,11 +145,13 @@ def build(name, variant, w, h, layers, placement, holes, keepouts=(), mirror_x=F
         board.Add(fp)
         fp.SetPosition(vec(x, y))
     outline(board, w, h)
+    for k in [(0, 0, w, 0.35), (0, h - 0.35, w, h), (0, 0, 0.35, h), (w - 0.35, 0, w, h)]:
+        add_keepout(board, *k)   # perimeter ring: the router keeps tracks and vias off the board edge
     for k in keepouts:
         add_keepout(board, *k)
     gnd = nets.get("GND")
     if gnd is not None:
-        for layer in ([pcbnew.F_Cu, pcbnew.B_Cu] if layers == 2 else [pcbnew.F_Cu, pcbnew.In1_Cu, pcbnew.In2_Cu, pcbnew.B_Cu]):
+        for layer in ([pcbnew.F_Cu, pcbnew.B_Cu] if layers == 2 else [pcbnew.In1_Cu, pcbnew.In2_Cu]):
             add_zone(board, layer, gnd, w, h)
     out = d / f"{variant}.kicad_pcb"
     write_project(out.with_suffix(".kicad_pro"))
@@ -163,7 +165,7 @@ def write_project(path):
         "meta": {"filename": path.name, "version": 3},
         "board": {"design_settings": {
             "rules": {"min_clearance": 0.15, "min_track_width": 0.15, "min_via_diameter": 0.6,
-                      "min_through_hole_diameter": 0.3, "min_copper_edge_clearance": 0.3,
+                      "min_through_hole_diameter": 0.3, "min_copper_edge_clearance": 0.2,
                       "min_hole_to_hole": 0.25, "min_via_annular_width": 0.13, "min_silk_clearance": 0.0},
             "rule_severities": {"silk_over_copper": "ignore", "silk_overlap": "ignore",
                                 "silk_edge_clearance": "ignore", "lib_footprint_issues": "ignore",

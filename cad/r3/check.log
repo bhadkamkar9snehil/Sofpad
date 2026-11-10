@@ -1,0 +1,37 @@
+ok   no overlap: battery / pcbs
+ok   no overlap: carrier / pcbs
+ok   no overlap: battery / carrier
+ok   no overlap: padbody / pcbs
+ok   no overlap: retainer / pcbs
+ok   no overlap: retainer / battery
+ok   no overlap: retainer / carrier
+ok   no overlap: padbody / battery
+ok   no overlap: platebosses / battery
+ok   no overlap: platebosses / carrier
+ok   no overlap: platebosses / retainer
+ok   no overlap: platebosses / pcbs
+ok   no overlap: bosses / battery
+ok   no overlap: bosses / carrier
+ok   no overlap: usb / battery
+ok   no overlap: screen / battery
+ok   no overlap: screen / carrier
+ok   no overlap: screen / pcbs
+ok   no overlap: screen / retainer
+ok   no overlap: screen / bosses
+ok   no overlap: screen / platebosses
+ok   no overlap: adapters / bosses
+ok   no overlap: adapters / battery
+ok   no overlap: adapters / carrier
+ok   no overlap: adapters / screen
+ok   inside cavity: battery
+ok   inside cavity: carrier
+ok   inside cavity: pcbs
+ok   inside cavity: padbody
+ok   inside cavity: retainer
+ok   inside cavity: usb
+ok   inside cavity: screen
+ok   inside cavity: adapters
+ok   shell connected components: 1
+ok   bottom connected components: 1
+PASS: three closed STL triangle meshes
+PASS: design checks

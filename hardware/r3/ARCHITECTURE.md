@@ -184,6 +184,20 @@ Goal: months of standby, and no lag on the first key, touch or encoder click aft
 4. With the switch OFF and USB present, the cell charges and the MCU draws nothing.
 5. 100 sleep/wake cycles with no stuck key, missed key or lost Bluetooth pairing.
 
+## Manufacturing (PCB order settings)
+
+Files: `hardware/r3/pcb/fab_export.py <folder> <board>` writes Gerbers, drill, pick-and-place, a BOM grouped by value and a zip to `pcb/fab/`.
+
+| Board | Layers | Thickness | Notes |
+|---|---|---|---|
+| Carrier | 4 (GND on In1/In2) | 1.0 mm | Black solder mask, ENIG, fab assembly of all SMD parts (top and bottom) |
+| Adapter A and B | 2 | 1.6 mm | Black mask, ENIG. Solder straight into the Sofle U1 holes. B is the mirror of A |
+
+- Order from JLCPCB with assembly and ship to India. Import duty and courier add cost, so compare against an Indian fab (for example PCBPower or Robu) on the day, but only if the Indian quote includes assembly.
+- The fab places everything SMD, including the JST PH connectors, PCM12 switch and Hirose FFC sockets. Hand work left: plugging in the cables, battery and screen.
+- FFC cables: both are 50 mm. Buy A-type and D-type contacts (contacts on the same or opposite side). One of them fits; the other is spare.
+- Black mask and ENIG are cosmetic and match the "beautiful inside" rule. They do not change the design.
+
 ## Engineering gates before any PCB order
 
 1. Measure the actual TPS65 outline, FPC connector pitch, FPC exit direction, and overlay stack.
