@@ -1,43 +1,47 @@
-2026-11-10 01:28:46.151 INFO   Freerouting v2.5.0 (build-date: 2026-10-05)
-2026-11-10 01:28:46.478 INFO   Hardware: 12 CPU cores, 311 CPU score, 4018 MB RAM
-2026-11-10 01:28:46.480 WARN   Deprecated settings path '-mp / --router.max_passes'; use '--router.autorouter.max_passes' instead. The old path will be removed in a future release.
-2026-11-10 01:28:47.555 WARN   Deprecated settings path 'router.max_passes'; use 'router.autorouter.max_passes' instead. The old path will be removed in a future release.
-2026-11-10 01:28:47.614 INFO   Opening 'C:\Users\Admin\Documents\Sofpad\hardware\r3\pcb\adapter\adapter_a.dsn'...
-2026-11-10 01:28:48.833 INFO   [1DBFCE\D6C4BE] Loading board file 'adapter_a.dsn'...
-2026-11-10 01:28:48.877 INFO   Layer 'F.Cu' contains a power plane / large copper pour covering >=30% of the board; associated net(s) configured for plane routing.
-2026-11-10 01:28:48.877 INFO   Layer 'B.Cu' contains a power plane / large copper pour covering >=30% of the board; associated net(s) configured for plane routing.
-2026-11-10 01:28:54.233 INFO   [1DBFCE\D6C4BE] Starting routing of 'adapter_a' on 11 threads...
-2026-11-10 01:28:54.266 INFO   [1DBFCE\D6C4BE] Pipeline thread limits: autorouter pass is single-threaded, optimizer.max_threads=11.
-2026-11-10 01:28:54.314 INFO   [1DBFCE\D6C4BE] Fanout stage started on board 'c3cf201f4c62cebf4aa817c969d412ea' with 13 of 18 SMD pins needing fanout (1 already connected, 4 netless).
-2026-11-10 01:28:55.352 INFO   [1DBFCE\D6C4BE] Fanout pass #1 on board 'afec0dd06debad6a8ec4da4a5bfa052d' completed in 1.02 seconds with 12 SMD pins fanouted, 1 not routed, 0 insert errors, +10 extra vias (0 SMD pins still to check in pass, ripup costs=100).
-2026-11-10 01:28:55.570 INFO   [1DBFCE\D6C4BE] Fanout pass #2 on board '4bc739bd6146627d604f49162f6ca12b' completed in 0.21 seconds with 5 SMD pins fanouted, 0 not routed, 0 insert errors, +2 extra vias (0 SMD pins still to check in pass, ripup costs=200).
-2026-11-10 01:28:55.701 INFO   [1DBFCE\D6C4BE] Fanout pass #3 on board 'f88bace86d60b2593da1d7fc922248ea' completed in 0.13 seconds with 2 SMD pins fanouted, 0 not routed, 0 insert errors, +0 extra vias (0 SMD pins still to check in pass, ripup costs=300).
-2026-11-10 01:28:55.827 INFO   [1DBFCE\D6C4BE] Fanout pass #4 on board '96ec20c0c04056a5ac8157432c584e92' completed in 0.12 seconds with 2 SMD pins fanouted, 0 not routed, 0 insert errors, +0 extra vias (0 SMD pins still to check in pass, ripup costs=400).
-2026-11-10 01:28:55.952 INFO   [1DBFCE\D6C4BE] Fanout pass #5 on board 'b417e494694e14aebcdd8928eaa864b8' completed in 0.12 seconds with 2 SMD pins fanouted, 0 not routed, 0 insert errors, +0 extra vias (0 SMD pins still to check in pass, ripup costs=500).
-2026-11-10 01:28:56.081 INFO   [1DBFCE\D6C4BE] Fanout pass #6 on board '29922b6aba8ff52ff7c35affd2918aa8' completed in 0.13 seconds with 2 SMD pins fanouted, 0 not routed, 0 insert errors, +0 extra vias (0 SMD pins still to check in pass, ripup costs=600).
-2026-11-10 01:28:56.081 INFO   Fanout stopped after 6 passes: no progress for 3 consecutive passes.
-2026-11-10 01:28:56.086 INFO   [1DBFCE\D6C4BE] Fanout stage completed: started with 14 total SMD pins, completed in 1.76 seconds, escaped pins: 13/14 (92.9%), using 1.72 total CPU seconds, 0.32 GB total allocated, and 87.5 MB peak heap usage.
-2026-11-10 01:28:56.129 INFO   [1DBFCE\D6C4BE] Auto-routing stage started on board '29922b6aba8ff52ff7c35affd2918aa8' with baseline score 185.19 for 13 unrouted items.
-2026-11-10 01:28:58.200 INFO   [1DBFCE\D6C4BE] Auto-routing pass #1 on board '29922b6aba8ff52ff7c35affd2918aa8' was completed in 2.03 seconds with score 555.56 (6 unrouted and 0 violations), using 2.89 CPU seconds and the job allocated 0.62 GB of memory so far.
-2026-11-10 01:28:59.206 INFO   [1DBFCE\D6C4BE] Auto-routing pass #2 on board '24f8620a1cfab83f6086d5b25bf565ea' was completed in 0.98 seconds with score 703.70 (4 unrouted and 0 violations), using 3.86 CPU seconds and the job allocated 0.91 GB of memory so far.
-2026-11-10 01:29:00.057 INFO   [1DBFCE\D6C4BE] Auto-routing pass #3 on board '82f66070a665ab6b26664a23a6d4d487' was completed in 0.83 seconds with score 777.78 (3 unrouted and 0 violations), using 4.78 CPU seconds and the job allocated 1.28 GB of memory so far.
-2026-11-10 01:29:00.879 INFO   [1DBFCE\D6C4BE] Auto-routing pass #4 on board '6355c7e45d6a7315c1bb98baf7904a2c' was completed in 0.79 seconds with score 925.93 (1 unrouted and 0 violations), using 5.77 CPU seconds and the job allocated 1.64 GB of memory so far.
-2026-11-10 01:29:01.156 INFO   [1DBFCE\D6C4BE] Auto-routing pass #5 on board 'a2d264f53934c7637a9053d2739eb91f' was completed in 0.25 seconds with score 1000.00 (0 unrouted and 0 violations), using 5.77 CPU seconds and the job allocated 1.64 GB of memory so far.
-2026-11-10 01:29:01.205 INFO   [1DBFCE\D6C4BE] Auto-routing pass #6 on board '9d32f69531b00fe211c637447a51349a' was completed in 0.02 seconds with score 1000.00 (0 unrouted and 0 violations), using 5.77 CPU seconds and the job allocated 1.64 GB of memory so far.
-2026-11-10 01:29:01.283 INFO   [1DBFCE\D6C4BE] Auto-routing stage completed: started with 13 unrouted nets, completed in 7.05 seconds, final score: 1000.00 (0 unrouted and 0 violations), using 6.75 total CPU seconds, 1.92 GB total allocated, and 124.6 MB peak heap usage.
-2026-11-10 01:29:01.388 INFO   [1DBFCE\D6C4BE] Starting optimization on 11 threads...
-2026-11-10 01:29:01.475 INFO   [1DBFCE\D6C4BE] Optimization stage started on board 'b9d359a84c69a7c4f7b6238114b19b72'. Baseline router score: 1000.00, optimizer score: 261.90, incomplete connections: 0, clearance violations: 0.
-2026-11-10 01:29:04.312 INFO   [1DBFCE\D6C4BE] Optimizer pass #1 on board 'bf17555174fee86b48b24f8779be84e5' was completed in 2.78 seconds with the score of 303.57 (0 unrouted and 0 violations).
-2026-11-10 01:29:04.337 INFO   [1DBFCE\D6C4BE] Optimizer pass #1: optimizer score 261.90 -> 303.57 (IMPROVED, 15.9091%), router score: 1000.00, incomplete connections: 0, clearance violations: 0.
-2026-11-10 01:29:06.778 INFO   [1DBFCE\D6C4BE] Optimizer pass #2 on board '6d80b56bcc222702b18f90bfaae029d8' was completed in 2.39 seconds with the score of 297.62 (0 unrouted and 0 violations).
-2026-11-10 01:29:06.796 INFO   [1DBFCE\D6C4BE] Optimizer pass #2 candidate rejected: OPTIMIZER_SCORE_NOT_IMPROVED. Restoring incumbent (optimizer score 303.57, incomplete connections: 0, clearance violations: 0).
-2026-11-10 01:29:06.821 INFO   [1DBFCE\D6C4BE] Optimizer pass #2: optimizer score 303.57 -> 297.62 (REGRESSED, -1.9608%), router score: 1000.00, incomplete connections: 0, clearance violations: 0.
-2026-11-10 01:29:11.794 INFO   [1DBFCE\D6C4BE] Optimizer pass #3 on board '3b29994b10ceb69726d5b1b495c2f501' was completed in 4.92 seconds with the score of 386.90 (0 unrouted and 0 violations).
-2026-11-10 01:29:11.816 INFO   [1DBFCE\D6C4BE] Optimizer pass #3: optimizer score 303.57 -> 386.90 (IMPROVED, 27.4510%), router score: 1000.00, incomplete connections: 0, clearance violations: 0.
-2026-11-10 01:29:15.201 INFO   [1DBFCE\D6C4BE] Optimizer pass #4 on board '515c68cc5e5864cb694f3142c9eb4b93' was completed in 3.33 seconds with the score of 392.86 (0 unrouted and 0 violations).
-2026-11-10 01:29:15.231 INFO   [1DBFCE\D6C4BE] Optimizer pass #4: optimizer score 386.90 -> 392.86 (IMPROVED, 1.5385%), router score: 1000.00, incomplete connections: 0, clearance violations: 0.
-2026-11-10 01:29:15.231 INFO   [1DBFCE\D6C4BE] Stopping optimizer because the improvement in this pass (1.5385%) is below the threshold (2.50%).
-2026-11-10 01:29:15.274 INFO   [1DBFCE\D6C4BE] Optimization stage completed:. Baseline router score: 1000.00, baseline optimizer score: 261.90, final router score: 1000.00, final optimizer score: 392.86, completed in 13.78 seconds, using 79.64 total CPU seconds, 20.96 GB total allocated, and 618.5 MB peak heap usage.
-2026-11-10 01:29:15.301 INFO   [1DBFCE\D6C4BE] Optimization was completed in 13.91 seconds with the score of 1000.00 (0 unrouted and 0 violations).
-2026-11-10 01:29:15.349 INFO   Saving 'C:\Users\Admin\Documents\Sofpad\hardware\r3\pcb\adapter\adapter_a.ses'...
-2026-11-10 01:29:15.360 INFO   Saved 9535 bytes to 'C:\Users\Admin\Documents\Sofpad\hardware\r3\pcb\adapter\adapter_a.ses'.
+2026-11-10 08:01:09.505 INFO   Freerouting v2.5.0 (build-date: 2026-10-05)
+2026-11-10 08:01:09.812 INFO   Hardware: 12 CPU cores, 349 CPU score, 8192 MB RAM
+2026-11-10 08:01:09.813 WARN   Deprecated settings path '-mp / --router.max_passes'; use '--router.autorouter.max_passes' instead. The old path will be removed in a future release.
+2026-11-10 08:01:10.896 WARN   Deprecated settings path 'router.max_passes'; use 'router.autorouter.max_passes' instead. The old path will be removed in a future release.
+2026-11-10 08:01:10.967 INFO   Opening 'C:\Users\Admin\Documents\Sofpad\hardware\r3\pcb\adapter\adapter_a.dsn'...
+2026-11-10 08:01:12.080 INFO   [984CAC\DB7C3A] Loading board file 'adapter_a.dsn'...
+2026-11-10 08:01:12.120 INFO   Layer 'F.Cu' contains a power plane / large copper pour covering >=30% of the board; associated net(s) configured for plane routing.
+2026-11-10 08:01:12.120 INFO   Layer 'B.Cu' contains a power plane / large copper pour covering >=30% of the board; associated net(s) configured for plane routing.
+2026-11-10 08:01:17.453 INFO   [984CAC\DB7C3A] Starting routing of 'adapter_a' on 11 threads...
+2026-11-10 08:01:17.479 INFO   [984CAC\DB7C3A] Pipeline thread limits: autorouter pass is single-threaded, optimizer.max_threads=11.
+2026-11-10 08:01:17.543 INFO   [984CAC\DB7C3A] Fanout stage started on board '14edff60983769caf9c3185b3c8a2092' with 13 of 18 SMD pins needing fanout (1 already connected, 4 netless).
+2026-11-10 08:01:18.448 INFO   [984CAC\DB7C3A] Fanout pass #1 on board 'c19ccbc55a2c79b4e96ee8a65af6021e' completed in 0.88 seconds with 12 SMD pins fanouted, 1 not routed, 0 insert errors, +10 extra vias (0 SMD pins still to check in pass, ripup costs=100).
+2026-11-10 08:01:18.623 INFO   [984CAC\DB7C3A] Fanout pass #2 on board 'd21df1c3f0942b94c6fe7972b74652ff' completed in 0.17 seconds with 5 SMD pins fanouted, 0 not routed, 0 insert errors, +2 extra vias (0 SMD pins still to check in pass, ripup costs=200).
+2026-11-10 08:01:18.733 INFO   [984CAC\DB7C3A] Fanout pass #3 on board 'e72a9a8ddb0902a7ffe727cc03d500e2' completed in 0.11 seconds with 2 SMD pins fanouted, 0 not routed, 0 insert errors, +0 extra vias (0 SMD pins still to check in pass, ripup costs=300).
+2026-11-10 08:01:18.869 INFO   [984CAC\DB7C3A] Fanout pass #4 on board '739ef689c80445f7ea852ed10cb85484' completed in 0.13 seconds with 2 SMD pins fanouted, 0 not routed, 0 insert errors, +0 extra vias (0 SMD pins still to check in pass, ripup costs=400).
+2026-11-10 08:01:18.995 INFO   [984CAC\DB7C3A] Fanout pass #5 on board '6e5c323215e905b3c56b98d15161ca7a' completed in 0.12 seconds with 2 SMD pins fanouted, 0 not routed, 0 insert errors, +0 extra vias (0 SMD pins still to check in pass, ripup costs=500).
+2026-11-10 08:01:19.114 INFO   [984CAC\DB7C3A] Fanout pass #6 on board 'bab4221a4cad8c64145c32b0980b387b' completed in 0.12 seconds with 2 SMD pins fanouted, 0 not routed, 0 insert errors, +0 extra vias (0 SMD pins still to check in pass, ripup costs=600).
+2026-11-10 08:01:19.115 INFO   Fanout stopped after 6 passes: no progress for 3 consecutive passes.
+2026-11-10 08:01:19.118 INFO   [984CAC\DB7C3A] Fanout stage completed: started with 14 total SMD pins, completed in 1.57 seconds, escaped pins: 13/14 (92.9%), using 1.55 total CPU seconds, 0.33 GB total allocated, and 94.0 MB peak heap usage.
+2026-11-10 08:01:19.168 INFO   [984CAC\DB7C3A] Auto-routing stage started on board 'bab4221a4cad8c64145c32b0980b387b' with baseline score 185.19 for 13 unrouted items.
+2026-11-10 08:01:22.158 INFO   [984CAC\DB7C3A] Auto-routing pass #1 on board 'bab4221a4cad8c64145c32b0980b387b' was completed in 2.95 seconds with score 555.56 (6 unrouted and 0 violations), using 3.97 CPU seconds and the job allocated 0.80 GB of memory so far.
+2026-11-10 08:01:23.315 INFO   [984CAC\DB7C3A] Auto-routing pass #2 on board '75f76a23b873fefef86c017046310c5c' was completed in 1.12 seconds with score 629.63 (5 unrouted and 0 violations), using 4.97 CPU seconds and the job allocated 1.00 GB of memory so far.
+2026-11-10 08:01:24.678 INFO   [984CAC\DB7C3A] Auto-routing pass #3 on board '75d408e8bc47ca39a005843539f606a4' was completed in 1.33 seconds with score 777.78 (3 unrouted and 0 violations), using 6.86 CPU seconds and the job allocated 1.64 GB of memory so far.
+2026-11-10 08:01:25.528 INFO   [984CAC\DB7C3A] Auto-routing pass #4 on board '0f535f272154dba7b028428a6946cf56' was completed in 0.82 seconds with score 925.93 (1 unrouted and 0 violations), using 7.84 CPU seconds and the job allocated 1.99 GB of memory so far.
+2026-11-10 08:01:26.012 INFO   [984CAC\DB7C3A] Auto-routing pass #5 on board '6437c2db1dbf523294b5d98e4653a14e' was completed in 0.45 seconds with score 925.93 (1 unrouted and 0 violations), using 7.84 CPU seconds and the job allocated 1.99 GB of memory so far.
+2026-11-10 08:01:26.374 INFO   [984CAC\DB7C3A] Auto-routing pass #6 on board 'c9f42ad2145aef95f5285ac560dc2284' was completed in 0.33 seconds with score 1000.00 (0 unrouted and 0 violations), using 7.84 CPU seconds and the job allocated 1.99 GB of memory so far.
+2026-11-10 08:01:26.418 INFO   [984CAC\DB7C3A] Auto-routing pass #7 on board '10bfc8852b73618e60eabb56a8b355cb' was completed in 0.02 seconds with score 1000.00 (0 unrouted and 0 violations), using 7.84 CPU seconds and the job allocated 1.99 GB of memory so far.
+2026-11-10 08:01:26.494 INFO   [984CAC\DB7C3A] Auto-routing stage completed: started with 13 unrouted nets, completed in 9.04 seconds, final score: 1000.00 (0 unrouted and 0 violations), using 8.83 total CPU seconds, 2.32 GB total allocated, and 106.4 MB peak heap usage.
+2026-11-10 08:01:26.598 INFO   [984CAC\DB7C3A] Starting optimization on 11 threads...
+2026-11-10 08:01:26.672 INFO   [984CAC\DB7C3A] Optimization stage started on board '7c6ca6731035fb0f41663028940269f3'. Baseline router score: 1000.00, optimizer score: 273.81, incomplete connections: 0, clearance violations: 0.
+2026-11-10 08:01:29.176 INFO   [984CAC\DB7C3A] Optimizer pass #1 on board '0ae96c7c004d2a3c7f5d27e0429aa27a' was completed in 2.44 seconds with the score of 351.19 (0 unrouted and 0 violations).
+2026-11-10 08:01:29.205 INFO   [984CAC\DB7C3A] Optimizer pass #1: optimizer score 273.81 -> 351.19 (IMPROVED, 28.2609%), router score: 1000.00, incomplete connections: 0, clearance violations: 0.
+2026-11-10 08:01:30.643 INFO   [984CAC\DB7C3A] Optimizer pass #2 on board '94195a960856a2026741c2a6a8d1a88c' was completed in 1.37 seconds with the score of 369.05 (0 unrouted and 0 violations).
+2026-11-10 08:01:30.676 INFO   [984CAC\DB7C3A] Optimizer pass #2: optimizer score 351.19 -> 369.05 (IMPROVED, 5.0847%), router score: 1000.00, incomplete connections: 0, clearance violations: 0.
+2026-11-10 08:01:32.247 INFO   [984CAC\DB7C3A] Optimizer pass #3 on board 'ca1b5e27fa67314fd4c54d735d238955' was completed in 1.51 seconds with the score of 452.38 (0 unrouted and 0 violations).
+2026-11-10 08:01:32.273 INFO   [984CAC\DB7C3A] Optimizer pass #3: optimizer score 369.05 -> 452.38 (IMPROVED, 22.5806%), router score: 1000.00, incomplete connections: 0, clearance violations: 0.
+2026-11-10 08:01:33.267 INFO   [984CAC\DB7C3A] Optimizer pass #4 on board '9e1f400a03ffe79711af9b54cb0ac051' was completed in 0.93 seconds with the score of 476.19 (0 unrouted and 0 violations).
+2026-11-10 08:01:33.294 INFO   [984CAC\DB7C3A] Optimizer pass #4: optimizer score 452.38 -> 476.19 (IMPROVED, 5.2632%), router score: 1000.00, incomplete connections: 0, clearance violations: 0.
+2026-11-10 08:01:34.139 INFO   [984CAC\DB7C3A] Optimizer pass #5 on board 'debf887b7487d22cf3520fe24216bd68' was completed in 0.78 seconds with the score of 494.05 (0 unrouted and 0 violations).
+2026-11-10 08:01:34.159 INFO   [984CAC\DB7C3A] Optimizer pass #5: optimizer score 476.19 -> 494.05 (IMPROVED, 3.7500%), router score: 1000.00, incomplete connections: 0, clearance violations: 0.
+2026-11-10 08:01:34.929 INFO   [984CAC\DB7C3A] Optimizer pass #6 on board 'bd93f04f7743aa17c47221c049d5831d' was completed in 0.71 seconds with the score of 505.95 (0 unrouted and 0 violations).
+2026-11-10 08:01:34.958 INFO   [984CAC\DB7C3A] Optimizer pass #6: optimizer score 494.05 -> 505.95 (IMPROVED, 2.4096%), router score: 1000.00, incomplete connections: 0, clearance violations: 0.
+2026-11-10 08:01:34.958 INFO   [984CAC\DB7C3A] Stopping optimizer because the improvement in this pass (2.4096%) is below the threshold (2.50%).
+2026-11-10 08:01:34.999 INFO   [984CAC\DB7C3A] Optimization stage completed:. Baseline router score: 1000.00, baseline optimizer score: 273.81, final router score: 1000.00, final optimizer score: 505.95, completed in 8.31 seconds, using 46.16 total CPU seconds, 11.96 GB total allocated, and 1044.7 MB peak heap usage.
+2026-11-10 08:01:35.019 INFO   [984CAC\DB7C3A] Optimization was completed in 8.42 seconds with the score of 1000.00 (0 unrouted and 0 violations).
+2026-11-10 08:01:35.067 INFO   Saving 'C:\Users\Admin\Documents\Sofpad\hardware\r3\pcb\adapter\adapter_a.ses'...
+2026-11-10 08:01:35.078 INFO   Saved 8991 bytes to 'C:\Users\Admin\Documents\Sofpad\hardware\r3\pcb\adapter\adapter_a.ses'.

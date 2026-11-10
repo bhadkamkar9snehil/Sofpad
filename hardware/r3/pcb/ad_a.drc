@@ -1,0 +1,3 @@
+adapter_a: 0 errors, 0 warnings, 2 unconnected {}
+   unconnected: ['Zone [GND] on F.Cu, priority 0', 'Zone [GND] on B.Cu, priority 0']
+   unconnected: ['Zone [GND] on B.Cu, priority 0', 'Zone [GND] on F.Cu, priority 0']

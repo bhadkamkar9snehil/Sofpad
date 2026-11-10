@@ -123,17 +123,17 @@
       (place J7 5350 -14000 front -90 (PN "Left FFC FH12-16S-0.5SH"))
     )
     (component "JST_SH_SM06B-SRSS-TB_1x06-1MP_P1.00mm_Horizontal"
-      (place J6 48500 -24500 front 0 (PN "TPS65 breakout SM06B-SRSS-TB"))
+      (place J6 49500 -24500 front 0 (PN "TPS65 breakout SM06B-SRSS-TB"))
     )
     (component "JST_PH_S8B-PH-SM4-TB_1x08-1MP_P2.00mm_Horizontal"
       (place J5 22000 -23000 front 0 (PN "Screen S8B-PH-SM4-TB"))
     )
     (component "JST_SH_SM02B-SRSS-TB_1x02-1MP_P1.00mm_Horizontal"
       (place J4 55500 -3000 front 0 (PN "LRA SM02B-SRSS-TB"))
-      (place J3 59500 -23800 front 0 (PN "Cell NTC SM02B-SRSS-TB"))
+      (place J3 57800 -24500 front 0 (PN "Cell NTC SM02B-SRSS-TB"))
     )
     (component "JST_PH_S2B-PH-SM4-TB_1x02-1MP_P2.00mm_Horizontal"
-      (place J2 39500 -23000 front 0 (PN "Battery S2B-PH-SM4-TB"))
+      (place J2 38000 -23000 front 0 (PN "Battery S2B-PH-SM4-TB"))
     )
     (component SW_SPDT_PCM12
       (place SW1 45000 -2725 front 0 (PN "C&K PCM12SMTR"))
@@ -1084,5 +1084,15 @@
     )
   )
   (wiring
+    (wire (path F.Cu 200  20600 -15550  20600 -16450)(net GND)(type fix))
+    (wire (path B.Cu 200  46275 -12500  47175 -12500)(net GND)(type fix))
+    (wire (path F.Cu 200  45400 -13527.5  44300 -13527.5)(net GND)(type fix))
+    (wire (path F.Cu 200  23980 -15500  23980 -16500)(net GND)(type fix))
+    (wire (path F.Cu 200  24275 -13500  24275 -12400)(net GND)(type fix))
+    (via "Via[0-3]_600:300_um"  20600 -16450 (net GND)(type fix))
+    (via "Via[0-3]_600:300_um"  47175 -12500 (net GND)(type fix))
+    (via "Via[0-3]_600:300_um"  44300 -13527.5 (net GND)(type fix))
+    (via "Via[0-3]_600:300_um"  23980 -16500 (net GND)(type fix))
+    (via "Via[0-3]_600:300_um"  24275 -12400 (net GND)(type fix))
   )
 )

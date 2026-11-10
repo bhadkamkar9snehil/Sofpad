@@ -1,7 +1,7 @@
 {
     "$schema": "https://schemas.kicad.org/drc.v1.json",
     "coordinate_units": "mm",
-    "date": "2026-11-10T01:29:51",
+    "date": "2026-11-10T08:01:37",
     "ignored_checks": [
         {
             "description": "Footprint has no courtyard defined",
@@ -62,7 +62,30 @@
                         "x": 0.3,
                         "y": 0.3
                     },
-                    "uuid": "135775dd-1e8b-4d81-b14f-991d1869bbc7"
+                    "uuid": "c7b0136f-9719-4e1c-9dc5-3f37714128f7"
+                },
+                {
+                    "description": "Zone [GND] on B.Cu, priority 0",
+                    "pos": {
+                        "x": 0.3,
+                        "y": 0.3
+                    },
+                    "uuid": "42282f2a-74a1-45ba-ba36-c2ad4a75d939"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Zone [GND] on B.Cu, priority 0",
+                    "pos": {
+                        "x": 0.3,
+                        "y": 0.3
+                    },
+                    "uuid": "42282f2a-74a1-45ba-ba36-c2ad4a75d939"
                 },
                 {
                     "description": "Zone [GND] on F.Cu, priority 0",
@@ -70,7 +93,7 @@
                         "x": 0.3,
                         "y": 0.3
                     },
-                    "uuid": "135775dd-1e8b-4d81-b14f-991d1869bbc7"
+                    "uuid": "c7b0136f-9719-4e1c-9dc5-3f37714128f7"
                 }
             ],
             "severity": "error",

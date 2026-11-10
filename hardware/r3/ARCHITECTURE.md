@@ -184,6 +184,23 @@ Goal: months of standby, and no lag on the first key, touch or encoder click aft
 4. With the switch OFF and USB present, the cell charges and the MCU draws nothing.
 5. 100 sleep/wake cycles with no stuck key, missed key or lost Bluetooth pairing.
 
+## Verification without hardware
+
+All scripts are in `hardware/r3/pcb`. Run them after any design change; every one must pass before ordering.
+
+| Check | Command | Proves |
+|---|---|---|
+| Schematic rules | `python erc.py carrier` | No floating pins, no pin conflicts |
+| Placement gate | `python placecheck.py` (KiCad python) | Courtyards, board edge and pad spacing are clean before routing (seconds) |
+| Layout rules | `python drc.py carrier carrier` | Spacing, width, drill and edge limits, no unconnected nets |
+| Three-way netlist | `python compare_nets.py carrier carrier carrier` (KiCad python) | The generator, the schematic KiCad derives, and the routed PCB agree on every net |
+| Signal paths | `python verify_paths.py` | Each Sofle key row, column and encoder pin reaches the intended nRF52840 GPIO through the adapter, cable and carrier (both halves) |
+| Power values | `python power_check.py` | Charger, regulator, divider, I2C and load numbers against the datasheet formulas |
+| Pin audit | `python pin_audit.py U2 U4 U5 U6 J1` | Every IC pin function and net, to compare with the datasheet |
+| Case | `python ../../../cad/r3/check_design.py` | Fit, overlaps, single-piece shell and plate, closed meshes |
+
+Findings that remain open (cannot be settled without a board): the nRF52840 with VBUS present and the switch off, the FFC contact type (buy A and D), the TPS65 flex pitch, the NTC must be plugged in for the BQ24074 to charge, the Waveshare backlight pin drive, and encoder pull-up drain (470 kOhm draws 7 uA per closed contact).
+
 ## Manufacturing (PCB order settings)
 
 Files: `hardware/r3/pcb/fab_export.py <folder> <board>` writes Gerbers, drill, pick-and-place, a BOM grouped by value and a zip to `pcb/fab/`.

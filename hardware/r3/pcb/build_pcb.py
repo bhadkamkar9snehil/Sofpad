@@ -91,6 +91,39 @@ def add_keepout(board, x0, y0, x1, y1):
     board.Add(z)
 
 
+FANOUT_GND = [("C12", "2", 0, -1.1), ("C7", "2", 0.0, 1.0), ("U4", "4", -1.1, 0.0), ("C5", "2", 0.0, 0.0), ("U1", "33", 0.0, 0.0)]
+
+
+def fanout_gnd(board, gnd, dist=0.9):
+    """A short stub and a via beside the listed GND pads, so each reaches the inner plane even
+    when the router leaves it on an outer-layer island (Freerouting left these floating)."""
+    for ref, num, ox, oy in FANOUT_GND:
+        fp = board.FindFootprintByReference(ref)
+        pad = next(p for p in fp.Pads() if p.GetNumber() == num)
+        c = fp.GetBoundingBox(False).GetCenter()
+        p0 = pad.GetPosition()
+        if ox == 0 and oy == 0:
+            dx, dy = p0.x - c.x, p0.y - c.y
+            ox, oy = (dist if dx >= 0 else -dist, 0) if abs(dx) >= abs(dy) else (0, dist if dy >= 0 else -dist)
+        q = pcbnew.VECTOR2I(p0.x + mm(ox), p0.y + mm(oy))
+        via = pcbnew.PCB_VIA(board)
+        via.SetPosition(q)
+        via.SetWidth(mm(0.6))
+        via.SetDrill(mm(0.3))
+        via.SetNet(gnd)
+        via.SetLayerPair(pcbnew.F_Cu, pcbnew.B_Cu)
+        via.SetLocked(True)
+        board.Add(via)
+        tr = pcbnew.PCB_TRACK(board)
+        tr.SetStart(p0)
+        tr.SetEnd(q)
+        tr.SetWidth(mm(0.2))
+        tr.SetLayer(pcbnew.F_Cu if not fp.IsFlipped() else pcbnew.B_Cu)
+        tr.SetNet(gnd)
+        tr.SetLocked(True)
+        board.Add(tr)
+
+
 def build(name, variant, w, h, layers, placement, holes, keepouts=(), mirror_x=False):
     d = HERE / name
     net = json.loads((d / f"{name}.net.json").read_text())
@@ -139,6 +172,8 @@ def build(name, variant, w, h, layers, placement, holes, keepouts=(), mirror_x=F
             n = pin_net.get((ref, pad.GetNumber()))
             if n:
                 pad.SetNet(nets[n])
+    if layers == 4:
+        fanout_gnd(board, nets["GND"])
     for i, (x, y) in enumerate(holes, 1):
         fp = load_fp("MountingHole:MountingHole_2.2mm_M2_Pad")
         fp.SetReference(f"H{i}")
